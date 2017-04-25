@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package dslVersion="1.0.0.0" 
+        Id="72ea2852-2818-4daa-ad6a-7777c0fbbc66" 
+        solutionId="72ea2852-2818-4daa-ad6a-7777c0fbbc66" 
+        xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel" 
+        name="GestionFormacion"
+        sharePointProductVersion="16.0">
+  <features>
+        <featureReference itemId="58e4c807-3979-4924-8fe4-1613758f7743" />
+  </features>
+</package>
