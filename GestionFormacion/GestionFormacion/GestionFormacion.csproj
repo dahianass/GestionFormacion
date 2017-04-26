@@ -48,7 +48,9 @@
       <SharePointProjectItemId>{b9776e86-e4b1-45b7-8f2f-03a792636294}</SharePointProjectItemId>
     </None>
     <Content Include="Content\common.css" />
-    <Content Include="Pages\Elements.xml" />
+    <Content Include="Pages\Elements.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Pages\Default.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -57,6 +59,8 @@
       <SharePointProjectItemId>{c74b2b67-86a0-466b-b92e-49805ab12580}</SharePointProjectItemId>
     </None>
     <Content Include="Pages\MisFormaciones.aspx" />
+    <Content Include="Pages\PlanEstrategico.aspx" />
+    <Content Include="Pages\SolicitudesAsignadas.aspx" />
     <Content Include="Scripts\Elements.xml" />
     <Content Include="Scripts\App.js" />
     <Content Include="Scripts\jquery-1.9.1.intellisense.js" />

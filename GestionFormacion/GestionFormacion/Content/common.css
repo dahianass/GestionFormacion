@@ -61,4 +61,11 @@ td{
 	text-align: left;
 	text-align: left;
 }
+.ancho5 {
+    width: 5%;
+}
+td{
+    padding: 7px;
+}
+
 
