@@ -24,7 +24,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="Contenedor">
+		<div class="Contenedor ContenedorL">
 			<div class="TablaSolicitudesAsignadas panel panel-primary" >
 			<div class="panel-heading">SOLICITUDES ASIGNADAS A MÍ</div>
 				<table class="table table-striped">
@@ -53,7 +53,7 @@
 						<td>26/06/2017</td>
 						<td>$7.000.000</td>
 						<td>Aprobada</td>
-						<td><button type="button" class="btn btn-default btn-xs noStyle ancho5">
+						<td><button type="button" class="btn btn-default btn-xs noStyle">
 								<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
 							</button></td>
 					</tr>								
@@ -68,7 +68,7 @@
 						<td>1/06/2017</td>
 						<td>$1.000.000</td>
 						<td>Presupuestadas</td>
-						<td><button type="button" class="btn btn-default btn-xs noStyle ancho5">
+						<td><button type="button" class="btn btn-default btn-xs noStyle ">
 								<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
 							</button></td>
 					</tr>	
@@ -83,7 +83,7 @@
 						<td>24/05/2017</td>
 						<td>$2.000.000</td>
 						<td>Presupuestadas</td>
-						<td><button type="button" class="btn btn-default btn-xs noStyle ancho5">
+						<td><button type="button" class="btn btn-default btn-xs noStyle ">
 								<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
 							</button></td>
 					</tr>	
@@ -98,7 +98,7 @@
 						<td>03/03/2017</td>
 						<td>$5.000.000</td>
 						<td>Aprobada</td>
-						<td><button type="button" class="btn btn-default btn-xs noStyle ancho5">
+						<td><button type="button" class="btn btn-default btn-xs noStyle ">
 								<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
 							</button></td>
 					</tr>	

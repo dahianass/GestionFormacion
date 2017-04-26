@@ -57,15 +57,7 @@
 .aprendido{
 	margin-top:2%;
 }
-td{
-	text-align: left;
-	text-align: left;
+.ContenedorL{
+    width: 75% !important;
+    margin-top: 1.5%;
 }
-.ancho5 {
-    width: 5%;
-}
-td{
-    padding: 7px;
-}
-
-

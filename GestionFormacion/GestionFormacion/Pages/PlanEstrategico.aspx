@@ -25,7 +25,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="Contenedor">
+		<div class="Contenedor ContenedorL">
 			<div class="TablaPlanEstrategico panel panel-primary" >
 			<div class="panel-heading">PLAN ESTRATÉGICO</div>
 				<table class="table table-striped">
