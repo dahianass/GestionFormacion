@@ -19,7 +19,9 @@
 			<div class="panel panel-primary">
 				<div class="panel-heading center">MENú</div>
 				<div class="btn-group-vertical" role="group" aria-label="">
-			<button type="button" class="btn btn-default left" onclick="window.location='PlanEstrategico.aspx';">Plan estratégico</button>
+			        <button type="button" class="btn btn-default left" onclick="window.location='MisFormaciones.aspx';">Mis Formaciónes</button>
+					<button type="button" class="btn btn-default left" onclick="window.location='Solicitud.aspx';">Crear solicitudes de formación</button>
+			        <button type="button" class="btn btn-default left" onclick="window.location='PlanEstrategico.aspx';">Plan estratégico</button>
 					<button type="button" class="btn btn-default left" onclick="window.location='SolicitudesAsignadas.aspx';">Solicitudes asignadas a mí</button>
 				</div>
 			</div>
@@ -53,7 +55,7 @@
 						<td>26/06/2017</td>
 						<td>$7.000.000</td>
 						<td>Aprobada</td>
-						<td><button type="button" class="btn btn-default btn-xs noStyle">
+						<td><button type="button" class="btn btn-default btn-xs noStyle" onclick="window.location='Solicitud.aspx';">
 								<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
 							</button></td>
 					</tr>								
@@ -68,7 +70,7 @@
 						<td>1/06/2017</td>
 						<td>$1.000.000</td>
 						<td>Presupuestadas</td>
-						<td><button type="button" class="btn btn-default btn-xs noStyle ">
+						<td><button type="button" class="btn btn-default btn-xs noStyle "  onclick="window.location='Solicitud.aspx';">
 								<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
 							</button></td>
 					</tr>	
@@ -83,7 +85,7 @@
 						<td>24/05/2017</td>
 						<td>$2.000.000</td>
 						<td>Presupuestadas</td>
-						<td><button type="button" class="btn btn-default btn-xs noStyle ">
+						<td><button type="button" class="btn btn-default btn-xs noStyle "  onclick="window.location='Solicitud.aspx';">
 								<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
 							</button></td>
 					</tr>	
@@ -98,7 +100,7 @@
 						<td>03/03/2017</td>
 						<td>$5.000.000</td>
 						<td>Aprobada</td>
-						<td><button type="button" class="btn btn-default btn-xs noStyle ">
+						<td><button type="button" class="btn btn-default btn-xs noStyle "  onclick="window.location='Solicitud.aspx';">
 								<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
 							</button></td>
 					</tr>	

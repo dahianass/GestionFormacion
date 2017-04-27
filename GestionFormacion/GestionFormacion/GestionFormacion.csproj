@@ -48,6 +48,7 @@
       <SharePointProjectItemId>{b9776e86-e4b1-45b7-8f2f-03a792636294}</SharePointProjectItemId>
     </None>
     <Content Include="Content\common.css" />
+    <Content Include="Content\style.css" />
     <Content Include="Pages\Elements.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -60,6 +61,7 @@
     </None>
     <Content Include="Pages\MisFormaciones.aspx" />
     <Content Include="Pages\PlanEstrategico.aspx" />
+    <Content Include="Pages\Solicitud.aspx" />
     <Content Include="Pages\SolicitudesAsignadas.aspx" />
     <Content Include="Scripts\Elements.xml" />
     <Content Include="Scripts\App.js" />

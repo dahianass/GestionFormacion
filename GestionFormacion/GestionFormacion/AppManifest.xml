@@ -8,7 +8,7 @@
 >
   <Properties>
     <Title>GestionFormacion</Title>
-    <StartPage>~appWebUrl/Pages/Default.aspx?{StandardTokens}</StartPage>
+    <StartPage>~appWebUrl/Pages/SolicitudesAsignadas.aspx?{StandardTokens}</StartPage>
   </Properties>
 
   <AppPrincipal>

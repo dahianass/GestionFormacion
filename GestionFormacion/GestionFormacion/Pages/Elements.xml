@@ -5,5 +5,6 @@
     <File Path="Pages\MisFormaciones.aspx" Url="Pages/MisFormaciones.aspx" ReplaceContent="TRUE" />
     <File Path="Pages\PlanEstrategico.aspx" Url="Pages/PlanEstrategico.aspx" ReplaceContent="TRUE" />
     <File Path="Pages\SolicitudesAsignadas.aspx" Url="Pages/SolicitudesAsignadas.aspx" ReplaceContent="TRUE" />
+    <File Path="Pages\Solicitud.aspx" Url="Pages/Solicitud.aspx" ReplaceContent="TRUE" />
   </Module>
 </Elements>

@@ -3,5 +3,6 @@
   <Module Name="Content">
     <File Path="Content\App.css" Url="Content/App.css" ReplaceContent="TRUE" />
     <File Path="Content\common.css" Url="Content/common.css" ReplaceContent="TRUE" />
+    <File Path="Content\style.css" Url="Content/style.css" ReplaceContent="TRUE" />
   </Module>
 </Elements>

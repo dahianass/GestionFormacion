@@ -19,9 +19,10 @@
 			<div class="panel panel-primary">
 				<div class="panel-heading center">MENú</div>
 				<div class="btn-group-vertical" role="group" aria-label="">
-					<button type="button" class="btn btn-default left">Mis Formaciónes</button>
-					<button type="button" class="btn btn-default left">Crear solicitudes de formación</button>
-					<button type="button" class="btn btn-default left">Solicitudes</button>
+                    <button type="button" class="btn btn-default left" onclick="window.location='MisFormaciones.aspx';">Mis Formaciónes</button>
+					<button type="button" class="btn btn-default left" onclick="window.location='Solicitud.aspx';">Crear solicitudes de formación</button>
+			        <button type="button" class="btn btn-default left" onclick="window.location='PlanEstrategico.aspx';">Plan estratégico</button>
+					<button type="button" class="btn btn-default left" onclick="window.location='SolicitudesAsignadas.aspx';">Solicitudes asignadas a mí</button>
 				</div>
 			</div>
 		</div>
