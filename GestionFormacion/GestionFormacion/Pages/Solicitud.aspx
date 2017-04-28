@@ -7,7 +7,10 @@
     <SharePoint:ScriptLink name="sp.js" runat="server" OnDemand="true" LoadAfterUI="true" Localizable="false" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="../Scripts/App/App.Solicitud.js"></script>
+    <script src="../Scripts/Controller/Solicitud.Controller.js"></script>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
     <link href="../Content/style.css" rel="stylesheet" />
@@ -15,7 +18,7 @@
 
 <asp:Content ContentPlaceHolderId="PlaceHolderMain" runat="server">
     <WebPartPages:WebPartZone runat="server" FrameType="TitleBarOnly" ID="full" Title="loc:full" />
-    <div class="container">
+    <div class="container" class="container" ng-app="SolicitudApp"  ng-controller="SolicitudController as vm">
 		<div class="row">
 			<div class="col-md-12 form-group">
 				<button class="btn btn-primary pull-right mr-2" type="button">Cancelar</button>
@@ -23,266 +26,256 @@
 				<button class="btn btn-primary pull-right mr-2" type="button">Cerrar</button>
 			</div>
 		</div>
-       <div class="panel panel-primary">
+		
+		<div class="panel panel-primary">
             <div class="panel-heading">Información del revisor</div>
             <div class="panel-body">
 				<div class="row">
-				  <div class="col-md-4 form-group">
-					<label for="Responsable" class="col-sm-4 control-label">Responsable</label>
-					<div class="col-sm-8">
-					  <input type="text" class="form-control" id="Responsable">
+					<div class="col-md-4">
+						<label>Responsable</label>
+						<label class="form-control"></label>
 					</div>
-				  </div>
-				  <div class="col-md-4 form-group">
-					<label for="Estado" class="col-sm-2 control-label">Estado</label>
-					<div class="col-sm-10">
-					  <input type="text" class="form-control" id="Estado">
+					<div class="col-md-4">
+						<label>Estado</label>
+						<label class="form-control"></label>
 					</div>
-				  </div>
-				  <div class="col-md-4 form-group">
-					<div class="checkbox form-group">
-					<label>
-					  <input type="checkbox" id="AprobadaOk">
-					  Aprobada
-					</label>
-				   </div>
-				  </div>
-				  <div class="col-md-4 form-group">
-					<label for="fechaPago" class="col-sm-5 control-label marginMenor">Fecha de pago</label>
-					<div class='input-group date' id='datetimepicker1'>
-						<input type='text' class="form-control" />
-						<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-						</span>
+					<div class="col-md-4 pt2">
+						<div class="input-group">
+							<span class="input-group-addon">
+							<input type="checkbox" aria-label="...">
+							</span>
+							<label class="form-control">Aprobada</label>
+						</div>
 					</div>
-				  </div>
+				</div>
+				<div class="row MT2">
+					<div class="col-md-4">
+						<label>Fecha de pago</label>
+						<div class="input-group">
+							<input type='text' class="form-control" />
+							<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+							</span>
+						</div>
+					</div>	
+					<div class="col-md-4">
+						<label>Solicitante</label>
+						<label class="form-control">{{vm.Solicitante}}</label>
+					</div>
+					<div class="col-md-4">
+						<label for="fechaSolicitud">Fecha de solicitud</label>
+						<div class='input-group'>
+							  <input type='text' class="form-control" />
+							  <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+							  </span>
+						</div>
+					</div>
 			  </div>
 			</div>
 		</div>
+		
 		<div class="panel panel-primary">
             <div class="panel-heading">Información del solicitante</div>
             <div class="panel-body">
 				<div class="row">
-					<div class="col-md-3 form-group">
-						<label for="tdFormacion" class="col-sm-7 control-label">Tipo de formación</label>
-							<div class="dropdown">
-							  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-								Selecione
-								<span class="caret"></span>
-							  </button>
-							  <ul class="dropdown-menu tcurso" aria-labelledby="dropdownMenu1">
-								<li><a href="#">Seminario</a></li>
-								<li><a href="#">Curso</a></li>
-								<li><a href="#">Capacitación</a></li>
-							  </ul>
-							</div>
+					<div class="col-md-3">
+						<label>Tipo de formación</label>
+							<select class="form-control">
+								  <option>Seminario</option>
+								  <option>Curso</option>
+								  <option>Capacitación</option>
+							</select>
 					</div>
-					<div class="col-md-3 form-group">
-					  <label for="Solicitante" class="col-sm-5 control-label">Solicitante</label>
-					  <div class="col-sm-7">
-						<Span class="name">Jorge Luis Lopez</span>
-					  </div>
+					<div class="col-md-3">
+						<label>Fecha fin inicio</label>
+						<div class='input-group'>
+							<input type='text' class="form-control" />
+							<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+							</span>
+						</div>
 					</div>
-					<div class="col-md-3 form-group">
-					  <label for="fechaSolicitud" class="col-sm-5 control-label">Fecha de solicitud</label>
-					  <div class='input-group date' id='datetimepicker1'>
-						  <input type='text' class="form-control" />
-						  <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-						  </span>
-					  </div>
+					<div class="col-md-3">
+						<label>Clasificación</label>
+						<select class="form-control">
+							<option>Externa</option>
+							<option>Interna</option>
+						</select>	
 					</div>
-					<div class="col-md-3 form-group">
-					  <label for="fechaFinIn" class="col-sm-5 control-label">Fecha fin inicio</label>
-					  <div class= 'input-group date' id='datetimepicker1'>
-						  <input type='text' class="form-control" />
-						  <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-						  </span>
-					  </div>
+					<div class="col-md-3">
+						<label>Duración</label>
+						<div class='input-group'>
+							<input type="text" class="form-control">
+							<span class="input-group-addon">Horas</span>
+						</div>	
 					</div>
-					<div class="col-md-3 form-group">
-					  <label for="Clasificacion" class="col-sm-7 control-label">Clasificación</label>
-						<div class="dropdown">
-							  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-								Selecione
-								<span class="caret"></span>
-							  </button>
-							  <ul class="dropdown-menu tcurso" aria-labelledby="dropdownMenu1">
-								<li><a href="#">Externa</a></li>
-								<li><a href="#">Interna</a></li>
-							  </ul>
-							</div>
+				</div>
+				<div class="row MT2">
+					<div class="col-md-3">
+						<label>Evaluación</label>
+						<select class="form-control">
+							<option>Por definir</option>
+							<option>Definido</option>
+						</select>	
 					</div>
-					<div class="col-md-3 form-group">
-					  <label for="Duracion" class="col-sm-4 control-label">Duración</label>
-					  <div class="col-sm-4">
-						<input type="text" class="form-control" id="Duracion">
-					  </div>
-					  <span for="Horas" class="col-sm-4 control-label Horas">Horas</span>
-					</div>
-					<div class="col-md-3 form-group">
-					  <label for="Evaluacion" class="col-sm-7 control-label">Evaluación</label>
-						<div class="dropdown">
-							  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-								Selecione
-								<span class="caret"></span>
-							  </button>
-							  <ul class="dropdown-menu tcurso" aria-labelledby="dropdownMenu1">
-								<li><a href="#">Por definir</a></li>
-								<li><a href="#">Interna</a></li>
-							  </ul>
-							</div>
-					</div>
-					<div class="col-md-3 form-group">
-					  <label for="Cupos" class="col-sm-4 control-label">Cupos</label>
-					  <div class="col-sm-8">
+					<div class="col-md-3">
+						<label>Cupos</label>
 						<input type="text" class="form-control" id="Cupos">
-					  </div>
 					</div>
-			  </div>
-			</div>
-			  <div class="row">
-				<div class="col-md-6 form-group">
-				  <label for="Entidad" class="col-sm-2 control-label Entidad">Entidad</label>
-				  <div class="col-sm-10">
-					<input type="text" class="form-control" id="Entidad">
-				  </div>
-				</div>
-				  <div class="col-md-3">
-					<label for="VInd" class="col-sm-5 control-label">Valor individual</label>
-					<div class="col-sm-7">
-					  <input type="text" class="form-control" id="VInd">
+					<div class="col-md-6">
+						<label>Entidad</label>
+						<input type="text" class="form-control" id="Cupos">
 					</div>
-				  </div>
-				  <div class="col-md-3">
-					<label for="totalCurso" class="col-sm-5 control-label">Total curso</label>
-					<div class="col-sm-7">
-					  <input type="text" class="form-control" id="inputEmail3">
+				</div>
+				<div class="row MT2">
+					<div class="col-md-3">
+						<label>Valor individual</label>
+						<input type="text" class="form-control">
 					</div>
-				  </div>
-			  </div>
-			  <div class="row maxMargin">
-				<div class="col-md-6 form-group">
-				  <label for="Rango" class="col-sm-3 control-label">Rango</label>
-				  <div class="col-sm-4">
-					  <div><input type="checkbox" checked>Directores y Personal</div>
-					  <div><input type="checkbox">Gerente</div>
-				  </div>
-				</div>
-			  </div>
-			  <div class="row maxMargin">
-				<div class="col-md-3 form-group">
-					<label for="Rango" class="col-sm-3 control-label">Viajes</label>
-					  <div class="col-sm-4">
-						  <div><input type="checkbox" checked></div>
-				 </div>
-				</div>
-				<div class="col-md-3 form-group">
-				  <label for="fechaFinIn" class="col-sm-5 control-label">Fin inicio</label>
-				  <div class='input-group date' id='datetimepicker1'>
-					  <input type='text' class="form-control" />
-					  <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-					  </span>
-				  </div>
-				</div>
-				<div class="col-md-3 form-group">
-				  <label for="fechaFin" class="col-sm-5 control-label">Fin fin</label>
-				  <div class='input-group date' id='datetimepicker1'>
-					  <input type='text' class="form-control" />
-					  <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-					  </span>
-				  </div>
-				</div>
-			  </div>
-			  <div class="row maxMargin">
-				<div class="col-md-3">
-				  <label for="valorV" class="col-sm-5 control-label">Valor viáticos</label>
-				  <div class="col-sm-7">
-					<input type="text" class="form-control" id="ValorViatico">
-				  </div>
-				</div>
-				<div class="col-md-3">
-				  <label for="valorT" class="col-sm-5 control-label">Valor tiquete</label>
-				  <div class="col-sm-7">
-					<input type="text" class="form-control" id="ValorTiquete">
-				  </div>
-				</div>
-				<div class="col-md-3">
-				  <label for="ValorTr" class="col-sm-5 control-label">Valor Transporte</label>
-				  <div class="col-sm-7">
-					<input type="text" class="form-control" id="ValorTransporte">
-				  </div>
-				</div>
-				<div class="col-md-3">
-				  <label for="ValorH" class="col-sm-5 control-label">Valor Hotel</label>
-				  <div class="col-sm-7">
-					<input type="text" class="form-control" id="ValorHotel">
-				  </div>
-				</div>
-
-			  </div>
-			  <div class="row maxMargin">
-				<div class="col-md-3 pull-right">
-				  <label for="totalCurso" class="col-sm-5 control-label">Total</label>
-				  <div class="col-sm-7">
-					<input type="text" class="form-control" id="inputEmail3">
-				  </div>
-				</div>
-			  </div>
-	  		<div class="ContenedorForm">
-			<div class="row">
-				<div class="col-md-6" >
-					<div class="Fila"><span>Area:</span></div>
-					<div class="col-md-6"><input class="form-control" id="area"></div>
-					<span class="glyphicon glyphicon-plus-sign SpanL"></span>
-				</div>
-				<div class="col-md-6" >
-					<div class="Fila"><span class="">Asistente:</span> </div>
-					<div class="col-md-6"><input class="form-control" /></div>
-					<span class="glyphicon glyphicon-plus-sign SpanL"></span>
-				</div>
-			</div>		
-			<div class="row contenedorDos">
-				<div class="col-md-6">
-					<div class="contenedorSombra">
-					<span>Area</span>
-						<div class="checkbox form-group">
-							<div><input type="checkbox">Sistemas</div>
-							<div><input type="checkbox" checked>Contabilidad</div>
-							<div><input type="checkbox">Legal</div>
+					<div class="col-md-3">
+						<label>Total curso</label>	
+						<input type="text" class="form-control">
+					</div>
+					<div class="col-md-3">
+						<label>Rango</label>
+						<div class="">
+							<div><input type="checkbox" checked>Directores y Personal</input></div>
+							<div><input type="checkbox">Gerente</Input></div>
 						</div>
-					<button type="button" class="btn btn-primary botonIzquierda">Eliminar</button>	
+					</div>
+					<div class="col-md-3 pt2">
+						<div class="input-group">
+							<span class="input-group-addon">
+							<input type="checkbox"  ng-model="checked" aria-label="...">
+							</span>
+							<label class="form-control">Viajes</label>
+						</div>
 					</div>
 				</div>
-				<div class="col-md-6">
 				
-					<div class="contenedorSombra">
-						<span>Asistentes</span>
-						<div class="checkbox form-group">
-							<div><input type="checkbox" checked>Andres Zapata</div>
-							<div><input type="checkbox">Fernanda Salgado</div>
-							<div><input type="checkbox" checked>Daniel Alvares</div>
+				<div class="row MT2">
+
+					<div class="col-md-3">  
+						<label>Fin inicio</label>
+						<div class='input-group'>
+							<input type='text' class="form-control" />
+							<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+							</span>
 						</div>
-						<button type="button" class="btn btn-primary botonIzquierda">Eliminar</button>
+					</div>
+					<div class="col-md-3">
+						<label for="fechaFin">Fin fin</label>
+						<div class='input-group'>
+							<input type='text' class="form-control" />
+							<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+							</span>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<label>Total</label>
+						<input type="text" class="form-control" id="inputEmail3">
 					</div>
 				</div>
-			</div>
-			<div class="aprendido">
-				<p>Temario</p>
-				<textarea class="form-control"></textarea>
-			</div>
-			<div class="aprendido">
-				<p>Observaciones</p>
-				<textarea class="form-control"></textarea>
-			</div>
+				<div class="row MT2">
+					<div class="col-md-6" >
+						<label>Area</label>
+						<div class="input-group"><input class="form-control" id="area">
+							<span class="input-group-addon"><span class="glyphicon glyphicon-plus-sign SpanL"></span></span>
+						</div>
+					</div>
+					<div class="col-md-6" >
+						<label >Asistente:</label>
+						<div class="input-group"><input class="form-control" />
+							<span class="input-group-addon"><span class="glyphicon glyphicon-plus-sign SpanL"></span></span>
+						</div>
+					</div>
+				</div>		
+				<div class="row MT2">
+					<div class="col-md-6">
+						<div class="contenedorSombra">
+							<span>Area</span>
+								<div class="checkbox form-group">
+									<div><input type="checkbox">Sistemas</div>
+									<div><input type="checkbox" checked>Contabilidad</div>
+									<div><input type="checkbox">Legal</div>
+								</div>
+							<button type="button" class="btn btn-primary botonIzquierda">Eliminar</button>	
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="contenedorSombra">
+							<span>Asistentes</span>
+							<div class="checkbox form-group">
+								<div><input type="checkbox" checked>Andres Zapata</div>
+								<div><input type="checkbox">Fernanda Salgado</div>
+								<div><input type="checkbox" checked>Daniel Alvares</div>
+							</div>
+							<button type="button" class="btn btn-primary botonIzquierda">Eliminar</button>
+						</div>
+					</div>
+				</div>
+				<div class="row MT2">
+					<div class="col-md-12 MT2">
+						<Label>Temario</Label>
+						<textarea class="form-control"></textarea>
+					</div>
+				</div>
+				<div class="row MT2">
+					<div class="col-md-12 MT2">
+						<Label>Observaciones</Label>
+						<div class="panel panel-default">
+							<table class="table table-striped">
+								<thead>
+									<th>#</th>
+									<th>Observación</th>
+									<th>Autor</th>
+								</thead>
+								<tbody id="listaClientes">
+									<tr>
+										<td>1</td>
+										<td>El seminario fue muy...</td>
+										<td>Jose Camaro</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>	
+					</div>
+				</div>
 			</div>
 		</div>
-		<div class="panel panel-default">
+	
+		<div class="panel panel-primary" ng-show="checked">
+            <div class="panel-heading">Información de viaje</div>
+            <div class="panel-body">
+				<div class="row">
+					<div class="col-md-4" >
+						<label >Valor viáticos</label>
+						<Input class="form-control"></input>
+					</div>
+					<div class="col-md-4" >
+						<label>Valor tiquete</label>
+						<Input class="form-control"></input>
+					</div>
+					<div class="col-md-4" >
+						<label>Valor Transporte</label>
+						<Input class="form-control"></input>
+					</div>
+				</div>
+				<div class="row MT2">
+					<div class="col-md-4" >
+						<label>Valor Hotel</label>
+						<Input class="form-control"></input>
+					</div>	
+				</div>
+			</div>
+		</div>
+		
+		<div class="panel panel-primary">
 				<div class="panel-heading">Anexos </div>
 					<div class="panel-body">
 						<div class="fileUpload btn btn-primary" id="anexar">
 							<span>Anexar <span class="glyphicon glyphicon-upload"></span></span>
 							<input id="uploadBtn" type="file" class="upload" />
 						</div>
-						<div class="panel panel-primary">
+						<div class="panel panel-default">
 							<table class="table table-striped">
 								<thead>
 									<th>#</th>
@@ -292,21 +285,21 @@
 								</thead>
 								<tbody id="listaClientes">
 									<tr>
-										<th>1</th>
-										<th>Documento</th>
-										<th>25/04/2017</th>
-										<th>pdf</th>
+										<td>1</td>
+										<td>Documento</td>
+										<td>25/04/2017</td>
+										<td>pdf</td>
 									</tr>
 									<tr>
-										<th>2</th>
-										<th>Certificado</th>
-										<th>27/04/2017</th>
-										<th>pdf</th>
+										<td>2</td>
+										<td>Certificado</td>
+										<td>27/04/2017</td>
+										<td>pdf</td>
 									</tr>
 								</tbody>
 							</table>
 						</div>	
 					</div>	
-				</div>
+		</div>
 	</div>
 </asp:Content>

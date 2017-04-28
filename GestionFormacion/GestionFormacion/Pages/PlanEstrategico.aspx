@@ -15,17 +15,19 @@
 <asp:Content ContentPlaceHolderId="PlaceHolderMain" runat="server">
     <WebPartPages:WebPartZone runat="server" FrameType="TitleBarOnly" ID="full" Title="loc:full" />
     	<div class="ContenedorPrincipal">
-		<div class="MenuLateral">
-			<div class="panel panel-primary">
-				<div class="panel-heading center">MENú</div>
-				<div class="btn-group-vertical" role="group" aria-label="">
-			        <button type="button" class="btn btn-default left" onclick="window.location='MisFormaciones.aspx';">Mis Formaciónes</button>
-					<button type="button" class="btn btn-default left" onclick="window.location='Solicitud.aspx';">Crear solicitudes de formación</button>
-			        <button type="button" class="btn btn-default left" onclick="window.location='PlanEstrategico.aspx';">Plan estratégico</button>
-					<button type="button" class="btn btn-default left" onclick="window.location='SolicitudesAsignadas.aspx';">Solicitudes asignadas a mí</button>
-				</div>
-			</div>
-		</div>
+            <div class="MenuLateral">
+			    <div class="panel panel-primary">
+				    <div class="panel-heading center">MENú</div>
+				    <div class="btn-group-vertical" role="group" aria-label="">
+                        <button type="button" class="btn btn-default left" onclick="window.location='MisFormaciones.aspx';">Mis Formaciónes</button>
+                        <button type="button" class="btn btn-default left" onclick="window.location='MisSolicitudes.aspx';">Mis Solicitudes</button>
+					    <button type="button" class="btn btn-default left" onclick="window.location='Solicitud.aspx';">Crear solicitudes de formación</button>
+			            <button type="button" class="btn btn-default left" onclick="window.location='PlanEstrategico.aspx';">Plan estratégico</button>
+					    <button type="button" class="btn btn-default left" onclick="window.location='SolicitudesAsignadas.aspx';">Solicitudes asignadas a mí</button>
+                        <button type="button" class="btn btn-default left" onclick="window.location='TodasSolicitudes.aspx';">Todas las solicitudes</button>
+				    </div>
+			    </div>
+		    </div>
 		<div class="Contenedor ContenedorL">
 			<div class="TablaPlanEstrategico panel panel-primary" >
 			<div class="panel-heading">PLAN ESTRATÉGICO</div>

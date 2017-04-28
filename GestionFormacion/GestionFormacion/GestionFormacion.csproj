@@ -60,9 +60,13 @@
       <SharePointProjectItemId>{c74b2b67-86a0-466b-b92e-49805ab12580}</SharePointProjectItemId>
     </None>
     <Content Include="Pages\MisFormaciones.aspx" />
+    <Content Include="Pages\MisSolicitudes.aspx" />
     <Content Include="Pages\PlanEstrategico.aspx" />
     <Content Include="Pages\Solicitud.aspx" />
     <Content Include="Pages\SolicitudesAsignadas.aspx" />
+    <Content Include="Pages\TodasSolicitudes.aspx" />
+    <Content Include="Scripts\App\App.Solicitud.js" />
+    <Content Include="Scripts\Controller\Solicitud.Controller.js" />
     <Content Include="Scripts\Elements.xml" />
     <Content Include="Scripts\App.js" />
     <Content Include="Scripts\jquery-1.9.1.intellisense.js" />

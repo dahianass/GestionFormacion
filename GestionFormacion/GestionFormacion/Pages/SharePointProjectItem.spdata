@@ -7,5 +7,7 @@
     <ProjectItemFile Source="PlanEstrategico.aspx" Target="Pages\" Type="ElementFile" />
     <ProjectItemFile Source="SolicitudesAsignadas.aspx" Target="Pages\" Type="ElementFile" />
     <ProjectItemFile Source="Solicitud.aspx" Target="Pages\" Type="ElementFile" />
+    <ProjectItemFile Source="MisSolicitudes.aspx" Target="Pages\" Type="ElementFile" />
+    <ProjectItemFile Source="TodasSolicitudes.aspx" Target="Pages\" Type="ElementFile" />
   </Files>
 </ProjectItem>

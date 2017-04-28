@@ -1,0 +1,1 @@
+var AppSolicitud = angular.module("SolicitudApp", [] );
