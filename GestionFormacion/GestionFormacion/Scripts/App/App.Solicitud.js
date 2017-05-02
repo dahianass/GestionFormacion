@@ -1,1 +1,1 @@
-var AppSolicitud = angular.module("SolicitudApp", [] );
+var AppSolicitud = angular.module("SolicitudApp", ['ngAutocomplete']);

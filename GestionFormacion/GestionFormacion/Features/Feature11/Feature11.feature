@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<feature xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="bc998969-f363-4f8a-b975-ece8b3ff0c42" featureId="bc998969-f363-4f8a-b975-ece8b3ff0c42" imageUrl="" solutionId="00000000-0000-0000-0000-000000000000" title="GestionFormacion Feature11" version="" deploymentPath="$SharePoint.Project.FileNameWithoutExtension$_$SharePoint.Feature.FileNameWithoutExtension$" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/FeatureModel" />

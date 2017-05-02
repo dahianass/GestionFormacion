@@ -11,6 +11,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="../Scripts/App/App.Solicitud.js"></script>
     <script src="../Scripts/Controller/Solicitud.Controller.js"></script>
+    <script src="../Scripts/Controller/apiRest.js"></script>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
     <link href="../Content/style.css" rel="stylesheet" />
@@ -79,10 +80,8 @@
 				<div class="row">
 					<div class="col-md-3">
 						<label>Tipo de formación</label>
-							<select class="form-control">
-								  <option>Seminario</option>
-								  <option>Curso</option>
-								  <option>Capacitación</option>
+							<select class="form-control" ng-model="vm.SelectTipFormacion" ng-options="tipos.Title for tipos in vm.TiposFormaciones track by tipos.ID ">
+                                <option value="">Seleccione</option>
 							</select>
 					</div>
 					<div class="col-md-3">
@@ -95,10 +94,9 @@
 					</div>
 					<div class="col-md-3">
 						<label>Clasificación</label>
-						<select class="form-control">
-							<option>Externa</option>
-							<option>Interna</option>
-						</select>	
+						<select class="form-control" ng-model="vm.SelectClasificacion" ng-options="Clasificacion.Title for Clasificacion in vm.Clasificaciones track by Clasificacion.ID ">
+                                <option value="">Seleccione</option>
+						</select>
 					</div>
 					<div class="col-md-3">
 						<label>Duración</label>
@@ -111,9 +109,8 @@
 				<div class="row MT2">
 					<div class="col-md-3">
 						<label>Evaluación</label>
-						<select class="form-control">
-							<option>Por definir</option>
-							<option>Definido</option>
+						<select class="form-control" ng-model="vm.SelectEvaluacion" ng-options="Evaluacion.Title for Evaluacion in vm.Evaluaciones track by Evaluacion.ID ">
+                                <option value="">Seleccione</option>
 						</select>	
 					</div>
 					<div class="col-md-3">
@@ -136,9 +133,8 @@
 					</div>
 					<div class="col-md-3">
 						<label>Rango</label>
-						<div class="">
-							<div><input type="checkbox" checked>Directores y Personal</input></div>
-							<div><input type="checkbox">Gerente</Input></div>
+						<div class="" ng-repeat="Rango in vm.Rangos">
+							<div><input type="checkbox"  name="NombreRango" value="{{Rango}}" ng-model="Rango.selected">{{Rango.Title}}</input></div>
 						</div>
 					</div>
 					<div class="col-md-3 pt2">

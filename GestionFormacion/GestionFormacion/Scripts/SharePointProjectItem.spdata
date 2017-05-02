@@ -9,5 +9,6 @@
     <ProjectItemFile Source="jquery-1.9.1.intellisense.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="App\App.Solicitud.js" Target="Scripts\App\" Type="ElementFile" />
     <ProjectItemFile Source="Controller\Solicitud.Controller.js" Target="Scripts\Controller\" Type="ElementFile" />
+    <ProjectItemFile Source="Controller\apiRest.js" Target="Scripts\Controller\" Type="ElementFile" />
   </Files>
 </ProjectItem>

@@ -1,11 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package dslVersion="1.0.0.0" 
-        Id="72ea2852-2818-4daa-ad6a-7777c0fbbc66" 
-        solutionId="72ea2852-2818-4daa-ad6a-7777c0fbbc66" 
-        xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel" 
-        name="GestionFormacion"
-        sharePointProductVersion="16.0">
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="72ea2852-2818-4daa-ad6a-7777c0fbbc66" solutionId="72ea2852-2818-4daa-ad6a-7777c0fbbc66" resetWebServer="false" sharePointProductVersion="16.0" name="GestionFormacion" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
   <features>
-        <featureReference itemId="58e4c807-3979-4924-8fe4-1613758f7743" />
+    <featureReference itemId="58e4c807-3979-4924-8fe4-1613758f7743" />
+    <featureReference itemId="39eaa548-ac24-437e-a59a-a0586a903bac" />
+    <featureReference itemId="b7e8d8dd-b1d0-4516-a770-d8783dca37d3" />
+    <featureReference itemId="7c7b2e3d-9ee3-4c66-a473-e4b0cbbc0c54" />
+    <featureReference itemId="f6bce063-3209-44fd-af58-b3819c73295d" />
+    <featureReference itemId="aee9b848-b3a9-44b5-b2e5-005de9c7311a" />
+    <featureReference itemId="f36414ad-3c64-42d5-907a-12dcf98d63d1" />
+    <featureReference itemId="5d337f52-51bf-4fb7-8436-e39b309d6471" />
+    <featureReference itemId="85f58b7e-8ca8-4d3a-b4d3-3fa66a9295c3" />
+    <featureReference itemId="62236dba-d2f8-4f33-bd55-baee850937d6" />
+    <featureReference itemId="d3f0bccb-733b-4c98-b24c-8409d5f35d22" />
+    <featureReference itemId="b9cfd375-9e8e-474b-811b-5f3449fb93b0" />
+    <featureReference itemId="6b455f47-a32a-4bbd-b54f-a5ef9b09fa53" />
+    <featureReference itemId="c448aff7-bc34-4a23-9872-7e517c02b930" />
+    <featureReference itemId="38a96770-28f9-4878-b93c-ce8e9495efc6" />
+    <featureReference itemId="7cc071a6-b12d-4e2a-8d46-cffa6fc1b28e" />
+    <featureReference itemId="09d90f9a-30ca-4fe0-a691-fb821a792e9e" />
+    <featureReference itemId="26164cec-b608-4742-a892-4ac0194ce0be" />
+    <featureReference itemId="7901a7d7-bcc9-4bb9-9f43-ece56ec22809" />
   </features>
 </package>

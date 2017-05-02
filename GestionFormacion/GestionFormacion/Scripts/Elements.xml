@@ -8,5 +8,6 @@
     <File Path="Scripts\jquery-1.9.1.intellisense.js" Url="Scripts/jquery-1.9.1.intellisense.js" ReplaceContent="TRUE" />
     <File Path="Scripts\App\App.Solicitud.js" Url="Scripts/App/App.Solicitud.js" ReplaceContent="TRUE" />
     <File Path="Scripts\Controller\Solicitud.Controller.js" Url="Scripts/Controller/Solicitud.Controller.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Controller\apiRest.js" Url="Scripts/Controller/apiRest.js" ReplaceContent="TRUE" />
   </Module>
 </Elements>

@@ -43,6 +43,228 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="Anexos\AnexosInstance\Elements.xml" />
+    <Content Include="Anexos\EditDlg.htm" />
+    <Content Include="Anexos\Elements.xml" />
+    <Content Include="Anexos\FileDlg.htm" />
+    <Content Include="Anexos\Repair.aspx" />
+    <Content Include="Anexos\Schema.xml" />
+    <Content Include="Anexos\Upload.aspx" />
+    <Content Include="Asistentes\AsistentesInstance\Elements.xml" />
+    <Content Include="Asistentes\Elements.xml" />
+    <Content Include="Asistentes\Schema.xml" />
+    <Content Include="Certificados\CertificadosInstance\Elements.xml" />
+    <Content Include="Certificados\EditDlg.htm" />
+    <Content Include="Certificados\Elements.xml" />
+    <Content Include="Certificados\FileDlg.htm" />
+    <Content Include="Certificados\Repair.aspx" />
+    <Content Include="Certificados\Schema.xml" />
+    <Content Include="Certificados\Upload.aspx" />
+    <Content Include="Clasificaciones\ClasificacionesInstance\Elements.xml" />
+    <Content Include="Clasificaciones\Elements.xml" />
+    <Content Include="Clasificaciones\Schema.xml" />
+    <Content Include="Encuentas\Elements.xml" />
+    <Content Include="Encuentas\EncuentasInstance\Elements.xml" />
+    <Content Include="Encuentas\Schema.xml" />
+    <Content Include="Evaluaciones\Elements.xml" />
+    <Content Include="Evaluaciones\EvaluacionesInstance\Elements.xml" />
+    <Content Include="Evaluaciones\Schema.xml" />
+    <Content Include="Features\Feature10\Feature10.Template.xml">
+      <DependentUpon>Feature10.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\Feature11\Feature11.Template.xml">
+      <DependentUpon>Feature11.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\Feature12\Feature12.Template.xml">
+      <DependentUpon>Feature12.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\Feature13\Feature13.Template.xml">
+      <DependentUpon>Feature13.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\Feature14\Feature14.Template.xml">
+      <DependentUpon>Feature14.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\Feature15\Feature15.Template.xml">
+      <DependentUpon>Feature15.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\Feature16\Feature16.Template.xml">
+      <DependentUpon>Feature16.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\Feature17\Feature17.Template.xml">
+      <DependentUpon>Feature17.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\Feature18\Feature18.Template.xml">
+      <DependentUpon>Feature18.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\Feature19\Feature19.Template.xml">
+      <DependentUpon>Feature19.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\Feature2\Feature2.Template.xml">
+      <DependentUpon>Feature2.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\Feature3\Feature3.Template.xml">
+      <DependentUpon>Feature3.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\Feature4\Feature4.Template.xml">
+      <DependentUpon>Feature4.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\Feature5\Feature5.Template.xml">
+      <DependentUpon>Feature5.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\Feature6\Feature6.Template.xml">
+      <DependentUpon>Feature6.feature</DependentUpon>
+    </Content>
+    <Content Include="Areas\AreasInstance\Elements.xml" />
+    <Content Include="Areas\Elements.xml" />
+    <Content Include="Areas\Schema.xml" />
+    <Content Include="Features\Feature7\Feature7.Template.xml">
+      <DependentUpon>Feature7.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\Feature8\Feature8.Template.xml">
+      <DependentUpon>Feature8.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\Feature9\Feature9.Template.xml">
+      <DependentUpon>Feature9.feature</DependentUpon>
+    </Content>
+    <Content Include="Gestores\Elements.xml" />
+    <Content Include="Gestores\GestoresInstance\Elements.xml" />
+    <Content Include="Gestores\Schema.xml" />
+    <Content Include="Scripts\Controller\apiRest.js" />
+    <Content Include="SolicitudesFormacion\Elements.xml" />
+    <Content Include="SolicitudesFormacion\Schema.xml" />
+    <Content Include="SolicitudesFormacion\SolicitudesFormacionInstance\Elements.xml" />
+    <Content Include="InformacionViajes\Elements.xml" />
+    <Content Include="InformacionViajes\InformacionViajesInstance\Elements.xml" />
+    <Content Include="InformacionViajes\Schema.xml" />
+    <Content Include="Observaciones\Elements.xml" />
+    <Content Include="Observaciones\ObservacionesInstance\Elements.xml" />
+    <Content Include="Observaciones\Schema.xml" />
+    <Content Include="Rangos\Elements.xml" />
+    <Content Include="Formaciones\Elements.xml" />
+    <Content Include="Formaciones\FormacionesInstance\Elements.xml" />
+    <Content Include="Formaciones\Schema.xml" />
+    <Content Include="TiposAnexos\Elements.xml" />
+    <Content Include="TiposAnexos\Schema.xml" />
+    <Content Include="TiposAnexos\TiposAnexosInstance\Elements.xml" />
+    <Content Include="Rangos\RangosInstance\Elements.xml" />
+    <Content Include="Rangos\Schema.xml" />
+    <Content Include="TiposFormaciones\Elements.xml" />
+    <Content Include="TiposFormaciones\Schema.xml" />
+    <Content Include="TiposFormaciones\TiposFormacionesInstance\Elements.xml" />
+    <None Include="Anexos\AnexosInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{d05d90a0-e921-401e-8c09-8fbced606901}</SharePointProjectItemId>
+    </None>
+    <None Include="Anexos\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{a255bf52-6a19-4ca9-b5b3-ec6dbc6e4c8d}</SharePointProjectItemId>
+    </None>
+    <None Include="Asistentes\AsistentesInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{a6c42c76-b526-43b0-841f-8a84d2dd146b}</SharePointProjectItemId>
+    </None>
+    <None Include="Asistentes\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{be9d89f2-28b0-4fb5-a02b-2ca23e33758c}</SharePointProjectItemId>
+    </None>
+    <None Include="Certificados\CertificadosInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{6419b628-9a22-4efe-a608-f018708ae002}</SharePointProjectItemId>
+    </None>
+    <None Include="Certificados\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{7e6b0e7f-f676-42c2-be2f-5ab71e5b2066}</SharePointProjectItemId>
+    </None>
+    <None Include="Clasificaciones\ClasificacionesInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{6d077c2b-0f0f-4665-aebf-f082d974c697}</SharePointProjectItemId>
+    </None>
+    <None Include="Clasificaciones\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{5544052c-38d0-425e-a9dc-487ec40f1eec}</SharePointProjectItemId>
+    </None>
+    <None Include="Encuentas\EncuentasInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{e65c1d05-7456-4985-a6ac-f0d2402e1966}</SharePointProjectItemId>
+    </None>
+    <None Include="Encuentas\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{8c6775fd-b4a6-4dfa-aa34-a5670b11ccdf}</SharePointProjectItemId>
+    </None>
+    <None Include="Evaluaciones\EvaluacionesInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{eef73d9a-19d3-4d32-8f6e-3b06b1a8ee08}</SharePointProjectItemId>
+    </None>
+    <None Include="Evaluaciones\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{90c34d36-1970-4ddd-8676-8379c6fb1234}</SharePointProjectItemId>
+    </None>
+    <None Include="Features\Feature10\Feature10.feature">
+      <FeatureId>{62236dba-d2f8-4f33-bd55-baee850937d6}</FeatureId>
+    </None>
+    <None Include="Features\Feature11\Feature11.feature">
+      <FeatureId>{d3f0bccb-733b-4c98-b24c-8409d5f35d22}</FeatureId>
+    </None>
+    <None Include="Features\Feature12\Feature12.feature">
+      <FeatureId>{b9cfd375-9e8e-474b-811b-5f3449fb93b0}</FeatureId>
+    </None>
+    <None Include="Features\Feature13\Feature13.feature">
+      <FeatureId>{6b455f47-a32a-4bbd-b54f-a5ef9b09fa53}</FeatureId>
+    </None>
+    <None Include="Features\Feature14\Feature14.feature">
+      <FeatureId>{c448aff7-bc34-4a23-9872-7e517c02b930}</FeatureId>
+    </None>
+    <None Include="Features\Feature15\Feature15.feature">
+      <FeatureId>{38a96770-28f9-4878-b93c-ce8e9495efc6}</FeatureId>
+    </None>
+    <None Include="Features\Feature16\Feature16.feature">
+      <FeatureId>{7cc071a6-b12d-4e2a-8d46-cffa6fc1b28e}</FeatureId>
+    </None>
+    <None Include="Features\Feature17\Feature17.feature">
+      <FeatureId>{09d90f9a-30ca-4fe0-a691-fb821a792e9e}</FeatureId>
+    </None>
+    <None Include="Features\Feature18\Feature18.feature">
+      <FeatureId>{26164cec-b608-4742-a892-4ac0194ce0be}</FeatureId>
+    </None>
+    <None Include="Features\Feature19\Feature19.feature">
+      <FeatureId>{7901a7d7-bcc9-4bb9-9f43-ece56ec22809}</FeatureId>
+    </None>
+    <None Include="Features\Feature2\Feature2.feature">
+      <FeatureId>{39eaa548-ac24-437e-a59a-a0586a903bac}</FeatureId>
+    </None>
+    <None Include="Features\Feature3\Feature3.feature">
+      <FeatureId>{b7e8d8dd-b1d0-4516-a770-d8783dca37d3}</FeatureId>
+    </None>
+    <None Include="Features\Feature4\Feature4.feature">
+      <FeatureId>{7c7b2e3d-9ee3-4c66-a473-e4b0cbbc0c54}</FeatureId>
+    </None>
+    <None Include="Features\Feature5\Feature5.feature">
+      <FeatureId>{f6bce063-3209-44fd-af58-b3819c73295d}</FeatureId>
+    </None>
+    <None Include="Features\Feature6\Feature6.feature">
+      <FeatureId>{aee9b848-b3a9-44b5-b2e5-005de9c7311a}</FeatureId>
+    </None>
+    <None Include="Features\Feature7\Feature7.feature">
+      <FeatureId>{f36414ad-3c64-42d5-907a-12dcf98d63d1}</FeatureId>
+    </None>
+    <None Include="Features\Feature8\Feature8.feature">
+      <FeatureId>{5d337f52-51bf-4fb7-8436-e39b309d6471}</FeatureId>
+    </None>
+    <None Include="Features\Feature9\Feature9.feature">
+      <FeatureId>{85f58b7e-8ca8-4d3a-b4d3-3fa66a9295c3}</FeatureId>
+    </None>
+    <None Include="Gestores\GestoresInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{f2cf0041-c118-459e-add2-f6072da68ab6}</SharePointProjectItemId>
+    </None>
+    <None Include="Gestores\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{0b354dd9-de1b-43aa-bb24-1de8097d1ce6}</SharePointProjectItemId>
+    </None>
+    <None Include="SolicitudesFormacion\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{5491ad24-6ac1-47d1-8e9b-57451e94e81e}</SharePointProjectItemId>
+    </None>
+    <None Include="SolicitudesFormacion\SolicitudesFormacionInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{40f08067-179c-4680-8f6d-cbd16266a4b5}</SharePointProjectItemId>
+    </None>
+    <None Include="InformacionViajes\InformacionViajesInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{36212751-8d7b-44a2-8e9f-5a4eb2ec7e55}</SharePointProjectItemId>
+    </None>
+    <None Include="InformacionViajes\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{b984639d-d8a8-4694-8e97-4b5e5db95efe}</SharePointProjectItemId>
+    </None>
+    <None Include="Observaciones\ObservacionesInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{15884988-1c54-439d-a191-87bcee459986}</SharePointProjectItemId>
+    </None>
+    <None Include="Observaciones\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{f91aeec5-2e2e-43be-b5d1-0e04d3a773f7}</SharePointProjectItemId>
+    </None>
     <None Include="packages.config" />
     <None Include="Pages\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{b9776e86-e4b1-45b7-8f2f-03a792636294}</SharePointProjectItemId>
@@ -53,6 +275,36 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Pages\Default.aspx" />
+    <None Include="Areas\AreasInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{5df1b222-26ed-455d-9a21-698b3306d857}</SharePointProjectItemId>
+    </None>
+    <None Include="Areas\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{a90929c2-7891-46a4-9f3c-e80b1b9f2f7c}</SharePointProjectItemId>
+    </None>
+    <None Include="Formaciones\FormacionesInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{1cd7094f-f7e7-473f-8cf2-881da1999e77}</SharePointProjectItemId>
+    </None>
+    <None Include="Formaciones\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{ed6fe939-b879-4d92-91a3-b2a601848d28}</SharePointProjectItemId>
+    </None>
+    <None Include="TiposAnexos\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{17831fed-269b-44dd-8deb-f0c65a306585}</SharePointProjectItemId>
+    </None>
+    <None Include="TiposAnexos\TiposAnexosInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{33fd409d-ddd0-4f4e-9440-fa459e8680b8}</SharePointProjectItemId>
+    </None>
+    <None Include="Rangos\RangosInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{2d1b564e-aac2-403d-a01a-8f4d6eeb4329}</SharePointProjectItemId>
+    </None>
+    <None Include="Rangos\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{8be7bd45-e44f-40d8-a773-4fefb1477c34}</SharePointProjectItemId>
+    </None>
+    <None Include="TiposFormaciones\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{1d4b7b0b-f1fa-40b1-8b81-770883ec581b}</SharePointProjectItemId>
+    </None>
+    <None Include="TiposFormaciones\TiposFormacionesInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{8cc0c0b2-db39-4c01-ba47-4aef8a3ffd0a}</SharePointProjectItemId>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\jquery-1.9.1.min.map" />
