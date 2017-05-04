@@ -1,1 +1,1 @@
-var AppSolicitud = angular.module("SolicitudApp", ['ngAutocomplete']);
+var AppSolicitud = angular.module("SolicitudApp", ['kendo.directives']);

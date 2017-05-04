@@ -6,15 +6,20 @@
 <asp:Content ContentPlaceHolderId="PlaceHolderAdditionalPageHead" runat="server">
     <SharePoint:ScriptLink name="sp.js" runat="server" OnDemand="true" LoadAfterUI="true" Localizable="false" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.1.118/styles/kendo.common.min.css"/>
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.1.118/styles/kendo.rtl.min.css"/>
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.1.118/styles/kendo.silver.min.css"/>
+
+    <link href="../Content/style.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2017.1.118/js/kendo.all.min.js"></script>
+
     <script src="../Scripts/App/App.Solicitud.js"></script>
     <script src="../Scripts/Controller/Solicitud.Controller.js"></script>
     <script src="../Scripts/Controller/apiRest.js"></script>
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css" />
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
-    <link href="../Content/style.css" rel="stylesheet" />
 </asp:Content>
 
 <asp:Content ContentPlaceHolderId="PlaceHolderMain" runat="server">
@@ -34,41 +39,35 @@
 				<div class="row">
 					<div class="col-md-4">
 						<label>Responsable</label>
-						<label class="form-control"></label>
+						<label class="form-control" disabled>{{vm.SolicitudFormacion.ResponsableActual}}</label>
 					</div>
 					<div class="col-md-4">
 						<label>Estado</label>
-						<label class="form-control"></label>
+						<label class="form-control" disabled>{{vm.SolicitudFormacion.EstadoSolicitud}}</label>
 					</div>
 					<div class="col-md-4 pt2">
-						<div class="input-group">
-							<span class="input-group-addon">
-							<input type="checkbox" aria-label="...">
-							</span>
-							<label class="form-control">Aprobada</label>
-						</div>
+                        <fieldset >
+						    <div class="input-group">
+							    <span class="input-group-addon">
+							    <input type="checkbox" ng-disabled="{{vm.disableGP}}">
+							    </span>
+							    <label class="form-control">Aprobada</label>
+						    </div>
+                        </fieldset>
 					</div>
 				</div>
 				<div class="row MT2">
 					<div class="col-md-4">
-						<label>Fecha de pago</label>
-						<div class="input-group">
-							<input type='text' class="form-control" />
-							<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-							</span>
-						</div>
+						    <label>Fecha de pago</label>
+						    <input kendo-date-picker class="form-control fecha" ng-model="vm.SolicitudFormacion.FechaPago" ng-disabled="{{vm.disableGP}}"/>
 					</div>	
 					<div class="col-md-4">
 						<label>Solicitante</label>
-						<label class="form-control">{{vm.Solicitante}}</label>
+						<label class="form-control" disabled>{{vm.SolicitudFormacion.Solicitante}}</label>
 					</div>
 					<div class="col-md-4">
-						<label for="fechaSolicitud">Fecha de solicitud</label>
-						<div class='input-group'>
-							  <input type='text' class="form-control" />
-							  <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-							  </span>
-						</div>
+						    <label for="fechaSolicitud">Fecha de solicitud</label>
+						    <input kendo-date-picker class="form-control fecha" ng-model="vm.SolicitudFormacion.Fechasolicitud" disabled/>
 					</div>
 			  </div>
 			</div>
@@ -84,13 +83,13 @@
                                 <option value="">Seleccione</option>
 							</select>
 					</div>
+                    <div class="col-md-3">
+						<label>Formación</label>
+						<input type="text" class="form-control">
+					</div>
 					<div class="col-md-3">
-						<label>Fecha fin inicio</label>
-						<div class='input-group'>
-							<input type='text' class="form-control" />
-							<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-							</span>
-						</div>
+						<label>Fecha inicio</label>
+						<input kendo-date-picker class="form-control fecha"/>
 					</div>
 					<div class="col-md-3">
 						<label>Clasificación</label>
@@ -98,13 +97,7 @@
                                 <option value="">Seleccione</option>
 						</select>
 					</div>
-					<div class="col-md-3">
-						<label>Duración</label>
-						<div class='input-group'>
-							<input type="text" class="form-control">
-							<span class="input-group-addon">Horas</span>
-						</div>	
-					</div>
+
 				</div>
 				<div class="row MT2">
 					<div class="col-md-3">
@@ -129,7 +122,7 @@
 					</div>
 					<div class="col-md-3">
 						<label>Total curso</label>	
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" disabled>
 					</div>
 					<div class="col-md-3">
 						<label>Rango</label>
@@ -137,7 +130,18 @@
 							<div><input type="checkbox"  name="NombreRango" value="{{Rango}}" ng-model="Rango.selected">{{Rango.Title}}</input></div>
 						</div>
 					</div>
-					<div class="col-md-3 pt2">
+                    <div class="col-md-3">
+						<label>Duración</label>
+						<div class='input-group'>
+							<input type="text" class="form-control">
+							<span class="input-group-addon">Horas</span>
+						</div>	
+					</div>
+
+				</div>
+				
+				<div class="row MT2">
+                    <div class="col-md-3 pt2">
 						<div class="input-group">
 							<span class="input-group-addon">
 							<input type="checkbox"  ng-model="checked" aria-label="...">
@@ -145,25 +149,13 @@
 							<label class="form-control">Viajes</label>
 						</div>
 					</div>
-				</div>
-				
-				<div class="row MT2">
-
 					<div class="col-md-3">  
-						<label>Fin inicio</label>
-						<div class='input-group'>
-							<input type='text' class="form-control" />
-							<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-							</span>
-						</div>
+						<label>Fecha de inicio</label>
+                         <input kendo-date-picker class="form-control fecha"/>
 					</div>
 					<div class="col-md-3">
-						<label for="fechaFin">Fin fin</label>
-						<div class='input-group'>
-							<input type='text' class="form-control" />
-							<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-							</span>
-						</div>
+						<label for="fechaFin">Fecha fin</label>
+                        <input kendo-date-picker class="form-control fecha"/>
 					</div>
 					<div class="col-md-3">
 						<label>Total</label>
@@ -171,42 +163,46 @@
 					</div>
 				</div>
 				<div class="row MT2">
-					<div class="col-md-6" >
-						<label>Area</label>
-						<div class="input-group"><input class="form-control" id="area">
-							<span class="input-group-addon"><span class="glyphicon glyphicon-plus-sign SpanL"></span></span>
-						</div>
-					</div>
-					<div class="col-md-6" >
-						<label >Asistente:</label>
-						<div class="input-group"><input class="form-control" />
-							<span class="input-group-addon"><span class="glyphicon glyphicon-plus-sign SpanL"></span></span>
-						</div>
-					</div>
+                    <fieldset ng-disabled="{{vm.disableGH}}">
+					    <div class="col-md-6" >
+						    <label>Area</label>
+						    <div class="input-group"><input kendo-auto-complete  ng-model="AreaSelect" k-data-source="vm.ListaAreas" class="form-control">
+							    <span class="input-group-addon"><button class="glyphicon glyphicon-plus-sign SpanL"></button></span>
+						    </div>
+					    </div>
+					    <div class="col-md-6" >
+						    <label >Asistente:</label>
+						    <div class="input-group"><input class="form-control" />
+							    <span class="input-group-addon"><span class="glyphicon glyphicon-plus-sign SpanL"></span></span>
+						    </div>
+					    </div>
+                    </fieldset>
 				</div>		
 				<div class="row MT2">
-					<div class="col-md-6">
-						<div class="contenedorSombra">
-							<span>Area</span>
-								<div class="checkbox form-group">
-									<div><input type="checkbox">Sistemas</div>
-									<div><input type="checkbox" checked>Contabilidad</div>
-									<div><input type="checkbox">Legal</div>
-								</div>
-							<button type="button" class="btn btn-primary botonIzquierda">Eliminar</button>	
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="contenedorSombra">
-							<span>Asistentes</span>
-							<div class="checkbox form-group">
-								<div><input type="checkbox" checked>Andres Zapata</div>
-								<div><input type="checkbox">Fernanda Salgado</div>
-								<div><input type="checkbox" checked>Daniel Alvares</div>
-							</div>
-							<button type="button" class="btn btn-primary botonIzquierda">Eliminar</button>
-						</div>
-					</div>
+                    <fieldset ng-disabled="{{vm.disableGH}}">
+					    <div class="col-md-6">
+						    <div class="contenedorSombra">
+							    <span>Area</span>
+								    <div class="checkbox form-group">
+									    <div><input type="checkbox">Sistemas</div>
+									    <div><input type="checkbox" checked>Contabilidad</div>
+									    <div><input type="checkbox">Legal</div>
+								    </div>
+							    <button type="button" class="btn btn-primary botonIzquierda">Eliminar</button>	
+						    </div>
+					    </div>
+					    <div class="col-md-6">
+						    <div class="contenedorSombra">
+							    <span>Asistentes</span>
+							    <div class="checkbox form-group">
+								    <div><input type="checkbox" checked>Andres Zapata</div>
+								    <div><input type="checkbox">Fernanda Salgado</div>
+								    <div><input type="checkbox" checked>Daniel Alvares</div>
+							    </div>
+							    <button type="button" class="btn btn-primary botonIzquierda">Eliminar</button>
+						    </div>
+					    </div>
+                    </fieldset>    
 				</div>
 				<div class="row MT2">
 					<div class="col-md-12 MT2">
@@ -238,31 +234,33 @@
 			</div>
 		</div>
 	
-		<div class="panel panel-primary" ng-show="checked">
-            <div class="panel-heading">Información de viaje</div>
-            <div class="panel-body">
-				<div class="row">
-					<div class="col-md-4" >
-						<label >Valor viáticos</label>
-						<Input class="form-control"></input>
-					</div>
-					<div class="col-md-4" >
-						<label>Valor tiquete</label>
-						<Input class="form-control"></input>
-					</div>
-					<div class="col-md-4" >
-						<label>Valor Transporte</label>
-						<Input class="form-control"></input>
-					</div>
-				</div>
-				<div class="row MT2">
-					<div class="col-md-4" >
-						<label>Valor Hotel</label>
-						<Input class="form-control"></input>
-					</div>	
-				</div>
-			</div>
-		</div>
+		<div class="panel panel-primary" ng-show="checked" >
+            <fieldset ng-disabled="{{vm.disableGH}}">
+                <div class="panel-heading">Información de viaje</div>
+                <div class="panel-body">
+				    <div class="row">
+					    <div class="col-md-4" >
+						    <label >Valor viáticos</label>
+						    <Input class="form-control"></input>
+					    </div>
+					    <div class="col-md-4" >
+						    <label>Valor tiquete</label>
+						    <Input class="form-control"></input>
+					    </div>
+					    <div class="col-md-4" >
+						    <label>Valor Transporte</label>
+						    <Input class="form-control"></input>
+					    </div>
+				    </div>
+				    <div class="row MT2">
+					    <div class="col-md-4" >
+						    <label>Valor Hotel</label>
+						    <Input class="form-control"></input>
+					    </div>	
+				    </div>
+			    </div>
+                </fieldset>
+		    </div>
 		
 		<div class="panel panel-primary">
 				<div class="panel-heading">Anexos </div>

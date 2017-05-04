@@ -50,4 +50,7 @@
 #anexar{
     margin-bottom: 2%;
 }
-.
+.fecha{
+    height: 1.85em !important;
+    width:100%;
+}
