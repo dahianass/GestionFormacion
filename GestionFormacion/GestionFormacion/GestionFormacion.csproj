@@ -99,6 +99,9 @@
     <Content Include="Features\Feature19\Feature19.Template.xml">
       <DependentUpon>Feature19.feature</DependentUpon>
     </Content>
+    <Content Include="Features\Feature20\Feature20.Template.xml">
+      <DependentUpon>Feature20.feature</DependentUpon>
+    </Content>
     <Content Include="Features\Feature2\Feature2.Template.xml">
       <DependentUpon>Feature2.feature</DependentUpon>
     </Content>
@@ -130,6 +133,9 @@
     <Content Include="Gestores\GestoresInstance\Elements.xml" />
     <Content Include="Gestores\Schema.xml" />
     <Content Include="Scripts\Controller\apiRest.js" />
+    <Content Include="SolicitudesFormaciones\Elements.xml" />
+    <Content Include="SolicitudesFormaciones\Schema.xml" />
+    <Content Include="SolicitudesFormaciones\SolicitudesFormacionesInstance\Elements.xml" />
     <Content Include="SolicitudesFormacion\Elements.xml" />
     <Content Include="SolicitudesFormacion\Schema.xml" />
     <Content Include="SolicitudesFormacion\SolicitudesFormacionInstance\Elements.xml" />
@@ -217,6 +223,9 @@
     <None Include="Features\Feature19\Feature19.feature">
       <FeatureId>{7901a7d7-bcc9-4bb9-9f43-ece56ec22809}</FeatureId>
     </None>
+    <None Include="Features\Feature20\Feature20.feature">
+      <FeatureId>{02c8e876-b492-4a12-9df9-1f52caf8f5c5}</FeatureId>
+    </None>
     <None Include="Features\Feature2\Feature2.feature">
       <FeatureId>{39eaa548-ac24-437e-a59a-a0586a903bac}</FeatureId>
     </None>
@@ -246,6 +255,12 @@
     </None>
     <None Include="Gestores\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{0b354dd9-de1b-43aa-bb24-1de8097d1ce6}</SharePointProjectItemId>
+    </None>
+    <None Include="SolicitudesFormaciones\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{2f7c8aa5-b82b-46ff-9a5f-8d6c9b3ca3a3}</SharePointProjectItemId>
+    </None>
+    <None Include="SolicitudesFormaciones\SolicitudesFormacionesInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{c78c6b7a-ae75-4166-b7bd-8c2b424736fa}</SharePointProjectItemId>
     </None>
     <None Include="SolicitudesFormacion\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{5491ad24-6ac1-47d1-8e9b-57451e94e81e}</SharePointProjectItemId>

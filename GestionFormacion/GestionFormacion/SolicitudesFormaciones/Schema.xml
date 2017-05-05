@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<List xmlns:ows="Microsoft SharePoint" Title="SolicitudesFormaciones" FolderCreation="FALSE" Direction="$Resources:Direction;" Url="Lists/SolicitudesFormaciones" BaseType="0" xmlns="http://schemas.microsoft.com/sharepoint/">
+  <MetaData>
+    <ContentTypes>
+      
+      
+    <ContentType ID="0x0100d249f2e0f65d40e3a514372c4a990fa9" Name="ListFieldsContentType"><FieldRefs><FieldRef ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Name="Title" /><FieldRef ID="{96a480e3-4650-41c2-a2b0-b8bd32eed56a}" Name="ResponsableActual" /><FieldRef ID="{228666ba-28d7-4b95-baad-e5227fb61af7}" Name="EstadoSolicitud" /><FieldRef ID="{daf3ba92-69fe-4bbf-8263-ed2e6f676acb}" Name="Formacion" /><FieldRef ID="{fdf79c30-a679-48d3-bd7f-29b3a6ad3c81}" Name="FechaPago" /><FieldRef ID="{f3be0f45-7b05-4cdb-81cb-b6dcde546061}" Name="TipoFormacion" /><FieldRef ID="{f2613df6-9341-4418-823e-81cafa8cb51e}" Name="Solicitante" /><FieldRef ID="{da544cb6-f805-4e60-ba89-8cd335d674d4}" Name="Fechasolicitud" /><FieldRef ID="{722339e9-2d9c-46b5-ad3d-5b3fd66ecb27}" Name="FechaInicio" /><FieldRef ID="{c78a11c4-3522-4b4d-8cf8-084d74351402}" Name="Clasifiacion" /><FieldRef ID="{4d9ab529-dfa3-449e-92e7-4790d9829504}" Name="Duracion" /><FieldRef ID="{ba16e8f1-db1a-4a53-8611-efe041b0b5cd}" Name="Evaluaci_x00f3_n" /><FieldRef ID="{139d7102-c723-42ae-a061-22e615a481f6}" Name="Cupos" /><FieldRef ID="{8824ac4c-fdfa-4072-b6ee-9ce6a10750c9}" Name="Entidad" /><FieldRef ID="{5ea8a10f-dd1b-4931-9c30-3d3a86f84364}" Name="Valorindividual" /><FieldRef ID="{d6212d72-ecd4-411e-b34a-b300ef3d1825}" Name="TotalCurso" /><FieldRef ID="{905eedc2-22ba-4287-8f02-5d40c4d42048}" Name="Rango" /><FieldRef ID="{6bc78120-7566-4d07-afa8-36cacbb992d9}" Name="RequiereViaje" /><FieldRef ID="{65c1839c-3b4e-4ca3-9877-882f5d0405a4}" Name="Informacionviaje" /><FieldRef ID="{539f58ae-81dc-421c-a579-f000bbc29cc3}" Name="Asistentes" /><FieldRef ID="{e3cb04e6-797a-470a-83a4-6ea955e39018}" Name="Temario" /><FieldRef ID="{6cc7da0b-0f74-4c71-a77c-103540be984e}" Name="SolicitudAprobada" /><FieldRef ID="{75376c79-3f36-4199-b5a9-0774845996eb}" Name="Areas" /></FieldRefs></ContentType><ContentTypeRef ID="0x01">
+        <Folder TargetName="Item" />
+      </ContentTypeRef><ContentTypeRef ID="0x0120" /></ContentTypes>
+    <Fields>
+      
+    <Field ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Type="Text" Name="Title" DisplayName="$Resources:core,Title;" Required="FALSE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="Title" MaxLength="255" /><Field Name="ResponsableActual" ID="{96a480e3-4650-41c2-a2b0-b8bd32eed56a}" DisplayName="ResponsableActual" Type="User" List="UserInfo" /><Field Name="EstadoSolicitud" ID="{228666ba-28d7-4b95-baad-e5227fb61af7}" DisplayName="EstadoSolicitud" Type="Text" /><Field Name="Formacion" ID="{daf3ba92-69fe-4bbf-8263-ed2e6f676acb}" DisplayName="Formacion" Type="Text" /><Field Name="FechaPago" ID="{fdf79c30-a679-48d3-bd7f-29b3a6ad3c81}" DisplayName="FechaPago" Type="DateTime" /><Field Name="TipoFormacion" ID="{f3be0f45-7b05-4cdb-81cb-b6dcde546061}" DisplayName="TipoFormacion" Type="Lookup" /><Field Name="Solicitante" ID="{f2613df6-9341-4418-823e-81cafa8cb51e}" DisplayName="Solicitante" Type="User" List="UserInfo" /><Field Name="Fechasolicitud" ID="{da544cb6-f805-4e60-ba89-8cd335d674d4}" DisplayName="Fechasolicitud" Type="DateTime" /><Field Name="FechaInicio" ID="{722339e9-2d9c-46b5-ad3d-5b3fd66ecb27}" DisplayName="FechaInicio" Type="DateTime" /><Field Name="Clasifiacion" ID="{c78a11c4-3522-4b4d-8cf8-084d74351402}" DisplayName="Clasifiacion" Type="Lookup" /><Field Name="Duracion" ID="{4d9ab529-dfa3-449e-92e7-4790d9829504}" DisplayName="Duracion" Type="Number" /><Field Name="Evaluaci_x00f3_n" ID="{ba16e8f1-db1a-4a53-8611-efe041b0b5cd}" DisplayName="Evaluación" Type="Lookup" /><Field Name="Cupos" ID="{139d7102-c723-42ae-a061-22e615a481f6}" DisplayName="Cupos" Type="Number" /><Field Name="Entidad" ID="{8824ac4c-fdfa-4072-b6ee-9ce6a10750c9}" DisplayName="Entidad" Type="Text" /><Field Name="Valorindividual" ID="{5ea8a10f-dd1b-4931-9c30-3d3a86f84364}" DisplayName="Valor individual" Type="Number" /><Field Name="TotalCurso" ID="{d6212d72-ecd4-411e-b34a-b300ef3d1825}" DisplayName="TotalCurso" Type="Number" /><Field Name="Rango" ID="{905eedc2-22ba-4287-8f02-5d40c4d42048}" DisplayName="Rango" Type="Lookup" /><Field Name="RequiereViaje" ID="{6bc78120-7566-4d07-afa8-36cacbb992d9}" DisplayName="RequiereViaje" Type="Boolean" /><Field Name="Informacionviaje" ID="{65c1839c-3b4e-4ca3-9877-882f5d0405a4}" DisplayName="Informacionviaje" Type="Lookup" /><Field Name="Asistentes" ID="{539f58ae-81dc-421c-a579-f000bbc29cc3}" DisplayName="Asistentes" Type="LookupMulti" Mult="TRUE" /><Field Name="Temario" ID="{e3cb04e6-797a-470a-83a4-6ea955e39018}" DisplayName="Temario" Type="Note" /><Field Name="SolicitudAprobada" ID="{6cc7da0b-0f74-4c71-a77c-103540be984e}" DisplayName="SolicitudAprobada" Type="Boolean" /><Field Name="Areas" ID="{75376c79-3f36-4199-b5a9-0774845996eb}" DisplayName="Areas" Type="LookupMulti" Mult="TRUE" /></Fields>
+    <Views>
+      
+      
+    <View BaseViewID="0" Type="HTML" MobileView="TRUE" TabularView="FALSE">
+        <Toolbar Type="Standard" />
+        <XslLink Default="TRUE">main.xsl</XslLink>
+        <RowLimit Paged="TRUE">30</RowLimit>
+        <ViewFields>
+          
+        <FieldRef Name="LinkTitleNoMenu"></FieldRef></ViewFields>
+        <Query>
+          <OrderBy>
+            
+          <FieldRef Name="Modified" Ascending="FALSE"></FieldRef></OrderBy>
+        </Query>
+        <ParameterBindings>
+          <ParameterBinding Name="AddNewAnnouncement" Location="Resource(wss,addnewitem)" />
+          <ParameterBinding Name="NoAnnouncements" Location="Resource(wss,noXinviewofY_LIST)" />
+          <ParameterBinding Name="NoAnnouncementsHowTo" Location="Resource(wss,noXinviewofY_ONET_HOME)" />
+        </ParameterBindings>
+      </View><View BaseViewID="1" Type="HTML" WebPartZoneID="Main" DisplayName="$Resources:core,objectiv_schema_mwsidcamlidC24;" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" SetupPath="pages\viewpage.aspx" ImageUrl="/_layouts/15/images/generic.png?rev=23" Url="AllItems.aspx">
+        <Toolbar Type="Standard" />
+        <XslLink Default="TRUE">main.xsl</XslLink>
+        <JSLink>clienttemplates.js</JSLink>
+        <RowLimit Paged="TRUE">30</RowLimit>
+        <ViewFields>
+          
+        <FieldRef Name="LinkTitle"></FieldRef><FieldRef Name="ResponsableActual" /><FieldRef Name="EstadoSolicitud" /><FieldRef Name="Formacion" /><FieldRef Name="FechaPago" /><FieldRef Name="TipoFormacion" /><FieldRef Name="Solicitante" /><FieldRef Name="Fechasolicitud" /><FieldRef Name="FechaInicio" /><FieldRef Name="Clasifiacion" /><FieldRef Name="Duracion" /><FieldRef Name="Evaluaci_x00f3_n" /><FieldRef Name="Cupos" /><FieldRef Name="Entidad" /><FieldRef Name="Valorindividual" /><FieldRef Name="TotalCurso" /><FieldRef Name="Rango" /><FieldRef Name="RequiereViaje" /><FieldRef Name="Informacionviaje" /><FieldRef Name="Asistentes" /><FieldRef Name="Temario" /><FieldRef Name="SolicitudAprobada" /><FieldRef Name="Areas" /></ViewFields>
+        <Query>
+          <OrderBy>
+            
+          <FieldRef Name="ID"></FieldRef></OrderBy>
+        </Query>
+        <ParameterBindings>
+          <ParameterBinding Name="NoAnnouncements" Location="Resource(wss,noXinviewofY_LIST)" />
+          <ParameterBinding Name="NoAnnouncementsHowTo" Location="Resource(wss,noXinviewofY_DEFAULT)" />
+        </ParameterBindings>
+      </View></Views>
+    <Forms>
+      <Form Type="DisplayForm" Url="DispForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+      <Form Type="EditForm" Url="EditForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+      <Form Type="NewForm" Url="NewForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+    </Forms>
+  </MetaData>
+</List>

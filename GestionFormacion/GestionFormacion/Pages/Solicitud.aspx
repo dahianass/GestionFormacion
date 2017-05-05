@@ -79,13 +79,13 @@
 				<div class="row">
 					<div class="col-md-3">
 						<label>Tipo de formación</label>
-							<select class="form-control" ng-model="vm.SelectTipFormacion" ng-options="tipos.Title for tipos in vm.TiposFormaciones track by tipos.ID ">
-                                <option value="">Seleccione</option>
-							</select>
+						<select class="form-control" ng-model="vm.SelectTipFormacion" ng-options="tipos.Title for tipos in vm.TiposFormaciones track by tipos.ID ">
+                            <option value="">Seleccione</option>
+						</select>
 					</div>
                     <div class="col-md-3">
 						<label>Formación</label>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control"/>
 					</div>
 					<div class="col-md-3">
 						<label>Fecha inicio</label>
@@ -97,7 +97,6 @@
                                 <option value="">Seleccione</option>
 						</select>
 					</div>
-
 				</div>
 				<div class="row MT2">
 					<div class="col-md-3">
@@ -166,8 +165,8 @@
                     <fieldset ng-disabled="{{vm.disableGH}}">
 					    <div class="col-md-6" >
 						    <label>Area</label>
-						    <div class="input-group"><input kendo-auto-complete  ng-model="AreaSelect" k-data-source="vm.ListaAreas" class="form-control">
-							    <span class="input-group-addon"><button class="glyphicon glyphicon-plus-sign SpanL"></button></span>
+						    <div class="input-group"><input kendo-auto-complete k-ng-model="vm.AreaSelect"  k-data-source="vm.ListaAreasAutocomplet"  class="form-control">
+							    <span class="input-group-addon"><span ng-click="vm.AgregarArea()" class="glyphicon glyphicon-plus-sign SpanL"></span></span>
 						    </div>
 					    </div>
 					    <div class="col-md-6" >
@@ -183,10 +182,8 @@
 					    <div class="col-md-6">
 						    <div class="contenedorSombra">
 							    <span>Area</span>
-								    <div class="checkbox form-group">
-									    <div><input type="checkbox">Sistemas</div>
-									    <div><input type="checkbox" checked>Contabilidad</div>
-									    <div><input type="checkbox">Legal</div>
+								    <div class="checkbox form-group" ng-repeat="areas in vm.ListAreas">
+									    <div><input type="checkbox">{{areas}}</div>
 								    </div>
 							    <button type="button" class="btn btn-primary botonIzquierda">Eliminar</button>	
 						    </div>
@@ -212,7 +209,7 @@
 				</div>
 				<div class="row MT2">
 					<div class="col-md-12 MT2">
-						<Label>Observaciones</Label>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalEncuesta">Observaciones</button>
 						<div class="panel panel-default">
 							<table class="table table-striped">
 								<thead>
@@ -220,11 +217,11 @@
 									<th>Observación</th>
 									<th>Autor</th>
 								</thead>
-								<tbody id="listaClientes">
+								<tbody ng-repeat="Observacion in vm.ListObservaciones" >
 									<tr>
-										<td>1</td>
-										<td>El seminario fue muy...</td>
-										<td>Jose Camaro</td>
+										<td>{{$index + 1}}</td>
+										<td>{{Observacion.observacion}}</td>
+										<td>{{Observacion.autor}}</td>
 									</tr>
 								</tbody>
 							</table>
@@ -267,8 +264,9 @@
 					<div class="panel-body">
 						<div class="fileUpload btn btn-primary" id="anexar">
 							<span>Anexar <span class="glyphicon glyphicon-upload"></span></span>
-							<input id="uploadBtn" type="file" class="upload" />
+							<input id="fileInput" type="file" class="upload" />						
 						</div>
+                        <input class="btn btn-primary" ng-click="vm.AnexarArchivos()" value="+" />
 						<div class="panel panel-default">
 							<table class="table table-striped">
 								<thead>
@@ -295,5 +293,27 @@
 						</div>	
 					</div>	
 		</div>
-	</div>
+	
+    <!-- ModalObservaciones -->
+    <div class="modal fade" id="ModalEncuesta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+      <div class="modal-dialog escuestaModal" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Agregar Observación</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+			    <p>Observación.</p>
+			    <textarea class="form-control" ng-model="vm.Observacion"></textarea>
+		  </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" ng-click="vm.addOservacion()">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
 </asp:Content>

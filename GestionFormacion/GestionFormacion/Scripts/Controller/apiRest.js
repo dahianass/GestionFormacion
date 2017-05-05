@@ -205,10 +205,10 @@ function isInGroup(pIdGrupo) {
 // Get test values from the file input and text input page controls.
 var FileReturn;
 
-function uploadFile(controlador, UrlToFolder, callback) {
-
+function uploadFile(controlador, UrlToFolder, nombreBiblioteca, callback) {
+    debugger;
     // Define the folder path for this example.
-    var serverRelativeUrlToFolder = UrlToFolder;
+    var serverRelativeUrlToFolder = nombreBiblioteca;
     // Get the server URL.
     var fileInput = jQuery('#fileInput');
 
@@ -291,7 +291,7 @@ function addFileToFolder(arrayBuffer, fileInput, serverRelativeUrlToFolder) {
     var fileName = parts[parts.length - 1];
 
     // Construct the endpoint.
-    var fileCollectionEndpoint = "../../_api/web/getfolderbyserverrelativeurl('" + serverRelativeUrlToFolder + "')/files" +
+    var fileCollectionEndpoint = "../_api/web/getfolderbyserverrelativeurl('" + serverRelativeUrlToFolder + "')/files" +
     "/add(overwrite=true,url='" + fileName + "')";
 
     // This call returns the SharePoint file.
@@ -302,7 +302,7 @@ function addFileToFolder(arrayBuffer, fileInput, serverRelativeUrlToFolder) {
         processData: false,
         headers: {
             "accept": "application/json;odata=verbose",
-            "X-RequestDigest": getContext("../../" + serverRelativeUrlToFolder),
+            "X-RequestDigest": getContext("../" + serverRelativeUrlToFolder),
             // "content-length": arrayBuffer.byteLength,
             "content-type": "application/json;odata=verbose"
         }
@@ -332,7 +332,7 @@ function updateListItem(itemMetadata, controlador, listitem, fileInput, serverRe
     // For simplicity, also use the name as the title. 
     // The example gets the list item type from the item's metadata, but you can also get it from the
     // ListItemEntityTypeFullName property of the list.
-    var body = { __metadata: { type: itemMetadata.type }, NumeroIncidente: controlador.Solicitudes.Id.toString(), TipoArchivo: controlador.radio.name, FileLeafRef: "" + listitem.d.Id + "-" + fileName, Title: "" + listitem.d.Id + "-" + fileName };
+    var body = { __metadata: { type: itemMetadata.type }, Id: '128', FileLeafRef: "" + listitem.d.Id + "-" + fileName, Title: "" + listitem.d.Id + "-" + fileName, SolicitudFormacionId: 1 };
     body = JSON.stringify(body);
 
 

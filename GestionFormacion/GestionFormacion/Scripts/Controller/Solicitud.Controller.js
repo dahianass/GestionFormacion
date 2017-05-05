@@ -5,13 +5,16 @@ function SolicitudController() {
     var vm = this;
     vm.disableGP = true;
     vm.disableGF = true;
-    vm.disableGH = false;
+    vm.disableGH = true;
     vm.TiposFormaciones = {};
+    vm.ListaAreasAutocomplet = [];
+    vm.ListObservaciones = [];
+    vm.AreaSelect = "";
     
 
     var id = getQueryStringParams("ID");
     if (id != undefined) {
-        //Tiene Id Buscar la solicitud
+
     } else {
         ObtenerRolUsuario();
     }
@@ -51,9 +54,13 @@ function SolicitudController() {
         
         var ListaAreas = queryList("../_api/lists/getbytitle('Areas')/items?$select=Title");
         angular.forEach(ListaAreas.results, function (value, key) {
-            debugger;
-            vm.ListaAreas.push(value.Title);
+            vm.ListaAreasAutocomplet.push(value.Title);
         });
+    }
+    vm.AnexarArchivos = function() {
+        debugger;
+        var file = $('#fileInput').val();
+        var archivo = uploadFile(vm, file, "Anexos");
     }
 
     function PermisosRol() {
@@ -67,7 +74,6 @@ function SolicitudController() {
 
     function SolicitudFormacionFirst() {
         var FechaActual = formattedDate();
-        debugger;
         vm.SolicitudFormacion = {
             ResponsableActual: vm.UsuarioActual.Title,
             EstadoSolicitud: 'Borrador',
@@ -76,6 +82,26 @@ function SolicitudController() {
             Solicitante: vm.UsuarioActual.Title,
             Fechasolicitud: FechaActual
         }
+    }
+    vm.AgregarArea = function () {
+        var opcion = vm.AreaSelect;
+        vm.ListAreas.push(opcion)
+    }
+    vm.addOservacion = function () {
+          var observacionUsuario = vm.Observacion;
+          if (observacionUsuario.trim() == "") {
+              alert("No hay observación para agregar");
+          } else {
+              var autor = vm.UsuarioActual.Title;
+              vm.notas = {
+                  observacion: observacionUsuario,
+                  autor: autor,
+                  Id: vm.UsuarioActual.Id
+              };
+              vm.ListObservaciones.push(vm.notas);
+              vm.Observacion = "";
+          }
+        
     }
 
     function formattedDate() {
