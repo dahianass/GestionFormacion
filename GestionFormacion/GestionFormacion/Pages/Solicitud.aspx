@@ -28,11 +28,10 @@
 		<div class="row">
 			<div class="col-md-12 form-group">
 				<button class="btn btn-primary pull-right mr-2" type="button">Cancelar</button>
-				<button class="btn btn-primary pull-right mr-2" type="submit">Guardar</button>
+				<input type="button" class="btn btn-primary pull-right mr-2" ng-click="vm.GuardarFormacion()">Guardar</input>
 				<button class="btn btn-primary pull-right mr-2" type="button">Cerrar</button>
 			</div>
 		</div>
-		
 		<div class="panel panel-primary">
             <div class="panel-heading">Información del revisor</div>
             <div class="panel-body">
@@ -266,7 +265,7 @@
 							<span>Anexar <span class="glyphicon glyphicon-upload"></span></span>
 							<input id="fileInput" type="file" class="upload" />						
 						</div>
-                        <input class="btn btn-primary" ng-click="vm.AnexarArchivos()" value="+" />
+                        <input class="btn btn-primary btnAnexos" ng-click="vm.AnexarArchivos()" value="+" />
 						<div class="panel panel-default">
 							<table class="table table-striped">
 								<thead>
@@ -310,7 +309,7 @@
 		  </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" ng-click="vm.addOservacion()">Guardar</button>
+            <button type="button" class="btn btn-primary">Guardar</button>
           </div>
         </div>
       </div>

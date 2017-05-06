@@ -205,7 +205,7 @@ function isInGroup(pIdGrupo) {
 // Get test values from the file input and text input page controls.
 var FileReturn;
 
-function uploadFile(controlador, UrlToFolder, nombreBiblioteca, callback) {
+function uploadFile(controlador, nombreBiblioteca, callback) {
     debugger;
     // Define the folder path for this example.
     var serverRelativeUrlToFolder = nombreBiblioteca;
@@ -291,7 +291,7 @@ function addFileToFolder(arrayBuffer, fileInput, serverRelativeUrlToFolder) {
     var fileName = parts[parts.length - 1];
 
     // Construct the endpoint.
-    var fileCollectionEndpoint = "../_api/web/getfolderbyserverrelativeurl('" + serverRelativeUrlToFolder + "')/files" +
+    var fileCollectionEndpoint = "../../_api/web/getfolderbyserverrelativeurl('" + serverRelativeUrlToFolder + "')/files" +
     "/add(overwrite=true,url='" + fileName + "')";
 
     // This call returns the SharePoint file.
@@ -302,7 +302,7 @@ function addFileToFolder(arrayBuffer, fileInput, serverRelativeUrlToFolder) {
         processData: false,
         headers: {
             "accept": "application/json;odata=verbose",
-            "X-RequestDigest": getContext("../" + serverRelativeUrlToFolder),
+            "X-RequestDigest": getContext("../../" + serverRelativeUrlToFolder),
             // "content-length": arrayBuffer.byteLength,
             "content-type": "application/json;odata=verbose"
         }
