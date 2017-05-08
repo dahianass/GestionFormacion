@@ -16,6 +16,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://kendo.cdn.telerik.com/2017.1.118/js/kendo.all.min.js"></script>
+    <script src="../Scripts/Checklist-model.js"></script>
 
     <script src="../Scripts/App/App.Solicitud.js"></script>
     <script src="../Scripts/Controller/Solicitud.Controller.js"></script>
@@ -42,13 +43,13 @@
 					</div>
 					<div class="col-md-4">
 						<label>Estado</label>
-						<label class="form-control" disabled>{{vm.SolicitudFormacion.EstadoSolicitud}}</label>
+						<label class="form-control" ng-model="vm.Estado" disabled>{{vm.SolicitudFormacion.EstadoSolicitud}}</label>
 					</div>
 					<div class="col-md-4 pt2">
                         <fieldset >
 						    <div class="input-group">
 							    <span class="input-group-addon">
-							    <input type="checkbox" ng-disabled="{{vm.disableGP}}">
+							    <input type="checkbox" ng-model="vm.SolicitudFormacion.SolicitudAprobada" ng-disabled="{{vm.disableGP}}">
 							    </span>
 							    <label class="form-control">Aprobada</label>
 						    </div>
@@ -78,21 +79,21 @@
 				<div class="row">
 					<div class="col-md-3">
 						<label>Tipo de formación</label>
-						<select class="form-control" ng-model="vm.SelectTipFormacion" ng-options="tipos.Title for tipos in vm.TiposFormaciones track by tipos.ID ">
+						<select class="form-control" ng-model="vm.SolicitudFormacion.TipoFormacionId" ng-selected="vm.SolicitudFormacion.TipoFormacionId" ng-options="tipos.Title for tipos in vm.TiposFormaciones track by tipos.ID ">
                             <option value="">Seleccione</option>
 						</select>
 					</div>
                     <div class="col-md-3">
 						<label>Formación</label>
-						<input type="text" class="form-control"/>
+						<input type="text" ng-model="vm.SolicitudFormacion.Formacion" class="form-control"/>
 					</div>
 					<div class="col-md-3">
 						<label>Fecha inicio</label>
-						<input kendo-date-picker class="form-control fecha"/>
+						<input kendo-date-picker ng-model="vm.SolicitudFormacion.fechaInicio" class="form-control fecha"/>
 					</div>
 					<div class="col-md-3">
 						<label>Clasificación</label>
-						<select class="form-control" ng-model="vm.SelectClasificacion" ng-options="Clasificacion.Title for Clasificacion in vm.Clasificaciones track by Clasificacion.ID ">
+						<select class="form-control" ng-model="vm.SolicitudFormacion.ClasifiacionId" ng-options="Clasificacion.Title for Clasificacion in vm.Clasificaciones track by Clasificacion.ID ">
                                 <option value="">Seleccione</option>
 						</select>
 					</div>
@@ -100,38 +101,38 @@
 				<div class="row MT2">
 					<div class="col-md-3">
 						<label>Evaluación</label>
-						<select class="form-control" ng-model="vm.SelectEvaluacion" ng-options="Evaluacion.Title for Evaluacion in vm.Evaluaciones track by Evaluacion.ID ">
+						<select class="form-control" ng-model="vm.SolicitudFormacion.Evaluaci_x00f3_nId" ng-options="Evaluacion.Title for Evaluacion in vm.Evaluaciones track by Evaluacion.ID ">
                                 <option value="">Seleccione</option>
 						</select>	
 					</div>
 					<div class="col-md-3">
 						<label>Cupos</label>
-						<input type="text" class="form-control" id="Cupos">
+						<input type="text" ng-model="vm.SolicitudFormacion.Cupos" class="form-control">
 					</div>
 					<div class="col-md-6">
 						<label>Entidad</label>
-						<input type="text" class="form-control" id="Cupos">
+						<input type="text" ng-model="vm.SolicitudFormacion.Entidad" class="form-control" >
 					</div>
 				</div>
 				<div class="row MT2">
 					<div class="col-md-3">
 						<label>Valor individual</label>
-						<input type="text" class="form-control">
+						<input type="text" ng-model="vm.SolicitudFormacion.VI" class="form-control">
 					</div>
 					<div class="col-md-3">
 						<label>Total curso</label>	
-						<input type="text" class="form-control" disabled>
+						<label type="text" ng-model="vm.SolicitudFormacion.VT"  class="form-control" disabled>{{vm.Cupos * vm.VI}}</label>
 					</div>
 					<div class="col-md-3">
 						<label>Rango</label>
 						<div class="" ng-repeat="Rango in vm.Rangos">
-							<div><input type="checkbox"  name="NombreRango" value="{{Rango}}" ng-model="Rango.selected">{{Rango.Title}}</input></div>
+							<div><input type="checkbox"  checklist-model="vm.SolicitudFormacion.RangoSelected" checklist-value="Rango.ID">{{Rango.Title}}</input></div>
 						</div>
 					</div>
                     <div class="col-md-3">
 						<label>Duración</label>
 						<div class='input-group'>
-							<input type="text" class="form-control">
+							<input type="text" class="form-control" ng-model="vm.Duracion">
 							<span class="input-group-addon">Horas</span>
 						</div>	
 					</div>
@@ -142,7 +143,7 @@
                     <div class="col-md-3 pt2">
 						<div class="input-group">
 							<span class="input-group-addon">
-							<input type="checkbox"  ng-model="checked" aria-label="...">
+							<input type="checkbox"  ng-model="vm.SolicitudFormacion.checkedViaje" aria-label="...">
 							</span>
 							<label class="form-control">Viajes</label>
 						</div>
@@ -203,7 +204,7 @@
 				<div class="row MT2">
 					<div class="col-md-12 MT2">
 						<Label>Temario</Label>
-						<textarea class="form-control"></textarea>
+						<textarea ng-model="vm.Temario" class="form-control"></textarea>
 					</div>
 				</div>
 				<div class="row MT2">
@@ -230,7 +231,7 @@
 			</div>
 		</div>
 	
-		<div class="panel panel-primary" ng-show="checked" >
+		<div class="panel panel-primary" ng-show="vm.checkedViaje" >
             <fieldset ng-disabled="{{vm.disableGH}}">
                 <div class="panel-heading">Información de viaje</div>
                 <div class="panel-body">
@@ -309,7 +310,7 @@
 		  </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary">Guardar</button>
+            <button type="button" class="btn btn-primary" ng-click="vm.addOservacion()">Guardar</button>
           </div>
         </div>
       </div>

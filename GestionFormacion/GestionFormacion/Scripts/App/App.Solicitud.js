@@ -1,1 +1,1 @@
-var AppSolicitud = angular.module("SolicitudApp", ['kendo.directives']);
+var AppSolicitud = angular.module("SolicitudApp", ['kendo.directives', 'checklist-model']);

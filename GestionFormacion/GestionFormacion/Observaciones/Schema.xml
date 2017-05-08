@@ -9,7 +9,7 @@
       </ContentTypeRef><ContentTypeRef ID="0x0120" /></ContentTypes>
     <Fields>
       
-    <Field ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Type="Text" Name="Title" DisplayName="$Resources:core,Title;" Required="FALSE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="Title" MaxLength="255" /><Field Name="Autor" ID="{95f9131b-1969-4f66-9193-eddc408eb3d1}" DisplayName="Autor" Type="User" Required="TRUE" List="UserInfo" /><Field Name="Observaci_x00f3_n" ID="{d3248599-218f-4efa-8612-7fb5e7216692}" DisplayName="Observacion" Type="Note" Required="TRUE" /><Field Name="SolicitudFormacion" ID="{99e91e53-d2fc-4cd2-9067-52cdbf00f873}" DisplayName="SolicitudFormacion" Type="Lookup" List="Lists/SolicitudesFormaciones" ShowField="ID" /></Fields>
+    <Field ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Type="Text" Name="Title" DisplayName="$Resources:core,Title;" Required="FALSE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="Title" MaxLength="255" /><Field Name="Autor" ID="{95f9131b-1969-4f66-9193-eddc408eb3d1}" DisplayName="Autor" Type="User" Required="TRUE" List="UserInfo" /><Field Name="Observaci_x00f3_n" ID="{d3248599-218f-4efa-8612-7fb5e7216692}" DisplayName="Observacion" Type="Note" Required="TRUE" /><Field Name="SolicitudFormacion" ID="{99e91e53-d2fc-4cd2-9067-52cdbf00f873}" DisplayName="SolicitudFormacion" Type="Lookup" List="Lists/SolicitudesFormacion" ShowField="ID" /></Fields>
     <Views>
       
       

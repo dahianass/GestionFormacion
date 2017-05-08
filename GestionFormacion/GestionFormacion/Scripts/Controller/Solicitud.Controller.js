@@ -10,13 +10,15 @@ function SolicitudController() {
     vm.ListaAreasAutocomplet = [];
     vm.ListObservaciones = [];
     vm.AreaSelect = "";
+    vm.RangoSelected = {};
     
-
-    var id = getQueryStringParams("ID");
-    if (id != undefined) {
-
-    } else {
-        ObtenerRolUsuario();
+    function selectPerfil() {
+        var id = getQueryStringParams("ID");
+        if (id != undefined) {
+            ListarInformacionSolicitud(id);
+        } else {
+            ObtenerRolUsuario();
+        }
     }
 
     ListarFormaciones();
@@ -24,10 +26,17 @@ function SolicitudController() {
     ListarClasificacion();
     ListarRangos();
     ListaAreas();
+    selectPerfil();
+    function ListarInformacionSolicitud(id) {
+
+        var SolicitudFormacion = queryList("../_api/web/lists/getbytitle('SolicitudesFormacion')/items?$filter=ID eq "+ id );
+        vm.SolicitudFormacion = SolicitudFormacion.results[0];
+    }
 
     function ListarFormaciones() {
         var TiposFormaciones = queryList("../_api/lists/getbytitle('TiposFormaciones')/items?$select=ID,Title");
         vm.TiposFormaciones = TiposFormaciones.results;
+        debugger;
     }
     function ListarEvaluaciones() {
         var Evaluaciones = queryList("../_api/lists/getbytitle('Evaluaciones')/items?$select=ID,Title");
@@ -96,7 +105,8 @@ function SolicitudController() {
               vm.notas = {
                   observacion: observacionUsuario,
                   autor: autor,
-                  Id: vm.UsuarioActual.Id
+                  ID: vm.UsuarioActual.Id,
+                  SolicitudFormacionId:null
               };
               vm.ListObservaciones.push(vm.notas);
               vm.Observacion = "";
@@ -114,17 +124,22 @@ function SolicitudController() {
         return month + "/" + day + "/" + year;
     }
 
-    function GuardarObservaciones() {
-        var data = {
-            __metadata: { 'type': 'SP.Data.ObservacionesListItem' },
-            Title: 'New title',
-            AutorId: 231,
-            Observaci_x00f3_n: 'Mi primera observacion',
-        }
-        var url = "../_api/lists/getbytitle('Observaciones')/items"
-        var ContextoSolicitud = getContext("../lists/Observaciones");
-        var result = createItem(url, ContextoSolicitud, data);
+    function GuardarObservaciones(idSolicitudes) {
+        angular.forEach(vm.ListObservaciones, function (value, key) {
+            if (value.SolicitudFormacionId == null) {
+                var data = {
+                    __metadata: { 'type': 'SP.Data.ObservacionesListItem' },
+                    Title: '',
+                    AutorId: vm.UsuarioActual.Id,
+                    Observaci_x00f3_n: value.observacion,
+                    SolicitudFormacionId: idSolicitudes
 
+                }
+                var url = "../_api/lists/getbytitle('Observaciones')/items"
+                var ContextoSolicitud = getContext("../lists/Observaciones");
+                var result = createItem(url, ContextoSolicitud, data);
+            }
+        });
     }
     function GuardarDatosPruebas() {
         var data = {
@@ -172,34 +187,50 @@ function SolicitudController() {
         var url = "../_api/lists/getbytitle('Rangos')/items"
         var ContextoSolicitud = getContext("../lists/Rangos");
         var result = createItem(url, ContextoSolicitud, data);
+        //
+        var data = {
+            __metadata: { 'type': 'SP.Data.RangosListItem' },
+            Title: 'Gerente',
+        }
+        var url = "../_api/lists/getbytitle('Rangos')/items"
+        var ContextoSolicitud = getContext("../lists/Rangos");
+        var result = createItem(url, ContextoSolicitud, data);
+
     }
 
-    GuardarDatosPruebas()
+    //GuardarDatosPruebas();
 
     vm.GuardarFormacion = function () {
+        var fechassolicitud =new Date(vm.SolicitudFormacion.Fechasolicitud);
+
         var data = {
             __metadata: { 'type': 'SP.Data.SolicitudesFormacionListItem' },
-            ResponsableActualId: 231,
-            EstadoSolicitud: "Borrador",
-            Formacion: "FormacionSharepoint",
-            TipoFormacionId: 3,
-            SolicitanteId: 231,
-            Fechasolicitud: '2017-05-06T05:00:00Z',
-            FechaInicio: '2017-12-06T05:00:00Z',
-            ClasifiacionId: 2,
-            Duracion: 20,
-            Evaluaci_x00f3_nId: 1,
-            Cupos: 2,
-            Entidad: 'Universidad de Antioquia',
-            Valorindividual: 20000,
-            TotalCurso: 40000,
-            InformacionviajeId: 1,
-            Temario: 'Tema uno',
-            SolicitudAprobada : false
+            ResponsableActualId: vm.UsuarioActual.Id,
+            EstadoSolicitud: vm.SolicitudFormacion.EstadoSolicitud,
+            Formacion: vm.SolicitudAprobada.Formacion,
+            TipoFormacionId: vm.SolicitudAprobada.TipoFormacionId.ID,
+            SolicitanteId: vm.UsuarioActual.Id,
+            Fechasolicitud: vm.SolicitudFormacion.Fechasolicitud,
+            FechaInicio: vm.SolicitudAprobada.fechaInicio,
+            ClasifiacionId: vm.SelectClasificacion.ID,
+            Duracion: parseInt(vm.SolicitudAprobada.Duracion),
+            Evaluaci_x00f3_nId: vm.Evaluaci_x00f3_nId.ID,
+            Cupos: parseInt(vm.SolicitudAprobada.Cupos),
+            Entidad: vm.SolicitudAprobada.Entidad,
+            Valorindividual: parseFloat(vm.SolicitudAprobada.VI),
+            TotalCurso: parseFloat(vm.Cupos * vm.VI),
+            RequiereViaje: vm.SolicitudAprobada.checkedViaje,
+            Temario: vm.SolicitudAprobada.Temario,
+            SolicitudAprobada: false
         }
+    }
+
+    function GuardarSolicitudFormacion(data){
         var url = "../_api/lists/getbytitle('SolicitudesFormacion')/items"
         var ContextoSolicitud = getContext("../lists/SolicitudesFormacion");
         var result = createItem(url, ContextoSolicitud, data);
+
+        GuardarObservaciones(result.d.ID);
     }
 
 }
