@@ -14,6 +14,7 @@
     <link href="../Content/style.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.js"></script>
+    <script src="../Scripts/Underscore.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://kendo.cdn.telerik.com/2017.1.118/js/kendo.all.min.js"></script>
     <script src="../Scripts/Checklist-model.js"></script>
@@ -29,7 +30,8 @@
 		<div class="row">
 			<div class="col-md-12 form-group">
 				<button class="btn btn-primary pull-right mr-2" type="button">Cancelar</button>
-				<input type="button" class="btn btn-primary pull-right mr-2" ng-click="vm.GuardarFormacion()">Guardar</input>
+				<button  class="btn btn-primary pull-right mr-2" type="button" ng-click="vm.GuardarFormacion()" ng-show="!vm.disableS">Guardar</button>
+                <button  class="btn btn-primary pull-right mr-2" type="button" ng-click="vm.ActualizarInforacion()" ng-show="vm.disableS">Actualizar</button>
 				<button class="btn btn-primary pull-right mr-2" type="button">Cerrar</button>
 			</div>
 		</div>
@@ -72,28 +74,27 @@
 			  </div>
 			</div>
 		</div>
-		
 		<div class="panel panel-primary">
             <div class="panel-heading">Información del solicitante</div>
             <div class="panel-body">
 				<div class="row">
 					<div class="col-md-3">
 						<label>Tipo de formación</label>
-						<select class="form-control" ng-model="vm.SolicitudFormacion.TipoFormacionId" ng-selected="vm.SolicitudFormacion.TipoFormacionId" ng-options="tipos.Title for tipos in vm.TiposFormaciones track by tipos.ID ">
+						<select class="form-control" ng-disabled="vm.disableS" ng-model="vm.SolicitudFormacion.TipoFormacion" ng-options="tipos.Title for tipos in vm.TiposFormaciones track by tipos.ID ">
                             <option value="">Seleccione</option>
 						</select>
 					</div>
                     <div class="col-md-3">
 						<label>Formación</label>
-						<input type="text" ng-model="vm.SolicitudFormacion.Formacion" class="form-control"/>
+						<input type="text" ng-model="vm.SolicitudFormacion.Formacion" class="form-control" ng-disabled="vm.disableS"/>
 					</div>
 					<div class="col-md-3">
 						<label>Fecha inicio</label>
-						<input kendo-date-picker ng-model="vm.SolicitudFormacion.fechaInicio" class="form-control fecha"/>
+						<input kendo-date-picker ng-model="vm.SolicitudFormacion.FechaInicio" class="form-control fecha" ng-disabled="vm.disableS"/>
 					</div>
 					<div class="col-md-3">
 						<label>Clasificación</label>
-						<select class="form-control" ng-model="vm.SolicitudFormacion.ClasifiacionId" ng-options="Clasificacion.Title for Clasificacion in vm.Clasificaciones track by Clasificacion.ID ">
+						<select class="form-control"  ng-model="vm.SolicitudFormacion.Clasificacion" ng-options="Clasificacion.Title for Clasificacion in vm.Clasificaciones track by Clasificacion.ID " ng-disabled="vm.disableS">
                                 <option value="">Seleccione</option>
 						</select>
 					</div>
@@ -101,38 +102,38 @@
 				<div class="row MT2">
 					<div class="col-md-3">
 						<label>Evaluación</label>
-						<select class="form-control" ng-model="vm.SolicitudFormacion.Evaluaci_x00f3_nId" ng-options="Evaluacion.Title for Evaluacion in vm.Evaluaciones track by Evaluacion.ID ">
+						<select class="form-control" ng-model="vm.SolicitudFormacion.Evaluaci_x00f3_nId" ng-options="Evaluacion.Title for Evaluacion in vm.Evaluaciones track by Evaluacion.ID " ng-disabled="vm.disableS">
                                 <option value="">Seleccione</option>
 						</select>	
 					</div>
 					<div class="col-md-3">
 						<label>Cupos</label>
-						<input type="text" ng-model="vm.SolicitudFormacion.Cupos" class="form-control">
+						<input type="text" ng-model="vm.SolicitudFormacion.Cupos" class="form-control" ng-disabled="vm.disableS">
 					</div>
 					<div class="col-md-6">
 						<label>Entidad</label>
-						<input type="text" ng-model="vm.SolicitudFormacion.Entidad" class="form-control" >
+						<input type="text" ng-model="vm.SolicitudFormacion.Entidad" class="form-control" ng-disabled="vm.disableS">
 					</div>
 				</div>
 				<div class="row MT2">
 					<div class="col-md-3">
 						<label>Valor individual</label>
-						<input type="text" ng-model="vm.SolicitudFormacion.VI" class="form-control">
+						<input type="text" ng-model="vm.SolicitudFormacion.Valorindividual" class="form-control" ng-disabled="vm.disableS">
 					</div>
 					<div class="col-md-3">
 						<label>Total curso</label>	
-						<label type="text" ng-model="vm.SolicitudFormacion.VT"  class="form-control" disabled>{{vm.Cupos * vm.VI}}</label>
+						<label type="text"  class="form-control" disabled>{{vm.SolicitudFormacion.TotalCurso || 0}}</label>
 					</div>
 					<div class="col-md-3">
 						<label>Rango</label>
 						<div class="" ng-repeat="Rango in vm.Rangos">
-							<div><input type="checkbox"  checklist-model="vm.SolicitudFormacion.RangoSelected" checklist-value="Rango.ID">{{Rango.Title}}</input></div>
+							<div><input type="checkbox"  checklist-model="vm.SolicitudFormacion.RangoId" checklist-value="Rango.ID" ng-disabled="vm.disableS">{{Rango.Title}}</input></div>
 						</div>
 					</div>
                     <div class="col-md-3">
 						<label>Duración</label>
 						<div class='input-group'>
-							<input type="text" class="form-control" ng-model="vm.Duracion">
+							<input type="text" class="form-control" ng-model="vm.SolicitudFormacion.Duracion" ng-disabled="vm.disableS">
 							<span class="input-group-addon">Horas</span>
 						</div>	
 					</div>
@@ -143,29 +144,29 @@
                     <div class="col-md-3 pt2">
 						<div class="input-group">
 							<span class="input-group-addon">
-							<input type="checkbox"  ng-model="vm.SolicitudFormacion.checkedViaje" aria-label="...">
+							<input type="checkbox"  ng-model="vm.SolicitudFormacion.RequiereViaje" ng-disabled="vm.disableS">
 							</span>
 							<label class="form-control">Viajes</label>
 						</div>
 					</div>
 					<div class="col-md-3">  
-						<label>Fecha de inicio</label>
-                         <input kendo-date-picker class="form-control fecha"/>
+						<label>Fecha de inicio viaje</label>
+                         <input kendo-date-picker class="form-control fecha" ng-model="vm.InformacionViaje.FechaInicio" ng-disabled="vm.disableS"/>
 					</div>
 					<div class="col-md-3">
-						<label for="fechaFin">Fecha fin</label>
-                        <input kendo-date-picker class="form-control fecha"/>
+						<label for="fechaFin">Fecha fin viaje</label>
+                        <input kendo-date-picker class="form-control fecha"   ng-model="vm.InformacionViaje.FechaFin" ng-disabled="vm.disableS"/>
 					</div>
 					<div class="col-md-3">
 						<label>Total</label>
-						<input type="text" class="form-control" id="inputEmail3">
+						<input type="text" class="form-control" disabled>
 					</div>
 				</div>
 				<div class="row MT2">
                     <fieldset ng-disabled="{{vm.disableGH}}">
 					    <div class="col-md-6" >
 						    <label>Area</label>
-						    <div class="input-group"><input kendo-auto-complete k-ng-model="vm.AreaSelect"  k-data-source="vm.ListaAreasAutocomplet"  class="form-control">
+						    <div class="input-group"><input kendo-auto-complete ng-model="vm.AreaSelect"  k-data-source="vm.ListaAreasAutocomplet"  class="form-control">
 							    <span class="input-group-addon"><span ng-click="vm.AgregarArea()" class="glyphicon glyphicon-plus-sign SpanL"></span></span>
 						    </div>
 					    </div>
@@ -183,7 +184,7 @@
 						    <div class="contenedorSombra">
 							    <span>Area</span>
 								    <div class="checkbox form-group" ng-repeat="areas in vm.ListAreas">
-									    <div><input type="checkbox">{{areas}}</div>
+									    <div><input type="checkbox"  checklist-model="vm.SolicitudFormacion.AreasId" checklist-value="areas.ID" ng-disabled="vm.disableGH">{{areas.Title}}</input></div>
 								    </div>
 							    <button type="button" class="btn btn-primary botonIzquierda">Eliminar</button>	
 						    </div>
@@ -204,7 +205,7 @@
 				<div class="row MT2">
 					<div class="col-md-12 MT2">
 						<Label>Temario</Label>
-						<textarea ng-model="vm.Temario" class="form-control"></textarea>
+						<textarea ng-model="vm.SolicitudFormacion.Temario" class="form-control" ng-disabled="vm.disableS"></textarea>
 					</div>
 				</div>
 				<div class="row MT2">
@@ -220,8 +221,8 @@
 								<tbody ng-repeat="Observacion in vm.ListObservaciones" >
 									<tr>
 										<td>{{$index + 1}}</td>
-										<td>{{Observacion.observacion}}</td>
-										<td>{{Observacion.autor}}</td>
+										<td>{{Observacion.Observaci_x00f3_n}}</td>
+										<td>{{Observacion.autor || Observacion.Autor.Title}}</td>
 									</tr>
 								</tbody>
 							</table>
@@ -231,7 +232,7 @@
 			</div>
 		</div>
 	
-		<div class="panel panel-primary" ng-show="vm.checkedViaje" >
+		<div class="panel panel-primary" ng-show="vm.SolicitudFormacion.RequiereViaje" >
             <fieldset ng-disabled="{{vm.disableGH}}">
                 <div class="panel-heading">Información de viaje</div>
                 <div class="panel-body">
@@ -273,20 +274,14 @@
 									<th>#</th>
 									<th>Nombre del Archivo</th>
 									<th>Fecha</th>
-									<th>Tipo</th>
+									<th>Autor</th>
 								</thead>
-								<tbody id="listaClientes">
+								<tbody ng-repeat="anexo in vm.ListAnexos" >
 									<tr>
-										<td>1</td>
-										<td>Documento</td>
-										<td>25/04/2017</td>
-										<td>pdf</td>
-									</tr>
-									<tr>
-										<td>2</td>
-										<td>Certificado</td>
-										<td>27/04/2017</td>
-										<td>pdf</td>
+										<td>{{$index + 1}}</td>
+										<td>{{anexo.Title}}</td>
+                                        <td>{{anexo.Created | date:'MM/dd/yyyy'}}</td>
+                                        <td>{{anexo.Author.Title ||anexo.autor}}</td>
 									</tr>
 								</tbody>
 							</table>

@@ -45,7 +45,9 @@
   <ItemGroup>
     <Content Include="Anexos\AnexosInstance\Elements.xml" />
     <Content Include="Anexos\EditDlg.htm" />
-    <Content Include="Anexos\Elements.xml" />
+    <Content Include="Anexos\Elements.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Anexos\FileDlg.htm" />
     <Content Include="Anexos\Repair.aspx" />
     <Content Include="Anexos\Schema.xml" />
@@ -134,6 +136,7 @@
     <Content Include="Gestores\Schema.xml" />
     <Content Include="Scripts\Checklist-model.js" />
     <Content Include="Scripts\Controller\apiRest.js" />
+    <Content Include="Scripts\Underscore.js" />
     <Content Include="SolicitudesFormacion\Elements.xml" />
     <Content Include="SolicitudesFormacion\Schema.xml" />
     <Content Include="SolicitudesFormacion\SolicitudesFormacionInstance\Elements.xml" />

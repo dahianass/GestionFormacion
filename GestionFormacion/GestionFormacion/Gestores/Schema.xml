@@ -9,7 +9,7 @@
       </ContentTypeRef><ContentTypeRef ID="0x0120" /></ContentTypes>
     <Fields>
       
-    <Field ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Type="Text" Name="Title" DisplayName="$Resources:core,Title;" Required="FALSE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="Title" MaxLength="255" /><Field Name="Rol" ID="{2ee97288-ba73-46ad-98fe-310046a74224}" DisplayName="Rol" Type="Choice" Required="FALSE"><CHOICES><CHOICE>Gestión Humana</CHOICE><CHOICE>Gestor de presupuesto</CHOICE><CHOICE>Gestor financiero</CHOICE><CHOICE>Administrador</CHOICE><CHOICE></CHOICE></CHOICES></Field><Field Name="Usuario" ID="{282121ce-5b05-4c94-9b40-7a4cfa7d9dd3}" DisplayName="Usuario" Type="User" List="UserInfo" /></Fields>
+    <Field ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Type="Text" Name="Title" DisplayName="$Resources:core,Title;" Required="FALSE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="Title" MaxLength="255" /><Field Name="Rol" ID="{2ee97288-ba73-46ad-98fe-310046a74224}" DisplayName="Rol" Type="Choice" Required="FALSE"><CHOICES><CHOICE>Gestion Humana</CHOICE><CHOICE>Gestor de presupuesto</CHOICE><CHOICE>Gestor financiero</CHOICE><CHOICE>Administrador</CHOICE><CHOICE></CHOICE></CHOICES></Field><Field Name="Usuario" ID="{282121ce-5b05-4c94-9b40-7a4cfa7d9dd3}" DisplayName="Usuario" Type="User" List="UserInfo" /></Fields>
     <Views>
       
       

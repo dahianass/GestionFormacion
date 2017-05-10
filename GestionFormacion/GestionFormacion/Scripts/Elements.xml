@@ -10,5 +10,6 @@
     <File Path="Scripts\Controller\Solicitud.Controller.js" Url="Scripts/Controller/Solicitud.Controller.js" ReplaceContent="TRUE" />
     <File Path="Scripts\Controller\apiRest.js" Url="Scripts/Controller/apiRest.js" ReplaceContent="TRUE" />
     <File Path="Scripts\Checklist-model.js" Url="Scripts/Checklist-model.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Underscore.js" Url="Scripts/Underscore.js" ReplaceContent="TRUE" />
   </Module>
 </Elements>
