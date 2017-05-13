@@ -206,7 +206,6 @@ function isInGroup(pIdGrupo) {
 var FileReturn;
 
 function uploadFile(controlador, file, callback) {
-    debugger;
     // Define the folder path for this example.
     var serverRelativeUrlToFolder = file.nombreBiblioteca;
     // Get the server URL.
@@ -332,7 +331,7 @@ function updateListItem(itemMetadata, controlador, listitem, fileInput, serverRe
     // For simplicity, also use the name as the title. 
     // The example gets the list item type from the item's metadata, but you can also get it from the
     // ListItemEntityTypeFullName property of the list.
-    var body = { __metadata: { type: itemMetadata.type }, SolicitudFormacion: controlador.IdSolicitud, SolicitanteId: controlador.UsuarioActual.Id, FileLeafRef: "" + listitem.d.Id + "-" + fileName, Title: "" + listitem.d.Id + "-" + fileName };
+    var body = { __metadata: { type: itemMetadata.type }, SolicitudFormacion: controlador.id, SolicitanteId: controlador.UsuarioActual.Id, FileLeafRef: "" + listitem.d.Id + "-" + fileName, Title: "" + listitem.d.Id + "-" + fileName };
     body = JSON.stringify(body);
 
 

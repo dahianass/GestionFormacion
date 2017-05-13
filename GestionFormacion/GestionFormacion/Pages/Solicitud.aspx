@@ -29,9 +29,10 @@
     <div class="container" class="container" ng-app="SolicitudApp"  ng-controller="SolicitudController as vm">
 		<div class="row">
 			<div class="col-md-12 form-group">
-				<button class="btn btn-primary pull-right mr-2" type="button">Cancelar</button>
+				<button class="btn btn-primary pull-right mr-2" type="button" ng-click="vm.cancelarSolicitud()" ng-show="vm.disableCancelar">Cancelar</button>
+                <button class="btn btn-primary pull-right mr-2" type="button" ng-show="!vm.disableS" ng-click="vm.Enviar()" >Enviar</button>
 				<button  class="btn btn-primary pull-right mr-2" type="button" ng-click="vm.GuardarFormacion()" ng-show="!vm.disableS">Guardar</button>
-                <button  class="btn btn-primary pull-right mr-2" type="button" ng-click="vm.ActualizarInforacion()" ng-show="vm.disableS">Actualizar</button>
+                <button  class="btn btn-primary pull-right mr-2" type="button" ng-click="vm.ActualizarInforacion()" ng-show="vm.ShowActualizar">Actualizar</button>
 				<button class="btn btn-primary pull-right mr-2" type="button">Cerrar</button>
 			</div>
 		</div>
@@ -61,7 +62,7 @@
 				<div class="row MT2">
 					<div class="col-md-4">
 						    <label>Fecha de pago</label>
-						    <input kendo-date-picker class="form-control fecha" ng-model="vm.SolicitudFormacion.FechaPago" ng-disabled="{{vm.disableGP}}"/>
+						    <input kendo-date-picker class="form-control fecha" ng-model="vm.SolicitudFormacion.FechaPago" ng-disabled="{{vm.disableGF}}"/>
 					</div>	
 					<div class="col-md-4">
 						<label>Solicitante</label>
@@ -122,7 +123,7 @@
 					</div>
 					<div class="col-md-3">
 						<label>Total curso</label>	
-						<label type="text"  class="form-control" disabled>{{vm.SolicitudFormacion.TotalCurso || 0}}</label>
+						<label type="text"  class="form-control" disabled>{{(vm.SolicitudFormacion.Valorindividual * vm.SolicitudFormacion.Cupos) || 0}}</label>
 					</div>
 					<div class="col-md-3">
 						<label>Rango</label>
@@ -142,9 +143,9 @@
 				
 				<div class="row MT2">
                     <div class="col-md-3 pt2">
-						<div class="input-group">
+						<div class="input-group" >
 							<span class="input-group-addon">
-							<input type="checkbox"  ng-model="vm.SolicitudFormacion.RequiereViaje" ng-disabled="vm.disableS">
+							<input type="checkbox"  ng-model="vm.SolicitudFormacion.RequiereViaje"  ng-init="vm.init()"  ng-disabled="vm.disableS">
 							</span>
 							<label class="form-control">Viajes</label>
 						</div>
@@ -159,7 +160,7 @@
 					</div>
 					<div class="col-md-3">
 						<label>Total</label>
-						<input type="text" class="form-control" disabled>
+						<Label type="text" class="form-control"  disabled>{{vm.sumaTotal()}}</Label>
 					</div>
 				</div>
 				<div class="row MT2">
@@ -172,8 +173,8 @@
 					    </div>
 					    <div class="col-md-6" >
 						    <label >Asistente:</label>
-						    <div class="input-group"><input class="form-control" />
-							    <span class="input-group-addon"><span class="glyphicon glyphicon-plus-sign SpanL"></span></span>
+                            <div class="input-group"><input kendo-auto-complete ng-model="vm.AsistentesSelect"  k-data-source="vm.ListaAsistenteAutocomplet"  class="form-control">
+							    <span class="input-group-addon"><span ng-click="vm.AgregarAsistentes()" class="glyphicon glyphicon-plus-sign SpanL"></span></span>
 						    </div>
 					    </div>
                     </fieldset>
@@ -186,18 +187,16 @@
 								    <div class="checkbox form-group" ng-repeat="areas in vm.ListAreas">
 									    <div><input type="checkbox"  checklist-model="vm.SolicitudFormacion.AreasId" checklist-value="areas.ID" ng-disabled="vm.disableGH">{{areas.Title}}</input></div>
 								    </div>
-							    <button type="button" class="btn btn-primary botonIzquierda">Eliminar</button>	
+							    <button type="button" class="btn btn-primary botonIzquierda" ng-Click="vm.EliminarAreasSelecionada()">Eliminar</button>	
 						    </div>
 					    </div>
 					    <div class="col-md-6">
 						    <div class="contenedorSombra">
 							    <span>Asistentes</span>
-							    <div class="checkbox form-group">
-								    <div><input type="checkbox" checked>Andres Zapata</div>
-								    <div><input type="checkbox">Fernanda Salgado</div>
-								    <div><input type="checkbox" checked>Daniel Alvares</div>
-							    </div>
-							    <button type="button" class="btn btn-primary botonIzquierda">Eliminar</button>
+							    <div class="checkbox form-group" ng-repeat="asistente in vm.listAsitentes">
+									    <div><input type="checkbox"  checklist-model="vm.SolicitudFormacion.AsistentesId" checklist-value="asistente.ID" ng-disabled="vm.disableGH">{{asistente.Title}}</input></div>
+								    </div>
+							    <button type="button" class="btn btn-primary botonIzquierda" ng-Click="vm.EliminarAsistentesSelecionada()">Eliminar</button>
 						    </div>
 					    </div>
                     </fieldset>    
@@ -233,27 +232,27 @@
 		</div>
 	
 		<div class="panel panel-primary" ng-show="vm.SolicitudFormacion.RequiereViaje" >
-            <fieldset ng-disabled="{{vm.disableGH}}">
+            <fieldset ng-disabled="{{vm.disableGHV}}">
                 <div class="panel-heading">Información de viaje</div>
                 <div class="panel-body">
 				    <div class="row">
 					    <div class="col-md-4" >
 						    <label >Valor viáticos</label>
-						    <Input class="form-control"></input>
+						    <Input ng-model="vm.InformacionViaje.ValorViaticos" class="form-control"></input>
 					    </div>
 					    <div class="col-md-4" >
 						    <label>Valor tiquete</label>
-						    <Input class="form-control"></input>
+						    <Input ng-model="vm.InformacionViaje.ValorTiquete" class="form-control"></input>
 					    </div>
 					    <div class="col-md-4" >
 						    <label>Valor Transporte</label>
-						    <Input class="form-control"></input>
+						    <Input  ng-model="vm.InformacionViaje.ValorTramsporte" class="form-control"></input>
 					    </div>
 				    </div>
 				    <div class="row MT2">
 					    <div class="col-md-4" >
 						    <label>Valor Hotel</label>
-						    <Input class="form-control"></input>
+						    <Input ng-model="vm.InformacionViaje.ValorHotel" class="form-control"></Input>
 					    </div>	
 				    </div>
 			    </div>
