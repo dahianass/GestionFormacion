@@ -68,6 +68,7 @@
     <Content Include="Clasificaciones\ClasificacionesInstance\Elements.xml" />
     <Content Include="Clasificaciones\Elements.xml" />
     <Content Include="Clasificaciones\Schema.xml" />
+    <Content Include="Content\Inicio.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="Encuentas\Elements.xml" />
     <Content Include="Encuentas\EncuentasInstance\Elements.xml" />
@@ -111,6 +112,9 @@
     <Content Include="Features\Feature21\Feature21.Template.xml">
       <DependentUpon>Feature21.feature</DependentUpon>
     </Content>
+    <Content Include="Features\Feature23\Feature23.Template.xml">
+      <DependentUpon>Feature23.feature</DependentUpon>
+    </Content>
     <Content Include="Features\Feature2\Feature2.Template.xml">
       <DependentUpon>Feature2.feature</DependentUpon>
     </Content>
@@ -141,11 +145,14 @@
     <Content Include="Gestores\Elements.xml" />
     <Content Include="Gestores\GestoresInstance\Elements.xml" />
     <Content Include="Gestores\Schema.xml" />
+    <Content Include="Images\EditDlg.htm" />
+    <Content Include="Images\Elements.xml" />
+    <Content Include="Images\FileDlg.htm" />
+    <Content Include="Images\ImagesInstance\Elements.xml" />
+    <Content Include="Images\Repair.aspx" />
+    <Content Include="Images\Schema.xml" />
+    <Content Include="Images\Upload.aspx" />
     <Content Include="Pages\Inicio.aspx" />
-    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.js" />
-    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.min.js" />
-    <Content Include="Scripts\angular-ui\ui-bootstrap.js" />
-    <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
     <Content Include="Scripts\App\App.Inicio.js" />
     <Content Include="Scripts\Checklist-model.js" />
     <Content Include="Scripts\Controller\apiRest.js" />
@@ -250,6 +257,9 @@
     <None Include="Features\Feature21\Feature21.feature">
       <FeatureId>{74672bd3-e781-47ae-a13d-42b913a45a6e}</FeatureId>
     </None>
+    <None Include="Features\Feature23\Feature23.feature">
+      <FeatureId>{5fffa97b-08bc-45f2-8756-ec969f800c69}</FeatureId>
+    </None>
     <None Include="Features\Feature2\Feature2.feature">
       <FeatureId>{39eaa548-ac24-437e-a59a-a0586a903bac}</FeatureId>
     </None>
@@ -279,6 +289,12 @@
     </None>
     <None Include="Gestores\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{0b354dd9-de1b-43aa-bb24-1de8097d1ce6}</SharePointProjectItemId>
+    </None>
+    <None Include="Images\ImagesInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{1581864f-0b33-4d59-a352-59ff14e0d42c}</SharePointProjectItemId>
+    </None>
+    <None Include="Images\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{c3faa64f-fe38-404e-a13d-78d1b0773231}</SharePointProjectItemId>
     </None>
     <None Include="SolicitudesFormacion\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{5491ad24-6ac1-47d1-8e9b-57451e94e81e}</SharePointProjectItemId>
@@ -365,15 +381,6 @@
     </None>
     <Content Include="Content\Elements.xml" />
     <Content Include="Content\App.css" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Images\AppIcon.png">
-      <OpcRelationship>manifest-icon</OpcRelationship>
-    </Content>
-    <Content Include="Images\Elements.xml" />
-    <None Include="Images\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{bd33af8a-d089-4610-b5e2-c26035bf080f}</SharePointProjectItemId>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Package\Package.package">

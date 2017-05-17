@@ -13,9 +13,5 @@
     <File Path="Scripts\Underscore.js" Url="Scripts/Underscore.js" ReplaceContent="TRUE" />
     <File Path="Scripts\App\app.Inicio.js" Url="Scripts/App/app.Inicio.js" ReplaceContent="TRUE" />
     <File Path="Scripts\Controller\Inicio.Controller.js" Url="Scripts/Controller/Inicio.Controller.js" ReplaceContent="TRUE" />
-    <File Path="Scripts\angular-ui\ui-bootstrap.min.js" Url="Scripts/angular-ui/ui-bootstrap.min.js" ReplaceContent="TRUE" />
-    <File Path="Scripts\angular-ui\ui-bootstrap.js" Url="Scripts/angular-ui/ui-bootstrap.js" ReplaceContent="TRUE" />
-    <File Path="Scripts\angular-ui\ui-bootstrap-tpls.min.js" Url="Scripts/angular-ui/ui-bootstrap-tpls.min.js" ReplaceContent="TRUE" />
-    <File Path="Scripts\angular-ui\ui-bootstrap-tpls.js" Url="Scripts/angular-ui/ui-bootstrap-tpls.js" ReplaceContent="TRUE" />
   </Module>
 </Elements>

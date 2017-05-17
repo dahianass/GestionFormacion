@@ -6,5 +6,6 @@
     <ProjectItemFile Source="common.css" Target="Content\" Type="ElementFile" />
     <ProjectItemFile Source="style.css" Target="Content\" Type="ElementFile" />
     <ProjectItemFile Source="ui-bootstrap-csp.css" Target="Content\" Type="ElementFile" />
+    <ProjectItemFile Source="Inicio.css" Target="Content\" Type="ElementFile" />
   </Files>
 </ProjectItem>

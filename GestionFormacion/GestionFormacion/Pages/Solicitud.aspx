@@ -26,7 +26,7 @@
 
 <asp:Content ContentPlaceHolderId="PlaceHolderMain" runat="server">
     <WebPartPages:WebPartZone runat="server" FrameType="TitleBarOnly" ID="full" Title="loc:full" />
-    <div class="container" class="container" ng-app="SolicitudApp"  ng-controller="SolicitudController as vm">
+    <div class="container" ng-app="SolicitudApp"  ng-controller="SolicitudController as vm">
 		<div class="row">
 			<div class="col-md-12 form-group">
 				<button class="btn btn-primary pull-right mr-2" type="button" ng-click="vm.cancelarSolicitud()" ng-show="vm.disableCancelar">Cancelar</button>

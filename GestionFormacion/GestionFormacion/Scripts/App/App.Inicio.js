@@ -1,1 +1,1 @@
-﻿var AppController = angular.module("InicioApp", []);
+﻿var AppController = angular.module("InicioApp", ['ui.bootstrap', 'ngRoute']);

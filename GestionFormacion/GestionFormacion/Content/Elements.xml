@@ -5,5 +5,6 @@
     <File Path="Content\common.css" Url="Content/common.css" ReplaceContent="TRUE" />
     <File Path="Content\style.css" Url="Content/style.css" ReplaceContent="TRUE" />
     <File Path="Content\ui-bootstrap-csp.css" Url="Content/ui-bootstrap-csp.css" ReplaceContent="TRUE" />
+    <File Path="Content\Inicio.css" Url="Content/Inicio.css" ReplaceContent="TRUE" />
   </Module>
 </Elements>
