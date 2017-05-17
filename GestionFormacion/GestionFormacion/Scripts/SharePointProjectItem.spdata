@@ -14,5 +14,7 @@
     <ProjectItemFile Source="Underscore.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="App\App.Inicio.js" Target="Scripts\App\" Type="ElementFile" />
     <ProjectItemFile Source="Controller\Inicio.Controller.js" Target="Scripts\Controller\" Type="ElementFile" />
+    <ProjectItemFile Source="App\App.MisSolicitudes.js" Target="Scripts\App\" Type="ElementFile" />
+    <ProjectItemFile Source="Controller\MisSolicitudes.Controller.js" Target="Scripts\Controller\" Type="ElementFile" />
   </Files>
 </ProjectItem>

@@ -1,0 +1,1 @@
+﻿var AppMisSolicititudes = angular.module("MisSolicitudesApp", ['kendo.directives']);

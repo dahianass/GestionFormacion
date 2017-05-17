@@ -10,10 +10,27 @@
     text-align: center;
 }
 
-.ContenedorZ {
+.ContenedorHijo {
     vertical-align: middle;
-    width: 70%;
+    width: 86%;
 }
+.ContenedorPadre {
+    display: inline-block;
+    padding: 3%;
+    width: 90%;
+    text-align: center;
+    margin-left: 5%;
+}
+.BottonsMenuMain {
+    display: inline-block;
+    background-color: rgba(35, 31, 32, 1);
+    padding: 0%;
+    box-shadow: 0 0 15px 10px rgba(23, 21, 21, 0.18);
+    color: #fff;
+    font-size: large;
+    cursor: pointer;
+}
+
 
 .ContenedorPrincipal {
     display: inline-block;

@@ -154,9 +154,11 @@
     <Content Include="Images\Upload.aspx" />
     <Content Include="Pages\Inicio.aspx" />
     <Content Include="Scripts\App\App.Inicio.js" />
+    <Content Include="Scripts\App\App.MisSolicitudes.js" />
     <Content Include="Scripts\Checklist-model.js" />
     <Content Include="Scripts\Controller\apiRest.js" />
     <Content Include="Scripts\Controller\Inicio.Controller.js" />
+    <Content Include="Scripts\Controller\MisSolicitudes.Controller.js" />
     <Content Include="Scripts\Underscore.js" />
     <Content Include="SolicitudesFormacion\Elements.xml" />
     <Content Include="SolicitudesFormacion\Schema.xml" />

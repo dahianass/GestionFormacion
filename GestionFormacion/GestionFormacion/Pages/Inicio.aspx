@@ -23,16 +23,15 @@
 
 <asp:Content ContentPlaceHolderID="PlaceHolderMain" runat="server">
     <WebPartPages:WebPartZone runat="server" FrameType="TitleBarOnly" ID="full" Title="loc:full" />
-    <div ng-app="InicioApp" class="Contenedor">
+    <div ng-app="InicioApp" class="ContenedorPadre">
         <div ng-controller="InicioController as vm" class="ContenedorZ">
             <div class="row">
                 <div class="Carousel">
-                    <div style="height: 305px; width: 70%">
+                    <div style="height: 305px; width: 70%; margin-left: 11%;">
                         <uib-carousel interval="vm.myInterval">
                     <uib-slide ng-repeat="slide in vm.slides" active="vm.active" index="$index">
                       <img ng-src="{{slide.Imagen}}" style="margin:auto;" />
                       <div class="carousel-caption">
-                        <h4>Slide {{$index+1}}</h4>
                       </div>
                     </uib-slide>
                 </uib-carousel>
@@ -40,19 +39,19 @@
                 </div>
             </div>
             <div class="row MT2">
-                <div class="col-md-3" onclick="window.location='MisFormaciones.aspx';">
+                <div class="col-md-3 BottonsMenuMain" onclick="window.location='MisFormaciones.aspx';">
                     <div class="imgAr"><img ng-src="{{vm.opcion1.Imagen}}"  width="100%" height="100%" /></div>
 <%--                    MIS FORMACIONES--%>
-                    <div class="title"><span>CREAR SOLICITUD</span></div>
+                    <div class="title"><span>MIS FORMACIONES</span></div>
                 </div>
-                <div class="col-md-1"></div>
-                <div class="col-md-3" onclick="window.location='MisFormaciones.aspx';">
+                <div class="col-md-1 "></div>
+                <div class="col-md-3 BottonsMenuMain" onclick="window.location='Solicitud.aspx';">
                     <div class="imgAr"><img ng-src="{{vm.opcion2.Imagen}}"  width="100%" height="100%"/></div>
 <%--                    CREAR SOLICITUD--%>
                     <div class="title"><span>CREAR SOLICITUD</span></div>
                 </div>
                 <div class="col-md-1"></div>
-                <div class="col-md-3" onclick="window.location='MisFormaciones.aspx';">
+                <div class="col-md-3 BottonsMenuMain" onclick="window.location='TodasSolicitudes.aspx';">
                     <div class="imgAr"><img ng-src="{{vm.opcion3.Imagen}}"  width="100%" height="100%" /></div>
 <%--                    TODAS LAS SOLICITUDES--%>
                     <div class="title"><span>TODAS LAS SOLICITUDES</span></div>

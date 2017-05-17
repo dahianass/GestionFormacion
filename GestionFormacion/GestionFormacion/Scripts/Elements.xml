@@ -13,5 +13,7 @@
     <File Path="Scripts\Underscore.js" Url="Scripts/Underscore.js" ReplaceContent="TRUE" />
     <File Path="Scripts\App\app.Inicio.js" Url="Scripts/App/app.Inicio.js" ReplaceContent="TRUE" />
     <File Path="Scripts\Controller\Inicio.Controller.js" Url="Scripts/Controller/Inicio.Controller.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\App\App.MisSolicitudes.js" Url="Scripts/App/App.MisSolicitudes.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Controller\MisSolicitudes.Controller.js" Url="Scripts/Controller/MisSolicitudes.Controller.js" ReplaceContent="TRUE" />
   </Module>
 </Elements>

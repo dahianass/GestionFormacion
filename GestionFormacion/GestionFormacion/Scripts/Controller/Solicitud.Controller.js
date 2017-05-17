@@ -460,6 +460,7 @@ function SolicitudController() {
             RequiereViaje: vm.SolicitudFormacion.RequiereViaje,
             Temario: vm.SolicitudFormacion.Temario,
             RangoId: rango,
+            Total: ((vm.InformacionViaje.ValorHotel + vm.InformacionViaje.ValorTramsporte + vm.InformacionViaje.ValorTiquete + vm.InformacionViaje.ValorViaticos) * vm.SolicitudFormacion.Cupos),
             SolicitudAprobada: false
         }
         return data;
@@ -592,8 +593,7 @@ function SolicitudController() {
             ValorViaticos: vm.InformacionViaje.ValorViaticos,
             ValorTiquete: vm.InformacionViaje.ValorTiquete,
             ValorTramsporte: vm.InformacionViaje.ValorTramsporte,
-            ValorHotel: vm.InformacionViaje.ValorHotel,
-            ValorTotal: ((vm.InformacionViaje.ValorHotel + vm.InformacionViaje.ValorTramsporte + vm.InformacionViaje.ValorTiquete + vm.InformacionViaje.ValorViaticos) * vm.SolicitudFormacion.Cupos),
+            ValorHotel: vm.InformacionViaje.ValorHotel
 
         }
         var url = "../_api/lists/getbytitle('InformacionViajes')/Items(" + vm.InformacionViaje.ID + ")";
