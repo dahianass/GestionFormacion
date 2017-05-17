@@ -8,5 +8,6 @@
     <File Path="Pages\Solicitud.aspx" Url="Pages/Solicitud.aspx" ReplaceContent="TRUE" />
     <File Path="Pages\MisSolicitudes.aspx" Url="Pages/MisSolicitudes.aspx" ReplaceContent="TRUE" />
     <File Path="Pages\TodasSolicitudes.aspx" Url="Pages/TodasSolicitudes.aspx" ReplaceContent="TRUE" />
+    <File Path="Pages\Inicio.aspx" Url="Pages/Inicio.aspx" ReplaceContent="TRUE" />
   </Module>
 </Elements>

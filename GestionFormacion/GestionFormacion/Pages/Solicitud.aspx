@@ -266,7 +266,7 @@
 							<span>Anexar <span class="glyphicon glyphicon-upload"></span></span>
 							<input id="fileInput" type="file" class="upload" />						
 						</div>
-                        <input class="btn btn-primary btnAnexos" ng-click="vm.AnexarArchivos()" value="+" />
+                        <input class="btn btn-primary btnAnexos" data-toggle="modal" data-target="#ModalTIpoAnexos"    value="+" />
 						<div class="panel panel-default">
 							<table class="table table-striped">
 								<thead>
@@ -281,6 +281,7 @@
 										<td>{{anexo.Title}}</td>
                                         <td>{{anexo.Created | date:'MM/dd/yyyy'}}</td>
                                         <td>{{anexo.Author.Title ||anexo.autor}}</td>
+                                        <td>{{anexo.TipoAnexo.Title}}</td>
 									</tr>
 								</tbody>
 							</table>
@@ -305,6 +306,28 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
             <button type="button" class="btn btn-primary" ng-click="vm.addOservacion()">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ModalTipoAnexo -->
+    <div class="modal fade" id="ModalTIpoAnexos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+      <div class="modal-dialog escuestaModal" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Selecione el tipo de Anexo</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <select class="form-control"  ng-model="vm.TipoAnexoSelected" ng-options="tipos.Title for tipos in vm.TiposAnexos  track by tipos.ID ">
+                <option value="">Seleccione</option>
+            </select>
+		  </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" ng-click="vm.AnexarArchivos()">Guardar</button>
           </div>
         </div>
       </div>

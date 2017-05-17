@@ -38,7 +38,8 @@ function SolicitudController() {
     ListarClasificacion();
     ListarRangos();
     ListaAreas();
-    ListarAsistentes()
+    ListarTiposAnexos();
+    ListarAsistentes();
     selectPerfil();
 
     function ListarInformacionSolicitud(id) {
@@ -67,7 +68,7 @@ function SolicitudController() {
 
 
         //Listar Anexos
-        var listAnexosAs = queryList("../../_api/web/lists/getbytitle('Anexos')/items?$Select=Created,Title,Author/Title&$Expand=Author&$filter=SolicitudFormacion eq " + id)
+        var listAnexosAs = queryList("../../_api/web/lists/getbytitle('Anexos')/items?$Select=Created,Title,Author/Title,TipoAnexo/Title&$Expand=Author&$Expand=TipoAnexo&$filter=SolicitudFormacion eq " + id)
         vm.ListAnexos = listAnexosAs.results;
 
         var listObservacionesAs = queryList("../_api/lists/getbytitle('Observaciones')/items?$Select=Observaci_x00f3_n,Created,Autor/Title&$Expand=Autor&$filter=SolicitudFormacionId eq " + id);
@@ -92,6 +93,10 @@ function SolicitudController() {
         });
     }
 
+    function ListarTiposAnexos () {
+        var TiposAnexos = queryList("../../_api/lists/getbytitle('TiposAnexos')/items?$select=ID,Title");
+        vm.TiposAnexos = TiposAnexos.results;
+    }
     function ListarFormaciones() {
         var TiposFormaciones = queryList("../_api/lists/getbytitle('TiposFormaciones')/items?$select=ID,Title");
         vm.TiposFormaciones = TiposFormaciones.results;
@@ -144,9 +149,11 @@ function SolicitudController() {
             nombreBiblioteca: "Anexos",
             Title: $('#fileInput').val(),
             Created: formattedDate(),
+            TipoAnexo: vm.TipoAnexoSelected ,
             autor: vm.UsuarioActual.Title
-
         };
+
+        
         vm.ListAnexos.push(vm.notas);
     }
 
@@ -185,7 +192,7 @@ function SolicitudController() {
                         vm.disableGH = true;
                         vm.disableS = true;
                         vm.disableGHV = true;
-                        vm.disableCancelar = false; 
+                        vm.disableCancelar = false;
                     }
                 } else {
                     if (vm.RolUserCurrent.results[0].Rol == "Gestion Humana") {
@@ -260,6 +267,7 @@ function SolicitudController() {
             NoPermisos();
         }
     }
+
     function NoPermisos() {
         vm.disableGP = true;
         vm.disableGF = true;
@@ -343,7 +351,10 @@ function SolicitudController() {
     function GuardarAnexos() {
         angular.forEach(vm.ListAnexos, function (value, key) {
             if (value.Author == undefined) {
-                var archivo = uploadFile(vm, value);
+                function callback(quepaso) {
+                    console.log(quepaso);
+                }
+                var archivo = uploadFile(vm, value, callback);
             }
         });
     }
@@ -485,29 +496,32 @@ function SolicitudController() {
         var data
         if (vm.id != 0) {
             if (vm.RolUserCurrent.results.length > 0) {
-                if (vm.RolUserCurrent.results[0].Rol == "Gestion Humana") {
-                    data = dataActualizacionGH();
-
-                } else if (vm.RolUserCurrent.results[0].Rol == "Gestor de presupuesto") {
-                    if (vm.SolicitudFormacion.SolicitudAprobada) {
-                        data = dataActualizacionGP();
-                    } else {
-                        alert("Debe aprobar o cancelar la solicitud")
-                    }
-
-                } else if (vm.RolUserCurrent.results[0].Rol == "Gestor financiero") {
-                    data = dataActualizacionGF();
-                }
-                else if (vm.RolUserCurrent.results[0].Rol == "Administrador") {
-
-                } else {
+                if (vm.SolicitudFormacion.SolicitanteId == vm.UsuarioActual.Id) {
                     data = getDataSolicitud("En presupuesto GH");
+                } else {
+
+                    if (vm.RolUserCurrent.results[0].Rol == "Gestion Humana") {
+                        data = dataActualizacionGH();
+
+                    } else if (vm.RolUserCurrent.results[0].Rol == "Gestor de presupuesto") {
+                        if (vm.SolicitudFormacion.SolicitudAprobada) {
+                            data = dataActualizacionGP();
+                        } else {
+                            alert("Debe aprobar o cancelar la solicitud")
+                        }
+
+                    } else if (vm.RolUserCurrent.results[0].Rol == "Gestor financiero") {
+                        data = dataActualizacionGF();
+                    }
+                    else if (vm.RolUserCurrent.results[0].Rol == "Administrador") {
+
+                    } else {
+                        data = getDataSolicitud("En presupuesto GH");
+                    }
                 }
             } else {
                 data = getDataSolicitud("En presupuesto GH");
             }
-        } else {
-            data = getDataSolicitud("En presupuesto GH");
         }
 
         GuardarObservaciones(vm.id);
@@ -627,8 +641,8 @@ function SolicitudController() {
         if (vm.SolicitudFormacion.RequiereViaje == true || vm.SolicitudFormacion.RequiereViaje != undefined) {
             true;
         } else {
-            false;
             vm.SolicitudFormacion.RequiereViaje = false;
+            false;
         }
     }
 

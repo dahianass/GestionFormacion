@@ -9,5 +9,6 @@
     <ProjectItemFile Source="Solicitud.aspx" Target="Pages\" Type="ElementFile" />
     <ProjectItemFile Source="MisSolicitudes.aspx" Target="Pages\" Type="ElementFile" />
     <ProjectItemFile Source="TodasSolicitudes.aspx" Target="Pages\" Type="ElementFile" />
+    <ProjectItemFile Source="Inicio.aspx" Target="Pages\" Type="ElementFile" />
   </Files>
 </ProjectItem>

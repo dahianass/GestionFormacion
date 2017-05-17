@@ -7,7 +7,7 @@
      SharePointMinVersion="16.0.0.0">
   <Properties>
     <Title>GestionFormacion</Title>
-    <StartPage>~appWebUrl/Pages/SolicitudesAsignadas.aspx?{StandardTokens}</StartPage>
+    <StartPage>~appWebUrl/Pages/Inicio.aspx?{StandardTokens}</StartPage>
   </Properties>
 
   <AppPrincipal>

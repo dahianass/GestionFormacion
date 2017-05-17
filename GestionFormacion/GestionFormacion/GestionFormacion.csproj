@@ -55,6 +55,9 @@
     <Content Include="Asistentes\AsistentesInstance\Elements.xml" />
     <Content Include="Asistentes\Elements.xml" />
     <Content Include="Asistentes\Schema.xml" />
+    <Content Include="Carousel\CarouselInstance\Elements.xml" />
+    <Content Include="Carousel\Elements.xml" />
+    <Content Include="Carousel\Schema.xml" />
     <Content Include="Certificados\CertificadosInstance\Elements.xml" />
     <Content Include="Certificados\EditDlg.htm" />
     <Content Include="Certificados\Elements.xml" />
@@ -65,6 +68,7 @@
     <Content Include="Clasificaciones\ClasificacionesInstance\Elements.xml" />
     <Content Include="Clasificaciones\Elements.xml" />
     <Content Include="Clasificaciones\Schema.xml" />
+    <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="Encuentas\Elements.xml" />
     <Content Include="Encuentas\EncuentasInstance\Elements.xml" />
     <Content Include="Encuentas\Schema.xml" />
@@ -104,6 +108,9 @@
     <Content Include="Features\Feature20\Feature20.Template.xml">
       <DependentUpon>Feature20.feature</DependentUpon>
     </Content>
+    <Content Include="Features\Feature21\Feature21.Template.xml">
+      <DependentUpon>Feature21.feature</DependentUpon>
+    </Content>
     <Content Include="Features\Feature2\Feature2.Template.xml">
       <DependentUpon>Feature2.feature</DependentUpon>
     </Content>
@@ -134,8 +141,15 @@
     <Content Include="Gestores\Elements.xml" />
     <Content Include="Gestores\GestoresInstance\Elements.xml" />
     <Content Include="Gestores\Schema.xml" />
+    <Content Include="Pages\Inicio.aspx" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.min.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
+    <Content Include="Scripts\App\App.Inicio.js" />
     <Content Include="Scripts\Checklist-model.js" />
     <Content Include="Scripts\Controller\apiRest.js" />
+    <Content Include="Scripts\Controller\Inicio.Controller.js" />
     <Content Include="Scripts\Underscore.js" />
     <Content Include="SolicitudesFormacion\Elements.xml" />
     <Content Include="SolicitudesFormacion\Schema.xml" />
@@ -169,6 +183,12 @@
     </None>
     <None Include="Asistentes\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{be9d89f2-28b0-4fb5-a02b-2ca23e33758c}</SharePointProjectItemId>
+    </None>
+    <None Include="Carousel\CarouselInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{02da1679-b807-49fa-a9c6-cc4dd2afa7cd}</SharePointProjectItemId>
+    </None>
+    <None Include="Carousel\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{d0327710-c5c1-4a3c-a24e-4c2c7a3ef532}</SharePointProjectItemId>
     </None>
     <None Include="Certificados\CertificadosInstance\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{6419b628-9a22-4efe-a608-f018708ae002}</SharePointProjectItemId>
@@ -226,6 +246,9 @@
     </None>
     <None Include="Features\Feature20\Feature20.feature">
       <FeatureId>{02c8e876-b492-4a12-9df9-1f52caf8f5c5}</FeatureId>
+    </None>
+    <None Include="Features\Feature21\Feature21.feature">
+      <FeatureId>{74672bd3-e781-47ae-a13d-42b913a45a6e}</FeatureId>
     </None>
     <None Include="Features\Feature2\Feature2.feature">
       <FeatureId>{39eaa548-ac24-437e-a59a-a0586a903bac}</FeatureId>

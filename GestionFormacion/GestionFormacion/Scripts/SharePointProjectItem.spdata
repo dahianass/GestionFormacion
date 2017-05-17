@@ -12,5 +12,11 @@
     <ProjectItemFile Source="Controller\apiRest.js" Target="Scripts\Controller\" Type="ElementFile" />
     <ProjectItemFile Source="Checklist-model.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="Underscore.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="App\App.Inicio.js" Target="Scripts\App\" Type="ElementFile" />
+    <ProjectItemFile Source="Controller\Inicio.Controller.js" Target="Scripts\Controller\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-ui\ui-bootstrap.min.js" Target="Scripts\angular-ui\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-ui\ui-bootstrap.js" Target="Scripts\angular-ui\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-ui\ui-bootstrap-tpls.min.js" Target="Scripts\angular-ui\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-ui\ui-bootstrap-tpls.js" Target="Scripts\angular-ui\" Type="ElementFile" />
   </Files>
 </ProjectItem>
