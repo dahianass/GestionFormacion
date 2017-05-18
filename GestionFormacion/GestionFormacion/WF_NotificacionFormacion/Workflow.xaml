@@ -287,6 +287,7 @@
                 </InArgument>
               </p1:BuildCollection.Values>
             </p1:BuildCollection>
+            <p:WriteToHistory Message="Coleccion de usuarios gestion humana" sap2010:WorkflowViewState.IdRef="WriteToHistory_8" />
             <p:DelayUntil sap2010:WorkflowViewState.IdRef="DelayUntil_1">
               <p:DelayUntil.Date>
                 <InArgument x:TypeArguments="s:DateTime">
@@ -327,7 +328,7 @@
     </FlowStep>
     <x:Reference>__ReferenceID0</x:Reference>
     <x:Reference>__ReferenceID1</x:Reference>
-    <sads:DebugSymbol.Symbol>d40BQzpcVXNlcnNcSm9yZ2UtUENcRG9jdW1lbnRzXEdpdEh1YlxHZXN0aW9uRm9ybWFjaW9uXEdlc3Rpb25Gb3JtYWNpb25cR2VzdGlvbkZvcm1hY2lvblxHZXN0aW9uRm9ybWFjaW9uXFdGX05vdGlmaWNhY2lvbkZvcm1hY2lvblxXb3JrZmxvdy54YW1sTywDywIPAgEBNAdKEgMBsARNC78CFgIBBMICD8ICeQIBAjUJSSADAbEEXQ1dgQEDAa4EXg1uJAMB/wNvDX8iAwHRA4ABDYsBJQMBsgOMAQ2MAYcBAwGwA40BDZgBIgMBkAOZAQ2kASUDAfECpQENpQF8AwHvAqYBDboBIgMB3QK7AQ3PASUDAZEC0AEN0AF0AwGPAtEBDdcBLwMB/gHYAQ3jARYDAd8B5AEN7wEWAwHAAfABDfYBIAMBsAH3AQ2CAhYDAZEBgwINjgIWAgFyjwINlQIgAgFilgINoQIiAgFDogINqAIcAgEzqQINvgIXAgEFwgJcwgJ2AgEDRA9GLQMBtgQ1VjVmAwG1BDgPOF4DAbMEPQ8/LQMBsgRdWl1+AwGvBF5oXngDAa0EYRNhfQMBngRrE2tiAwGPBGYTZlYDAYAEdxN3fQMB8AN8E3xyAwHhA3ITcloDAdIDiAETiAFfAwHCA4MBE4MBagMBswOMAVqMAYQBAwGxA5ABE5ABhAEDAaEDlQETlQF5AwGSA40BhwGNAYoBAwGRA6EBE6EBaQMBgQOcAROcAXEDAfICpQFapQF5AwHwArABE7IBMQMB7gK3ARO3AX4DAd8CqQETqwExAwHeAskBE8kBWwMBzgLDARPDAWMDAb8CvgETvgF2AwGwAsYBE8YBZgMBoQLMARPMAWIDAZIC0AFa0AFxAwGQAtQBE9QBYAMBgALRAX3RAYwBAwH/AeABE+AB1AEDAe8B2wET2wFkAwHgAewBE+wBbAMB0AHnARPnAWYDAcEB8wET8wF8AwGxAf8BE/8BZAMBoQH6ARP6AWkDAZIBiwITiwJ5AwGCAYYCE4YCZQIBc5ICE5ICdQIBY54CE54CZAIBU5kCE5kCcQIBRKUCE6UCXQIBNLsCE7sCaQIBJKwCE7ECMgIBFbYCE7YCiQECAQZFEUUnBAG2BAE+ET4nBAGyBAGxARWxASsEAe4CAaoBFaoBKwQB3gIB</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d40BQzpcVXNlcnNcSm9yZ2UtUENcRG9jdW1lbnRzXEdpdEh1YlxHZXN0aW9uRm9ybWFjaW9uXEdlc3Rpb25Gb3JtYWNpb25cR2VzdGlvbkZvcm1hY2lvblxHZXN0aW9uRm9ybWFjaW9uXFdGX05vdGlmaWNhY2lvbkZvcm1hY2lvblxXb3JrZmxvdy54YW1sUSwDzAIPAgEBNAdKEgMBsgRNC8ACFgIBBMMCD8MCeQIBAjUJSSADAbMEXQ1dgQEDAbAEXg1uJAMBgQRvDX8iAwHTA4ABDYsBJQMBtAOMAQ2MAYcBAwGyA40BDZgBIgMBkgOZAQ2kASUDAfMCpQENpQF8AwHxAqYBDboBIgMB3wK7AQ3PASUDAZMC0AEN0AF0AwGRAtEBDdcBLwMBgALYAQ3jARYDAeEB5AEN7wEWAwHCAfABDfYBIAMBsgH3AQ2CAhYDAZMBgwINjgIWAgF0jwINlQIgAgFklgINoQIiAgFFogINogKDAQIBQ6MCDakCHAIBM6oCDb8CFwIBBcMCXMMCdgIBA0QPRi0DAbgENVY1ZgMBtwQ4DzheAwG1BD0PPy0DAbQEXVpdfgMBsQReaF54AwGvBGETYX0DAaAEaxNrYgMBkQRmE2ZWAwGCBHcTd30DAfIDfBN8cgMB4wNyE3JaAwHUA4gBE4gBXwMBxAODARODAWoDAbUDjAFajAGEAQMBswOQAROQAYQBAwGjA5UBE5UBeQMBlAONAYcBjQGKAQMBkwOhAROhAWkDAYMDnAETnAFxAwH0AqUBWqUBeQMB8gKwAROyATEDAfACtwETtwF+AwHhAqkBE6sBMQMB4ALJARPJAVsDAdACwwETwwFjAwHBAr4BE74BdgMBsgLGARPGAWYDAaMCzAETzAFiAwGUAtABWtABcQMBkgLUARPUAWADAYIC0QF90QGMAQMBgQLgARPgAdQBAwHxAdsBE9sBZAMB4gHsARPsAWwDAdIB5wET5wFmAwHDAfMBE/MBfAMBswH/ARP/AWQDAaMB+gET+gFpAwGUAYsCE4sCeQMBhAGGAhOGAmUCAXWSAhOSAnUCAWWeAhOeAmQCAVWZAhOZAnECAUaiAieiAk0CAUSmAhOmAl0CATS8AhO8AmkCASStAhOyAjICARW3AhO3AokBAgEGRRFFJwQBuAQBPhE+JwQBtAQBsQEVsQErBAHwAgGqARWqASsEAeACAQ==</sads:DebugSymbol.Symbol>
   </Flowchart>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -428,9 +429,10 @@
       <sap2010:ViewStateData Id="Assign_4" sap:VirtualizedContainerService.HintSize="259,62" />
       <sap2010:ViewStateData Id="WriteToHistory_6" sap:VirtualizedContainerService.HintSize="259,68" />
       <sap2010:ViewStateData Id="BuildCollection`1_1" sap:VirtualizedContainerService.HintSize="259,22" />
+      <sap2010:ViewStateData Id="WriteToHistory_8" sap:VirtualizedContainerService.HintSize="259,68" />
       <sap2010:ViewStateData Id="DelayUntil_1" sap:VirtualizedContainerService.HintSize="259,68" />
       <sap2010:ViewStateData Id="Email_1" sap:VirtualizedContainerService.HintSize="259,68" />
-      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="281,2417">
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="281,2525">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
