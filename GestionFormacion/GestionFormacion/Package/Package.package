@@ -23,5 +23,6 @@
     <featureReference itemId="02c8e876-b492-4a12-9df9-1f52caf8f5c5" />
     <featureReference itemId="74672bd3-e781-47ae-a13d-42b913a45a6e" />
     <featureReference itemId="5fffa97b-08bc-45f2-8756-ec969f800c69" />
+    <featureReference itemId="c317c6f7-c301-4cc6-9ebb-8f357ce8cfa3" />
   </features>
 </package>

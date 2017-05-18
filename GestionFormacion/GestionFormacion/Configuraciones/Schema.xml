@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<List xmlns:ows="Microsoft SharePoint" Title="Gestores" FolderCreation="FALSE" Direction="$Resources:Direction;" Url="Lists/Gestores" BaseType="0" xmlns="http://schemas.microsoft.com/sharepoint/">
+<List xmlns:ows="Microsoft SharePoint" Title="Configuraciones" FolderCreation="FALSE" Direction="$Resources:Direction;" Url="Lists/Configuraciones" BaseType="0" xmlns="http://schemas.microsoft.com/sharepoint/">
   <MetaData>
     <ContentTypes>
       
       
-    <ContentType ID="0x01000be630d0bf704f63a3e142e954b99ff9" Name="ListFieldsContentType"><FieldRefs><FieldRef ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Name="Title" /><FieldRef ID="{2ee97288-ba73-46ad-98fe-310046a74224}" Name="Rol" /><FieldRef ID="{282121ce-5b05-4c94-9b40-7a4cfa7d9dd3}" Name="Usuario" /></FieldRefs></ContentType><ContentTypeRef ID="0x01">
+    <ContentType ID="0x0100f2a99c31f6f94f0c87469ae06d736a57" Name="ListFieldsContentType"><FieldRefs><FieldRef ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Name="Title" /><FieldRef ID="{af610db3-b73c-45c4-b212-72f608aaca1c}" Name="DiasNotificacion" /></FieldRefs></ContentType><ContentTypeRef ID="0x01">
         <Folder TargetName="Item" />
       </ContentTypeRef><ContentTypeRef ID="0x0120" /></ContentTypes>
     <Fields>
       
-    <Field ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Type="Text" Name="Title" DisplayName="$Resources:core,Title;" Required="FALSE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="Title" MaxLength="255" /><Field Name="Rol" ID="{2ee97288-ba73-46ad-98fe-310046a74224}" DisplayName="Rol" Type="Choice" Required="FALSE"><CHOICES><CHOICE>Gestion Humana</CHOICE><CHOICE>Gestor de presupuesto</CHOICE><CHOICE>Gestor financiero</CHOICE><CHOICE>Administrador</CHOICE><CHOICE></CHOICE></CHOICES></Field><Field Name="Usuario" ID="{282121ce-5b05-4c94-9b40-7a4cfa7d9dd3}" DisplayName="Usuario" Type="User" UserSelectionMode="PeopleOnly" List="UserInfo" /></Fields>
+    <Field ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Type="Text" Name="Title" DisplayName="$Resources:core,Title;" Required="FALSE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="Title" MaxLength="255" /><Field Name="DiasNotificacion" ID="{af610db3-b73c-45c4-b212-72f608aaca1c}" DisplayName="Dias notificación" Type="Number" Decimals="0" Required="TRUE" /></Fields>
     <Views>
       
       
@@ -37,7 +37,7 @@
         <RowLimit Paged="TRUE">30</RowLimit>
         <ViewFields>
           
-        <FieldRef Name="Rol" /><FieldRef Name="Usuario" /></ViewFields>
+        <FieldRef Name="DiasNotificacion" /></ViewFields>
         <Query>
           <OrderBy>
             

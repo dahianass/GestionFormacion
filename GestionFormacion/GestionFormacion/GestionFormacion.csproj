@@ -68,6 +68,9 @@
     <Content Include="Clasificaciones\ClasificacionesInstance\Elements.xml" />
     <Content Include="Clasificaciones\Elements.xml" />
     <Content Include="Clasificaciones\Schema.xml" />
+    <Content Include="Configuraciones\ConfiguracionesInstance\Elements.xml" />
+    <Content Include="Configuraciones\Elements.xml" />
+    <Content Include="Configuraciones\Schema.xml" />
     <Content Include="Content\Inicio.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="Encuentas\Elements.xml" />
@@ -114,6 +117,9 @@
     </Content>
     <Content Include="Features\Feature23\Feature23.Template.xml">
       <DependentUpon>Feature23.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\Feature24\Feature24.Template.xml">
+      <DependentUpon>Feature24.feature</DependentUpon>
     </Content>
     <Content Include="Features\Feature2\Feature2.Template.xml">
       <DependentUpon>Feature2.feature</DependentUpon>
@@ -181,6 +187,8 @@
     <Content Include="TiposFormaciones\Elements.xml" />
     <Content Include="TiposFormaciones\Schema.xml" />
     <Content Include="TiposFormaciones\TiposFormacionesInstance\Elements.xml" />
+    <Content Include="WorkflowHistoryList\Elements.xml" />
+    <Content Include="WorkflowTaskList\Elements.xml" />
     <None Include="Anexos\AnexosInstance\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{d05d90a0-e921-401e-8c09-8fbced606901}</SharePointProjectItemId>
     </None>
@@ -210,6 +218,12 @@
     </None>
     <None Include="Clasificaciones\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{5544052c-38d0-425e-a9dc-487ec40f1eec}</SharePointProjectItemId>
+    </None>
+    <None Include="Configuraciones\ConfiguracionesInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{4b9b3f8f-d213-40fe-817f-69a70633ce1d}</SharePointProjectItemId>
+    </None>
+    <None Include="Configuraciones\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{29e2a85f-486b-439a-b84f-aa3e2373dcf5}</SharePointProjectItemId>
     </None>
     <None Include="Encuentas\EncuentasInstance\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{e65c1d05-7456-4985-a6ac-f0d2402e1966}</SharePointProjectItemId>
@@ -261,6 +275,9 @@
     </None>
     <None Include="Features\Feature23\Feature23.feature">
       <FeatureId>{5fffa97b-08bc-45f2-8756-ec969f800c69}</FeatureId>
+    </None>
+    <None Include="Features\Feature24\Feature24.feature">
+      <FeatureId>{c317c6f7-c301-4cc6-9ebb-8f357ce8cfa3}</FeatureId>
     </None>
     <None Include="Features\Feature2\Feature2.feature">
       <FeatureId>{39eaa548-ac24-437e-a59a-a0586a903bac}</FeatureId>
@@ -356,6 +373,15 @@
     <None Include="TiposFormaciones\TiposFormacionesInstance\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{8cc0c0b2-db39-4c01-ba47-4aef8a3ffd0a}</SharePointProjectItemId>
     </None>
+    <None Include="WF_NotificacionFormacion\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{9b52d351-fce6-4451-9002-1057380eda25}</SharePointProjectItemId>
+    </None>
+    <None Include="WorkflowHistoryList\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{b1bdaa5b-33da-44ac-89cc-8d2ca36a046d}</SharePointProjectItemId>
+    </None>
+    <None Include="WorkflowTaskList\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{0b76d6ec-e3c3-4aa4-b021-26c4b7c379e0}</SharePointProjectItemId>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\jquery-1.9.1.min.map" />
@@ -402,6 +428,25 @@
     <AppManifestFile Include="AppManifest.xml">
       <SubType>Designer</SubType>
     </AppManifestFile>
+  </ItemGroup>
+  <ItemGroup>
+    <XamlAppDef Include="WF_NotificacionFormacion\Workflow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </XamlAppDef>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Activities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SharePoint.DesignTime.Activities.16.0, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Activities" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel.Activities" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
