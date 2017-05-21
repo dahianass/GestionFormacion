@@ -2,6 +2,17 @@
 
 function InicioController() {
     var vm = this;
+
+    vm.GestorPresupuesto = queryList("../_api/web/lists/getbytitle('Gestores')/items?$select=Id,Rol,UsuarioId&$filter=Rol eq 'Gestor de presupuesto' ");
+
+    $scope.mostrarPlan = true;
+
+    if (vm.GestorPresupuesto.UsuarioId == vm.UsuarioActual.Id) {
+        $scope.mostrarPlan = true;
+    } else {
+        $scope.mostrarPlan = false;
+    }
+
     vm.myInterval = 3000;
     vm.noWrapSlides = false;
     vm.active = 0;

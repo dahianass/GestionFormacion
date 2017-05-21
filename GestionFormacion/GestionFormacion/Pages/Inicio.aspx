@@ -25,6 +25,19 @@
     <WebPartPages:WebPartZone runat="server" FrameType="TitleBarOnly" ID="full" Title="loc:full" />
     <div ng-app="InicioApp" class="ContenedorPadre">
         <div ng-controller="InicioController as vm" class="ContenedorZ">
+            <div class="MenuLateral">
+                <div class="panel panel-primary">
+                    <div class="panel-heading center">MENÚ</div>
+                    <div class="btn-group-vertical" role="group" aria-label="">
+                        <button type="button" class="btn btn-default left" onclick="window.location='MisFormaciones.aspx';">Mis Formaciónes</button>
+                        <button type="button" class="btn btn-default left" onclick="window.location='MisSolicitudes.aspx';">Mis Solicitudes</button>
+                        <button type="button" class="btn btn-default left" onclick="window.location='Solicitud.aspx';">Crear solicitudes de formación</button>
+                        <button ng-show="mostrarPlan" type="button" class="btn btn-default left" onclick="window.location='PlanEstrategico.aspx';">Plan estratégico</button>
+                        <button type="button" class="btn btn-default left" onclick="window.location='SolicitudesAsignadas.aspx';">Solicitudes asignadas a mí</button>
+                        <button type="button" class="btn btn-default left" onclick="window.location='TodasSolicitudes.aspx';">Todas las solicitudes</button>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="Carousel">
                     <div style="height: 305px; width: 70%; margin-left: 11%;">
