@@ -15,5 +15,12 @@
     <File Path="Scripts\Controller\Inicio.Controller.js" Url="Scripts/Controller/Inicio.Controller.js" ReplaceContent="TRUE" />
     <File Path="Scripts\App\App.MisSolicitudes.js" Url="Scripts/App/App.MisSolicitudes.js" ReplaceContent="TRUE" />
     <File Path="Scripts\Controller\MisSolicitudes.Controller.js" Url="Scripts/Controller/MisSolicitudes.Controller.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Controller\MisFormaciones.Controller.js" Url="Scripts/Controller/MisFormaciones.Controller.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\App\App.MisFormaciones.js" Url="Scripts/App/App.MisFormaciones.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\DatosDefault.js" Url="Scripts/DatosDefault.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Controller\PlanEstrategico.Controller.js" Url="Scripts/Controller/PlanEstrategico.Controller.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\App\App.PlanEstrategico.js" Url="Scripts/App/App.PlanEstrategico.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\App\App.SolicitudesAsignadas.js" Url="Scripts/App/App.SolicitudesAsignadas.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Controller\SolicitudesAsignadas.Controller.js" Url="Scripts/Controller/SolicitudesAsignadas.Controller.js" ReplaceContent="TRUE" />
   </Module>
 </Elements>

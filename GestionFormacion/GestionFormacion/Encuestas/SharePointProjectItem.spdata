@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ProjectItem Type="Microsoft.VisualStudio.SharePoint.ListDefinition" DefaultFile="Elements.xml" SupportedTrustLevels="All" SupportedDeploymentScopes="Web, Site" xmlns="http://schemas.microsoft.com/VisualStudio/2010/SharePointTools/SharePointProjectItemModel">
   <Files>
-    <ProjectItemFile Source="Elements.xml" Target="Encuentas\" Type="ElementManifest" />
-    <ProjectItemFile Source="Schema.xml" Target="Encuentas\" Type="ElementFile" />
+    <ProjectItemFile Source="Elements.xml" Target="Encuestas\" Type="ElementManifest" />
+    <ProjectItemFile Source="Schema.xml" Target="Encuestas\" Type="ElementFile" />
   </Files>
   <ExtensionData>
-    <ExtensionDataItem Key="Microsoft.VisualStudio.SharePoint.ListSettings.ListFieldsContentTypeID" Value="0x0100831a1a6b3ae94ee2bf031f40b8c1761d" />
+    <ExtensionDataItem Key="Microsoft.VisualStudio.SharePoint.ListSettings.ListFieldsContentTypeID" Value="0x01008f44ec4008f8490ab5edfe0ceed2ff89" />
   </ExtensionData>
 </ProjectItem>

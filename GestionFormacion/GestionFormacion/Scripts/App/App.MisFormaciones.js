@@ -1,0 +1,1 @@
+﻿var AppMisFormaciones = angular.module("MisFormacionessApp", ['kendo.directives']);

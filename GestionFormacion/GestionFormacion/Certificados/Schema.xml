@@ -4,7 +4,7 @@
     <ContentTypes>
       
       
-    <ContentType ID="0x0101008d9c8a335696465fa624d23cf1064c5d" Name="ListFieldsContentType"><FieldRefs><FieldRef ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Name="Title" /><FieldRef ID="{4b1bf6c6-4f39-45ac-acd5-16fe7a214e5e}" Name="TemplateUrl" /><FieldRef ID="{cd1ecb9f-dd4e-4f29-ab9e-e9ff40048d64}" Name="xd_ProgID" /><FieldRef ID="{fbf29b2d-cae5-49aa-8e0a-29955b540122}" Name="xd_Signature" /><FieldRef ID="{e52012a0-51eb-4c0c-8dfb-9b8a0ebedcb6}" Name="Combine" /><FieldRef ID="{5d36727b-bcb2-47d2-a231-1f0bc63b7439}" Name="RepairDocument" /><FieldRef ID="{1700e8c2-019c-4d2b-b14c-14a7fdf0efdb}" Name="Asistente" /><FieldRef ID="{f11594c2-670b-4b37-99e6-4c9665c0f257}" Name="TipoFormacion" /><FieldRef ID="{36e9a851-61fe-4ace-9f54-7a7127e6e288}" Name="Formacion" /></FieldRefs></ContentType><ContentTypeRef ID="0x0101">
+    <ContentType ID="0x0101008d9c8a335696465fa624d23cf1064c5d" Name="ListFieldsContentType"><FieldRefs><FieldRef ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Name="Title" /><FieldRef ID="{4b1bf6c6-4f39-45ac-acd5-16fe7a214e5e}" Name="TemplateUrl" /><FieldRef ID="{cd1ecb9f-dd4e-4f29-ab9e-e9ff40048d64}" Name="xd_ProgID" /><FieldRef ID="{fbf29b2d-cae5-49aa-8e0a-29955b540122}" Name="xd_Signature" /><FieldRef ID="{e52012a0-51eb-4c0c-8dfb-9b8a0ebedcb6}" Name="Combine" /><FieldRef ID="{5d36727b-bcb2-47d2-a231-1f0bc63b7439}" Name="RepairDocument" /><FieldRef ID="{1700e8c2-019c-4d2b-b14c-14a7fdf0efdb}" Name="Asistente" /><FieldRef ID="{f11594c2-670b-4b37-99e6-4c9665c0f257}" Name="TipoFormacion" /><FieldRef ID="{36e9a851-61fe-4ace-9f54-7a7127e6e288}" Name="Formacion" /><FieldRef ID="{81d872c6-d602-4ce0-9db1-47977e89d830}" Name="Cargo" /></FieldRefs></ContentType><ContentTypeRef ID="0x0101">
         <Folder TargetName="Forms/Document" />
       </ContentTypeRef><ContentTypeRef ID="0x0120" /></ContentTypes>
     <Fields>
@@ -25,7 +25,7 @@
           <FieldRef Name="FSObjType" Key="Primary" />
           <FieldRef Name="ID" />
         </FieldRefs>
-      </Field><Field Name="Asistente" ID="{1700e8c2-019c-4d2b-b14c-14a7fdf0efdb}" DisplayName="Asistente" Type="User" Required="TRUE" List="UserInfo" /><Field Name="TipoFormacion" ID="{f11594c2-670b-4b37-99e6-4c9665c0f257}" DisplayName="TipoFormacion" Type="Lookup" List="TiposFormacion/ID" ShowField="ID" /><Field Name="Formacion" ID="{36e9a851-61fe-4ace-9f54-7a7127e6e288}" DisplayName="Formacion" Type="Lookup" List="Formacion/ID" ShowField="ID" /></Fields>
+      </Field><Field Name="Asistente" ID="{1700e8c2-019c-4d2b-b14c-14a7fdf0efdb}" DisplayName="Asistente" Type="User" Required="TRUE" List="UserInfo" /><Field Name="TipoFormacion" ID="{f11594c2-670b-4b37-99e6-4c9665c0f257}" DisplayName="TipoFormacion" Type="Lookup" List="TiposFormacion/ID" ShowField="ID" /><Field Name="Formacion" ID="{36e9a851-61fe-4ace-9f54-7a7127e6e288}" DisplayName="Formacion" Type="Lookup" List="Formacion/ID" ShowField="ID" /><Field Name="Cargo" ID="{81d872c6-d602-4ce0-9db1-47977e89d830}" DisplayName="Cargo" Type="Text" /></Fields>
     <Views>
       
       
@@ -92,7 +92,7 @@
           
           
           
-        <FieldRef Name="DocIcon"></FieldRef><FieldRef Name="LinkFilename"></FieldRef><FieldRef Name="Modified"></FieldRef><FieldRef Name="Editor"></FieldRef><FieldRef Name="Asistente" /><FieldRef Name="TipoFormacion" /><FieldRef Name="Formacion" /></ViewFields>
+        <FieldRef Name="DocIcon"></FieldRef><FieldRef Name="LinkFilename"></FieldRef><FieldRef Name="Modified"></FieldRef><FieldRef Name="Editor"></FieldRef><FieldRef Name="Asistente" /><FieldRef Name="TipoFormacion" /><FieldRef Name="Formacion" /><FieldRef Name="Cargo" /></ViewFields>
         <ParameterBindings>
           <ParameterBinding Name="NoAnnouncements" Location="Resource(wss,noitemsinview_doclibrary)" />
           <ParameterBinding Name="NoAnnouncementsHowTo" Location="Resource(wss,noitemsinview_doclibrary_howto2)" />

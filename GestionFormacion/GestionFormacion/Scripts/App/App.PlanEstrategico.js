@@ -1,0 +1,1 @@
+﻿var AppPlanEstrategico = angular.module("PlanEstrategicoApp", ['kendo.directives']);

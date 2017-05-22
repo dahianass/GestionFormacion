@@ -16,5 +16,12 @@
     <ProjectItemFile Source="Controller\Inicio.Controller.js" Target="Scripts\Controller\" Type="ElementFile" />
     <ProjectItemFile Source="App\App.MisSolicitudes.js" Target="Scripts\App\" Type="ElementFile" />
     <ProjectItemFile Source="Controller\MisSolicitudes.Controller.js" Target="Scripts\Controller\" Type="ElementFile" />
+    <ProjectItemFile Source="Controller\MisFormaciones.Controller.js" Target="Scripts\Controller\" Type="ElementFile" />
+    <ProjectItemFile Source="App\App.MisFormaciones.js" Target="Scripts\App\" Type="ElementFile" />
+    <ProjectItemFile Source="DatosDefault.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="Controller\PlanEstrategico.Controller.js" Target="Scripts\Controller\" Type="ElementFile" />
+    <ProjectItemFile Source="App\App.PlanEstrategico.js" Target="Scripts\App\" Type="ElementFile" />
+    <ProjectItemFile Source="App\App.SolicitudesAsignadas.js" Target="Scripts\App\" Type="ElementFile" />
+    <ProjectItemFile Source="Controller\SolicitudesAsignadas.Controller.js" Target="Scripts\Controller\" Type="ElementFile" />
   </Files>
 </ProjectItem>

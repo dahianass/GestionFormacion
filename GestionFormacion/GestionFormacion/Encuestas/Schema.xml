@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<List xmlns:ows="Microsoft SharePoint" Title="Asistentes" FolderCreation="FALSE" Direction="$Resources:Direction;" Url="Lists/Asistentes" BaseType="0" xmlns="http://schemas.microsoft.com/sharepoint/">
+<List xmlns:ows="Microsoft SharePoint" Title="Encuestas" FolderCreation="FALSE" Direction="$Resources:Direction;" Url="Lists/Encuestas" BaseType="0" xmlns="http://schemas.microsoft.com/sharepoint/">
   <MetaData>
     <ContentTypes>
       
       
-    <ContentType ID="0x0100ce1e9a701ee4422ab00d3cbddcf20f30" Name="ListFieldsContentType"><FieldRefs><FieldRef ID="{3ad90418-c5b5-4c56-8348-6a847e4b92c4}" Name="Cargo" /><FieldRef ID="{a88289c6-5234-48ab-82a5-ea1067a9253d}" Name="Area" /><FieldRef ID="{27ca55be-440f-4aee-b932-54f5f720d2dd}" Name="Nombre" /></FieldRefs></ContentType><ContentTypeRef ID="0x01">
+    <ContentType ID="0x01008f44ec4008f8490ab5edfe0ceed2ff89" Name="ListFieldsContentType"><FieldRefs><FieldRef ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Name="Title" /><FieldRef ID="{ee608dbe-20be-4f95-9ecf-bbca10741ff1}" Name="Asistente" /><FieldRef ID="{252b7ba0-373d-4a6e-b193-92ceaed43530}" Name="Cargo" /><FieldRef ID="{27388428-53bc-4fd3-bcfb-aacd6c8adf2b}" Name="Formacion" /><FieldRef ID="{928f03cf-d184-492e-9bf3-24fdba94cafc}" Name="TipoFormacion" /><FieldRef ID="{938baa81-441d-4391-a7dd-13586c8feb17}" Name="RespuestaEncuesta" /></FieldRefs></ContentType><ContentTypeRef ID="0x01">
         <Folder TargetName="Item" />
       </ContentTypeRef><ContentTypeRef ID="0x0120" /></ContentTypes>
     <Fields>
       
-    <Field Name="Cargo" ID="{3ad90418-c5b5-4c56-8348-6a847e4b92c4}" DisplayName="Cargo" Type="Text" Required="FALSE" /><Field Name="Area" ID="{a88289c6-5234-48ab-82a5-ea1067a9253d}" DisplayName="Area" Type="Lookup" Required="FALSE" List="Lists/Areas" ShowField="Title" /><Field Name="Nombre" ID="{27ca55be-440f-4aee-b932-54f5f720d2dd}" DisplayName="Nombre" Type="User" List="UserInfo" /></Fields>
+    <Field ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Type="Text" Name="Title" DisplayName="$Resources:core,Title;" Required="FALSE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="Title" MaxLength="255" /><Field Name="Asistente" ID="{ee608dbe-20be-4f95-9ecf-bbca10741ff1}" DisplayName="Asistente " Type="User" List="UserInfo" ShowField="Title" /><Field Name="Cargo" ID="{252b7ba0-373d-4a6e-b193-92ceaed43530}" DisplayName="Cargo" Type="Text" /><Field Name="Formacion" ID="{27388428-53bc-4fd3-bcfb-aacd6c8adf2b}" DisplayName="Formacion" Type="Lookup" List="Lists/SolicitudesFormacion" ShowField="ID" /><Field Name="TipoFormacion" ID="{928f03cf-d184-492e-9bf3-24fdba94cafc}" DisplayName="TipoFormacion" Type="Lookup" List="Lists/TiposFormaciones" ShowField="ID" /><Field Name="RespuestaEncuesta" ID="{938baa81-441d-4391-a7dd-13586c8feb17}" DisplayName="RespuestaEncuesta" Type="Text" /></Fields>
     <Views>
       
       
@@ -37,7 +37,7 @@
         <RowLimit Paged="TRUE">30</RowLimit>
         <ViewFields>
           
-        <FieldRef Name="LinkTitle"></FieldRef><FieldRef Name="Cargo" /><FieldRef Name="Area" /><FieldRef Name="Nombre" /></ViewFields>
+        <FieldRef Name="LinkTitle"></FieldRef><FieldRef Name="Asistente" /><FieldRef Name="Cargo" /><FieldRef Name="Formacion" /><FieldRef Name="TipoFormacion" /><FieldRef Name="RespuestaEncuesta" /></ViewFields>
         <Query>
           <OrderBy>
             

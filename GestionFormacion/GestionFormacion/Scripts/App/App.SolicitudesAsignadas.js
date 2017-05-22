@@ -1,0 +1,1 @@
+﻿var AppSolicitudesAsignadas = angular.module("SolicitudesAsignadasApp", ['kendo.directives']);

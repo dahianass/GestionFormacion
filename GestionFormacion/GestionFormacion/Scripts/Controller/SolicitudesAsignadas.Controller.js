@@ -1,6 +1,6 @@
-﻿AppMisSolicititudes.controller('MisSolicitudesController', MisSolicitudesController, ['$http']);
+﻿AppSolicitudesAsignadas.controller('SolicitudesAsignadasController', SolicitudesAsignadasController, ['$http']);
 
-function MisSolicitudesController($scope, $http) {
+function SolicitudesAsignadasController($scope, $http) {
     var vm = this;
     function ObtenerListaFormaciones() {
 
@@ -10,7 +10,7 @@ function MisSolicitudesController($scope, $http) {
         var url = "../_api/web/lists/getbytitle('SolicitudesFormacion')/items?$Select=Id,ResponsableActualId,ResponsableActualStringId,EstadoSolicitud,Formacion,FechaPago,TipoFormacionId,SolicitanteId,SolicitanteStringId" +
                                         ",Fechasolicitud,FechaInicio,ClasifiacionId,Duracion,Evaluaci_x00f3_nId" +
                                         ",Cupos,Entidad,Valorindividual,TotalCurso,RangoId,RequiereViaje" +
-                                        ",Temario,SolicitudAprobada,AreasId,AsistentesId,ID,Solicitante/Title,TipoFormacion/Title&$Expand=TipoFormacion&$Expand=Solicitante&$filter=SolicitanteId eq " + vm.UsuarioActual.Id;
+                                        ",Temario,SolicitudAprobada,AreasId,AsistentesId,ID,Solicitante/Title,TipoFormacion/Title&$Expand=TipoFormacion&$Expand=Solicitante&$filter=ResponsableActualId eq " + vm.UsuarioActual.Id;
 
         $scope.reporteTodasOptions = {
             //autoBind: false,
@@ -74,12 +74,18 @@ function MisSolicitudesController($scope, $http) {
               { field: "Id", title: "Id" },
               { field: "Formacion", title: "Título" },
               { field: "Fechasolicitud", title: "Fecha solicitud", format: "{0:dd/MM/yyyy}" },
+               { field: "Solicitante.Title", title: "Solicitante" },
               { field: "TipoFormacion.Title", title: "Tipo de formación" },
               { field: "Duracion", title: "Duración en horas" },
               { field: "Cupos", title: "Numero de persona" },
                { field: "FechaInicio", title: "Fecha de propuesta", format: "{0:dd/MM/yyyy}" },
               { field: "Total", title: "Valor" },
-              { field: "EstadoSolicitud", title: "Estado" }
+              { field: "EstadoSolicitud", title: "Estado" },
+              {
+              field: "", title: "",
+              template: "<button type='button' class='btn btn-default btn-xs noStyle' onclick='window.location='Solicitud.aspx?ID=#=ID#;'><span class='glyphicon glyphicon-list-alt' aria-hidden='true'></span></button>"
+              }
+
             ],
             groupable: false
         }

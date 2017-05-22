@@ -43,55 +43,8 @@
         </div>
         <div class="Contenedor">
             <div class="TablaFormaciones panel panel-primary">
-                <div class="panel-heading">MIS FORMACIONES</div>
+                <div class="panel-heading">MIS SOLICITUDES</div>
                 <div id="kg-Todas" kendo-grid="kgTodas" k-options="reporteTodasOptions" > </div>		
-             <%--   <table class="table table-striped">
-                    <thead>
-                        <th>id</th>
-                        <th>Título</th>
-                        <th>Fecha solicitud</th>
-                        <th>Tipo de formación</th>
-                        <th>Duración en horas</th>
-                        <th>Numero de personas</th>
-                        <th>Fecha Propuesta</th>
-                        <th>Valor</th>
-                        <th>Estado</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Capacitación de excel</td>
-                            <td>24/05/2017</td>
-                            <td>Seminario</td>
-                            <td>16</td>
-                            <td>8</td>
-                            <td>26/06/2017</td>
-                            <td>$7.000.000</td>
-                            <td>Aprobada</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Conocimientos básicos de Hardware</td>
-                            <td>02/04/2017</td>
-                            <td>Curso</td>
-                            <td>24</td>
-                            <td>12</td>
-                            <td>1/06/2017</td>
-                            <td>$1.000.000</td>
-                            <td>Presupuestada</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Manejo del tiempo</td>
-                            <td>01/04/2017</td>
-                            <td>Curso</td>
-                            <td>4</td>
-                            <td>12</td>
-                            <td>24/05/2017</td>
-                            <td>$2.000.000</td>
-                            <td>En curso</td>
-                        </tr>
-            </div>--%>
         </div>
     </div>
 </asp:Content>

@@ -70,9 +70,9 @@
     <Content Include="Clasificaciones\Schema.xml" />
     <Content Include="Content\Inicio.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
-    <Content Include="Encuentas\Elements.xml" />
-    <Content Include="Encuentas\EncuentasInstance\Elements.xml" />
-    <Content Include="Encuentas\Schema.xml" />
+    <Content Include="Encuestas\Elements.xml" />
+    <Content Include="Encuestas\EncuestasInstance\Elements.xml" />
+    <Content Include="Encuestas\Schema.xml" />
     <Content Include="Evaluaciones\Elements.xml" />
     <Content Include="Evaluaciones\EvaluacionesInstance\Elements.xml" />
     <Content Include="Evaluaciones\Schema.xml" />
@@ -115,6 +115,9 @@
     <Content Include="Features\Feature23\Feature23.Template.xml">
       <DependentUpon>Feature23.feature</DependentUpon>
     </Content>
+    <Content Include="Features\Feature24\Feature24.Template.xml">
+      <DependentUpon>Feature24.feature</DependentUpon>
+    </Content>
     <Content Include="Features\Feature2\Feature2.Template.xml">
       <DependentUpon>Feature2.feature</DependentUpon>
     </Content>
@@ -154,10 +157,17 @@
     <Content Include="Images\Upload.aspx" />
     <Content Include="Pages\Inicio.aspx" />
     <Content Include="Scripts\App\App.Inicio.js" />
+    <Content Include="Scripts\App\App.MisFormaciones.js" />
     <Content Include="Scripts\App\App.MisSolicitudes.js" />
+    <Content Include="Scripts\App\App.PlanEstrategico.js" />
+    <Content Include="Scripts\App\App.SolicitudesAsignadas.js" />
     <Content Include="Scripts\Checklist-model.js" />
     <Content Include="Scripts\Controller\apiRest.js" />
+    <Content Include="Scripts\Controller\PlanEstrategico.Controller.js" />
+    <Content Include="Scripts\Controller\SolicitudesAsignadas.Controller.js" />
+    <Content Include="Scripts\DatosDefault.js" />
     <Content Include="Scripts\Controller\Inicio.Controller.js" />
+    <Content Include="Scripts\Controller\MisFormaciones.Controller.js" />
     <Content Include="Scripts\Controller\MisSolicitudes.Controller.js" />
     <Content Include="Scripts\Underscore.js" />
     <Content Include="SolicitudesFormacion\Elements.xml" />
@@ -211,11 +221,11 @@
     <None Include="Clasificaciones\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{5544052c-38d0-425e-a9dc-487ec40f1eec}</SharePointProjectItemId>
     </None>
-    <None Include="Encuentas\EncuentasInstance\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{e65c1d05-7456-4985-a6ac-f0d2402e1966}</SharePointProjectItemId>
+    <None Include="Encuestas\EncuestasInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{ebf3b8fb-cef5-42ca-9fb0-ad2fff5a543e}</SharePointProjectItemId>
     </None>
-    <None Include="Encuentas\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{8c6775fd-b4a6-4dfa-aa34-a5670b11ccdf}</SharePointProjectItemId>
+    <None Include="Encuestas\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{9113b38f-231b-4f87-adb0-9a6b3b92b023}</SharePointProjectItemId>
     </None>
     <None Include="Evaluaciones\EvaluacionesInstance\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{eef73d9a-19d3-4d32-8f6e-3b06b1a8ee08}</SharePointProjectItemId>
@@ -261,6 +271,9 @@
     </None>
     <None Include="Features\Feature23\Feature23.feature">
       <FeatureId>{5fffa97b-08bc-45f2-8756-ec969f800c69}</FeatureId>
+    </None>
+    <None Include="Features\Feature24\Feature24.feature">
+      <FeatureId>{b3508c59-6131-455f-ab13-8769dff442b2}</FeatureId>
     </None>
     <None Include="Features\Feature2\Feature2.feature">
       <FeatureId>{39eaa548-ac24-437e-a59a-a0586a903bac}</FeatureId>
@@ -381,7 +394,9 @@
     <None Include="Content\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{0a7442f6-cce5-4b61-9557-2c2d592974b5}</SharePointProjectItemId>
     </None>
-    <Content Include="Content\Elements.xml" />
+    <Content Include="Content\Elements.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Content\App.css" />
   </ItemGroup>
   <ItemGroup>

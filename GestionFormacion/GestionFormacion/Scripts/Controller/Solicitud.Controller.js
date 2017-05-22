@@ -21,8 +21,11 @@ function SolicitudController() {
     vm.RangoSelected = {};
     vm.listAsitentes = [];
     vm.RolUserCurrent = [];
+    vm.mensajePeligro = [];
     vm.id = 0;
+    vm.Rol = 0;
     vm.ShowActualizar = false;
+    vm.solicitudEnLista = false;
     function selectPerfil() {
         var id = getQueryStringParams("ID");
         if (id != undefined) {
@@ -31,8 +34,6 @@ function SolicitudController() {
             ObtenerRolUsuario();
         }
     }
-
-    //GuardarDatosPruebas();
     ListarFormaciones();
     ListarEvaluaciones();
     ListarClasificacion();
@@ -49,6 +50,8 @@ function SolicitudController() {
                                         ",Cupos,Entidad,Valorindividual,TotalCurso,RangoId,RequiereViaje" +
                                         ",Temario,SolicitudAprobada,AreasId,AsistentesId,ID,Solicitante/Title&$Expand=Solicitante&$filter=ID eq " + id);
         vm.id = SolicitudFormacion.results[0].Id;
+
+        vm.solicitudEnLista = true;
 
         vm.SolicitudFormacion = SolicitudFormacion.results[0];
         var objTipoFormacion = _.filter(vm.TiposFormaciones, function (tiposformacion) { return tiposformacion.ID == vm.SolicitudFormacion.TipoFormacionId });
@@ -93,7 +96,7 @@ function SolicitudController() {
         });
     }
 
-    function ListarTiposAnexos () {
+    function ListarTiposAnexos() {
         var TiposAnexos = queryList("../../_api/lists/getbytitle('TiposAnexos')/items?$select=ID,Title");
         vm.TiposAnexos = TiposAnexos.results;
     }
@@ -126,7 +129,6 @@ function SolicitudController() {
         SolicitudFormacionFirst();
     }
     function ListaAreas() {
-
         var ListaAreas = queryList("../_api/lists/getbytitle('Areas')/items");
         vm.ListaAreas = ListaAreas.results;
         angular.forEach(ListaAreas.results, function (value, key) {
@@ -135,10 +137,10 @@ function SolicitudController() {
     }
     function ListarAsistentes() {
 
-        var ListaAsistentes = queryList("../_api/lists/getbytitle('Asistentes')/items");
+        var ListaAsistentes = queryList("../_api/lists/getbytitle('Asistentes')/items?$Select=ID,Id,Nombre/Title&$Expand=Nombre");
         vm.listaAsitentes = ListaAsistentes.results;
         angular.forEach(ListaAsistentes.results, function (value, key) {
-            vm.ListaAsistenteAutocomplet.push(value.Title);
+            vm.ListaAsistenteAutocomplet.push(value.Nombre.Title);
         });
     }
 
@@ -149,11 +151,11 @@ function SolicitudController() {
             nombreBiblioteca: "Anexos",
             Title: $('#fileInput').val(),
             Created: formattedDate(),
-            TipoAnexo: vm.TipoAnexoSelected ,
+            TipoAnexo: vm.TipoAnexoSelected,
             autor: vm.UsuarioActual.Title
         };
 
-        
+
         vm.ListAnexos.push(vm.notas);
     }
 
@@ -196,6 +198,8 @@ function SolicitudController() {
                     }
                 } else {
                     if (vm.RolUserCurrent.results[0].Rol == "Gestion Humana") {
+                        vm.Rol = 1;
+                        vm.mensajeActualizar = "Presupuestar"
                         if (vm.SolicitudFormacion.EstadoSolicitud == "En presupuesto GH") {
                             vm.disableGP = true;
                             vm.disableGF = true;
@@ -206,6 +210,7 @@ function SolicitudController() {
                             vm.ShowActualizar = true;
                             vm.SolicitudFormacion.ResponsableActual = vm.UsuarioActual.Title;
                             vm.EstadoSolicitudChange = 1;
+                            ObtenerResponsable("Gestor de presupuesto");
                         } else if (vm.SolicitudFormacion.EstadoSolicitud != "finalizada") {
                             vm.disableGP = true;
                             vm.disableGF = true;
@@ -216,10 +221,13 @@ function SolicitudController() {
                             vm.ShowActualizar = true;
                             vm.SolicitudFormacion.ResponsableActual = vm.UsuarioActual.Title;
                             vm.EstadoSolicitudChange = 4;
+                            vm.ResponsableActualId = vm.UsuarioActual.Id;
 
                         }
 
                     } else if (vm.RolUserCurrent.results[0].Rol == "Gestor de presupuesto") {
+                        vm.Rol = 2;
+                        vm.mensajeActualizar = "Aprobar"
                         if (vm.SolicitudFormacion.EstadoSolicitud == "Presupuestada") {
                             vm.disableGP = false;
                             vm.disableGF = true;
@@ -230,10 +238,14 @@ function SolicitudController() {
                             vm.ShowActualizar = true;
                             vm.SolicitudFormacion.ResponsableActual = vm.UsuarioActual.Title;
                             vm.EstadoSolicitudChange = 2;
+
+                            ObtenerResponsable("Gestor financiero");
                         } else {
                             NoPermisos();
                         }
                     } else if (vm.RolUserCurrent.results[0].Rol == "Gestor financiero") {
+                        vm.Rol = 3;
+                        vm.mensajeActualizar = "Pago realizado";
                         if (vm.SolicitudFormacion.EstadoSolicitud == "Aprobada") {
                             vm.disableGP = true;
                             vm.disableGF = false;
@@ -244,11 +256,13 @@ function SolicitudController() {
                             vm.ShowActualizar = true;
                             vm.SolicitudFormacion.ResponsableActual = vm.UsuarioActual.Title;
                             vm.EstadoSolicitudChange = 3;
+                            ObtenerResponsable("Gestion Humana");
                         } else {
                             NoPermisos();
                         }
 
                     } else if (vm.RolUserCurrent.results[0].Rol == "Administrador") {
+                        vm.mensajeActualizar = "Actualizar";
                         if (vm.SolicitudFormacion.EstadoSolicitud != "finalizada") {
                             vm.disableGP = true;
                             vm.disableGF = true;
@@ -259,6 +273,7 @@ function SolicitudController() {
                             vm.SolicitudFormacion.ResponsableActual = vm.UsuarioActual.Title;
                             vm.EstadoSolicitudChange = 4;
                             vm.disableCancelar = true;
+                            vm.ResponsableActualId = vm.UsuarioActual.Id;
                         }
                     }
                 }
@@ -297,7 +312,7 @@ function SolicitudController() {
 
     vm.AgregarAsistentes = function () {
         var opcion = vm.AsistentesSelect;
-        vm.AsistentesSelecionada = _.filter(vm.listaAsitentes, function (a) { return a.Title == opcion });
+        vm.AsistentesSelecionada = _.filter(vm.listaAsitentes, function (a) { return a.Nombre.Title == opcion });
         vm.listAsitentes.push(vm.AsistentesSelecionada[0])
     }
 
@@ -371,67 +386,19 @@ function SolicitudController() {
         var result = createItem(url, ContextoSolicitud, data);
     }
 
-    function GuardarDatosPruebas() {
-        var data = {
-            __metadata: { 'type': 'SP.Data.TiposFormacionesListItem' },
-            Title: 'Seminario',
-        }
-        var url = "../_api/lists/getbytitle('TiposFormaciones')/items"
-        var ContextoSolicitud = getContext("../lists/TiposFormaciones");
-        var result = createItem(url, ContextoSolicitud, data);
 
-        //
-        var data = {
-            __metadata: { 'type': 'SP.Data.TiposFormacionesListItem' },
-            Title: 'Curso',
-        }
-        var url = "../_api/lists/getbytitle('TiposFormaciones')/items"
-        var ContextoSolicitud = getContext("../lists/TiposFormaciones");
-        var result = createItem(url, ContextoSolicitud, data);
-
-
-        //
-        var data = {
-            __metadata: { 'type': 'SP.Data.ClasificacionesListItem' },
-            Title: 'Interna',
-        }
-        var url = "../_api/lists/getbytitle('Clasificaciones')/items"
-        var ContextoSolicitud = getContext("../lists/Clasificaciones");
-        var result = createItem(url, ContextoSolicitud, data);
-
-
-        //
-        var data = {
-            __metadata: { 'type': 'SP.Data.EvaluacionesListItem' },
-            Title: 'Por definir',
-        }
-        var url = "../_api/lists/getbytitle('Evaluaciones')/items"
-        var ContextoSolicitud = getContext("../lists/Evaluaciones");
-        var result = createItem(url, ContextoSolicitud, data);
-
-        //
-        var data = {
-            __metadata: { 'type': 'SP.Data.RangosListItem' },
-            Title: 'Cordinadores',
-        }
-        var url = "../_api/lists/getbytitle('Rangos')/items"
-        var ContextoSolicitud = getContext("../lists/Rangos");
-        var result = createItem(url, ContextoSolicitud, data);
-        //
-        var data = {
-            __metadata: { 'type': 'SP.Data.RangosListItem' },
-            Title: 'Gerente',
-        }
-        var url = "../_api/lists/getbytitle('Rangos')/items"
-        var ContextoSolicitud = getContext("../lists/Rangos");
-        var result = createItem(url, ContextoSolicitud, data);
-
-    }
 
     vm.GuardarFormacion = function () {
+        if (validacionCampoRol()) {
+            vm.ResponsableActualId = vm.UsuarioActual.Id;
+            var data = getDataSolicitud("Borrador");
+            GuardarSolicitudFormacion(data);
+        }
+    }
 
-        var data = getDataSolicitud("Borrador");
-        GuardarSolicitudFormacion(data);
+    function ObtenerResponsable(rol) {
+        var responsableProxi = queryList("../_api/lists/getbytitle('Gestores')/items?$filter=Rol eq '" + rol + "'");
+        vm.ResponsableActualId = responsableProxi.results[0].UsuarioId;
     }
 
     function getDataSolicitud(estado) {
@@ -441,9 +408,10 @@ function SolicitudController() {
             results: vm.SolicitudFormacion.RangoId
         }
 
+
         var data = {
             __metadata: { 'type': 'SP.Data.SolicitudesFormacionListItem' },
-            ResponsableActualId: vm.UsuarioActual.Id,
+            ResponsableActualId: vm.ResponsableActualId,
             EstadoSolicitud: estado,
             Formacion: vm.SolicitudFormacion.Formacion,
             TipoFormacionId: vm.SolicitudFormacion.TipoFormacion.ID,
@@ -460,13 +428,14 @@ function SolicitudController() {
             RequiereViaje: vm.SolicitudFormacion.RequiereViaje,
             Temario: vm.SolicitudFormacion.Temario,
             RangoId: rango,
-            Total: ((vm.InformacionViaje.ValorHotel + vm.InformacionViaje.ValorTramsporte + vm.InformacionViaje.ValorTiquete + vm.InformacionViaje.ValorViaticos) * vm.SolicitudFormacion.Cupos),
+            Total: vm.sumaTotal(),
             SolicitudAprobada: false
         }
         return data;
     }
 
     function GuardarSolicitudFormacion(data) {
+        vm.ResponsableActualId = vm.UsuarioActual.Id;
         var url = "../_api/lists/getbytitle('SolicitudesFormacion')/items"
         var ContextoSolicitud = getContext("../lists/SolicitudesFormacion");
         var result = createItem(url, ContextoSolicitud, data);
@@ -479,61 +448,93 @@ function SolicitudController() {
                 GuardarInfoViaje(result.d.ID);
             }
             if (vm.ListAnexos != null) {
-                GuardarAnexos();
+                GuardarAnexos(result.d.ID);
             }
-            alert("Guardo")
+            if (result) {
+                vm.alertPeligro = false;
+                vm.alertExito = true;
+                vm.mesaje = "Felicidades su registro se guard\u00F3 con \u00e9xito ";
+            } else {
+                vm.mensajeError = true;
+                vm.mesaje = "Su registro no se guard\u00F3, intentelo nuevamente";
+            }
+
         }
     }
 
     vm.sumaTotal = function () {
         var total = 0;
-        if (vm.InformacionViaje != undefined) {
-            //total = (vm.InformacionViaje.ValorHotel + vm.InformacionViaje.ValorTramsporte + vm.InformacionViaje.ValorTiquete + vm.InformacionViaje.ValorViaticos + vm.SolicitudFormacion.Valorindividual * vm.SolicitudFormacion.Cupos)
+        if (vm.SolicitudFormacion.RequiereViaje) {
+            if (vm.InformacionViaje == undefined) {
+                total = vm.SolicitudFormacion.Valorindividual * vm.SolicitudFormacion.Cupos;
+            } else {
+                if (vm.InformacionViaje.ValorHotel == undefined) {
+                    total = vm.SolicitudFormacion.Valorindividual * vm.SolicitudFormacion.Cupos;
+                } else {
+                    total = (vm.InformacionViaje.ValorHotel + vm.InformacionViaje.ValorTramsporte + vm.InformacionViaje.ValorTiquete + vm.InformacionViaje.ValorViaticos + vm.SolicitudFormacion.Valorindividual * vm.SolicitudFormacion.Cupos)
+                }
+            }
+        } else {
+            total = vm.SolicitudFormacion.Valorindividual * vm.SolicitudFormacion.Cupos;
         }
         return total;
     }
 
     vm.ActualizarInforacion = function () {
         var data
-        if (vm.id != 0) {
-            if (vm.RolUserCurrent.results.length > 0) {
-                if (vm.SolicitudFormacion.SolicitanteId == vm.UsuarioActual.Id) {
-                    data = getDataSolicitud("En presupuesto GH");
-                } else {
-
-                    if (vm.RolUserCurrent.results[0].Rol == "Gestion Humana") {
-                        data = dataActualizacionGH();
-
-                    } else if (vm.RolUserCurrent.results[0].Rol == "Gestor de presupuesto") {
-                        if (vm.SolicitudFormacion.SolicitudAprobada) {
-                            data = dataActualizacionGP();
+        if (validacionCampoRol()) {
+            if (vm.id != 0) {
+                if (vm.solicitudEnLista) {
+                    if (vm.RolUserCurrent.results.length > 0) {
+                        if (vm.SolicitudFormacion.SolicitanteId == vm.UsuarioActual.Id) {
+                            ObtenerResponsable("Gestion Humana");
+                            data = getDataSolicitud("En presupuesto GH");
                         } else {
-                            alert("Debe aprobar o cancelar la solicitud")
+
+                            if (vm.RolUserCurrent.results[0].Rol == "Gestion Humana") {
+                                data = dataActualizacionGH();
+
+                            } else if (vm.RolUserCurrent.results[0].Rol == "Gestor de presupuesto") {
+                                if (vm.SolicitudFormacion.SolicitudAprobada) {
+                                    data = dataActualizacionGP();
+                                } else {
+                                    alert("Debe aprobar o cancelar la solicitud")
+                                }
+
+                            } else if (vm.RolUserCurrent.results[0].Rol == "Gestor financiero") {
+                                data = dataActualizacionGF();
+                            }
+                            else if (vm.RolUserCurrent.results[0].Rol == "Administrador") {
+
+                            } else {
+                                ObtenerResponsable("Gestion Humana");
+                                data = getDataSolicitud("En presupuesto GH");
+                            }
                         }
-
-                    } else if (vm.RolUserCurrent.results[0].Rol == "Gestor financiero") {
-                        data = dataActualizacionGF();
-                    }
-                    else if (vm.RolUserCurrent.results[0].Rol == "Administrador") {
-
                     } else {
+                        ObtenerResponsable("Gestion Humana");
                         data = getDataSolicitud("En presupuesto GH");
                     }
+                } else {
+                    ObtenerResponsable("Gestion Humana");
+                    data = getDataSolicitud("En presupuesto GH");
                 }
-            } else {
-                data = getDataSolicitud("En presupuesto GH");
             }
-        }
 
-        GuardarObservaciones(vm.id);
-        GuardarAnexos();
+            GuardarObservaciones(vm.id);
+            GuardarAnexos();
 
-        var url = "../_api/lists/getbytitle('SolicitudesFormacion')/Items(" + vm.id + ")"
-        var ContextoSolicitud = getContext("../lists/SolicitudesFormacion");
-        var result = updateItem(url, ContextoSolicitud, data);
-        if (result) {
-            alert("Actualizado")
-            console.log(result);
+            var url = "../_api/lists/getbytitle('SolicitudesFormacion')/Items(" + vm.id + ")"
+            var ContextoSolicitud = getContext("../lists/SolicitudesFormacion");
+            var result = updateItem(url, ContextoSolicitud, data);
+            if (result) {
+                vm.alertPeligro = false;
+                vm.alertExito = true;
+                vm.mesaje = "Felicidades su registro se actualiz\u00F3 con \u00e9xito ";
+            } else {
+                vm.mensajeError = true;
+                vm.mesaje = "Su registro no se guard\u00F3, intentelo nuevamente";
+            }
         }
     }
 
@@ -541,7 +542,7 @@ function SolicitudController() {
         var estado = EstadoSolicitud();
         var data = {
             __metadata: { 'type': 'SP.Data.SolicitudesFormacionListItem' },
-            ResponsableActualId: vm.UsuarioActual.Id,
+            ResponsableActualId: vm.ResponsableActualId,
             EstadoSolicitud: estado,
             FechaPago: vm.SolicitudFormacion.FechaPago
         }
@@ -552,7 +553,7 @@ function SolicitudController() {
         var estado = EstadoSolicitud();
         var data = {
             __metadata: { 'type': 'SP.Data.SolicitudesFormacionListItem' },
-            ResponsableActualId: vm.UsuarioActual.Id,
+            ResponsableActualId: vm.ResponsableActualId,
             EstadoSolicitud: estado,
             SolicitudAprobada: vm.SolicitudFormacion.SolicitudAprobada,
         }
@@ -561,7 +562,6 @@ function SolicitudController() {
 
     function dataActualizacionGH() {
         var estado = EstadoSolicitud();
-
         if (vm.SolicitudFormacion.RequiereViaje) {
             var result = ActualizacionInformacionViaje();
         }
@@ -579,10 +579,11 @@ function SolicitudController() {
 
         var data = {
             __metadata: { 'type': 'SP.Data.SolicitudesFormacionListItem' },
-            ResponsableActualId: vm.UsuarioActual.Id,
+            ResponsableActualId: vm.ResponsableActualId,
             EstadoSolicitud: estado,
             AreasId: Area,
             AsistentesId: Asistentes,
+            Total: vm.sumaTotal(),
         }
         return data;
     }
@@ -628,12 +629,15 @@ function SolicitudController() {
     }
 
     vm.Enviar = function () {
-        if (vm.id > 0) {
-            vm.ActualizarInforacion();
-        } else {
-            var data = getDataSolicitud("En presupuesto GH");
-            GuardarSolicitudFormacion(data);
+        if (validacionCampoRol()) {
+            if (vm.id > 0) {
+                vm.ActualizarInforacion();
+            } else {
+                ObtenerResponsable("Gestion Humana");
+                var data = getDataSolicitud("En presupuesto GH");
+                GuardarSolicitudFormacion(data);
 
+            }
         }
     }
 
@@ -650,6 +654,7 @@ function SolicitudController() {
         var data = {
             __metadata: { 'type': 'SP.Data.SolicitudesFormacionListItem' },
             EstadoSolicitud: "Cancelada",
+            ResponsableActualId: vm.ResponsableActualId,
         }
         GuardarObservaciones(vm.id);
         GuardarAnexos();
@@ -659,6 +664,92 @@ function SolicitudController() {
         var result = updateItem(url, ContextoSolicitud, data);
         if (result) {
             alert("Actualizado")
+        }
+    }
+
+    function validacionCampoRol() {
+        vm.mensajePeligro = [];
+        if (vm.Rol == 0) {
+            if (vm.SolicitudFormacion.TipoFormacion == undefined) {
+                vm.mensajePeligro.push("Debe selecionar un Tipo Formaci\u00F3n");
+            }
+            if (vm.SolicitudFormacion.FechaInicio == undefined) {
+                vm.mensajePeligro.push("Debe selecionar una fecha de inicio ");
+            }
+            if (vm.SolicitudFormacion.Formacion == "") {
+                vm.mensajePeligro.push("Debe escribir el nombre de la formaci\u00F3n");
+            }
+            if (vm.SolicitudFormacion.Clasificacion == undefined) {
+                vm.mensajePeligro.push("Debes selecionar una clasificaci\u00F3n");
+            }
+            if (vm.SolicitudFormacion.Evaluaci_x00f3_nId == undefined) {
+                vm.mensajePeligro.push("Debes selecionar una Evaluaci\u00F3n");
+            }
+            if (vm.SolicitudFormacion.Cupos == undefined) {
+                vm.mensajePeligro.push("Debes agregar n\u00FAmero de cupos");
+            }
+            if (vm.SolicitudFormacion.Entidad == "") {
+                vm.mensajePeligro.push("Debes agregar Entidad de formac\u00F3n");
+            }
+            if (vm.SolicitudFormacion.Valorindividual == undefined) {
+                vm.mensajePeligro.push("Debes agregar Valor individual ");
+            }
+            if (vm.SolicitudFormacion.RangoId == undefined) {
+                vm.mensajePeligro.push("Debes selecionar un rango ");
+            }
+            if (vm.SolicitudFormacion.Duracion == undefined) {
+                vm.mensajePeligro.push("Debes agregar la duraci\u00F3n ");
+            }
+            if (vm.SolicitudFormacion.RequiereViaje) {
+                if (vm.InformacionViaje == undefined) {
+                    vm.mensajePeligro.push("Debes selecionar fecha de inicio y final del viaje");
+                } else {
+                    if (vm.InformacionViaje.FechaInicio == undefined) {
+                        vm.mensajePeligro.push("Debes selecionar fecha de inicio del viaje ");
+                    }
+                    if (vm.InformacionViaje.FechaFin == undefined) {
+                        vm.mensajePeligro.push("Debes selecionar fecha fin del viaje ");
+                    }
+                }
+
+            }
+        } else if (vm.Rol == 1) {
+            if (vm.SolicitudFormacion.RequiereViaje) {
+                if (vm.InformacionViaje == undefined) {
+                    vm.mensajePeligro.push("Debes agregar los valores de viaje");
+                } else {
+                    if (vm.InformacionViaje.ValorViaticos == undefined) {
+                        vm.mensajePeligro.push("Debes agregar el valor de los viaticos ");
+                    }
+                    if (vm.InformacionViaje.ValorTiquete == undefined) {
+                        vm.mensajePeligro.push("Debes agregar el valor de los tiquetes ");
+                    }
+                    if (vm.InformacionViaje.ValorTramsporte == undefined) {
+                        vm.mensajePeligro.push("Debes agregar el valor del transporte ");
+                    }
+                    if (vm.InformacionViaje.ValorHotel == undefined) {
+                        vm.mensajePeligro.push("Debes agregar el valor del hotel ");
+                    }
+                }
+                if (vm.listAsitentes.length == 0) {
+                    vm.mensajePeligro.push("Debes agregar los asistentes ");
+                }
+                if (vm.ListAreas.length == 0) {
+                    vm.mensajePeligro.push("Debes agregar las areas ");
+                }
+            }
+        } else if (vm.Rol == 2) {
+            if(vm.SolicitudFormacion.SolicitudAprobada == false)
+                vm.mensajePeligro.push("Recuerda checkear el campo aprobación");
+        } else if (vm.Rol == 3) {
+            if (vm.SolicitudFormacion.FechaPago == undefined)
+                vm.mensajePeligro.push("Se debe selecionar fecha de pago"); 
+        }
+        if (vm.mensajePeligro.length > 0) {
+            vm.alertPeligro = true;
+            return false;
+        } else {
+            return true;
         }
     }
 }

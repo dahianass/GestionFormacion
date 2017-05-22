@@ -25,6 +25,7 @@
     <WebPartPages:WebPartZone runat="server" FrameType="TitleBarOnly" ID="full" Title="loc:full" />
     <div ng-app="InicioApp" class="ContenedorPadre">
         <div ng-controller="InicioController as vm" class="ContenedorZ">
+            <button ng-click="vm.functionGuardarDatos()">Datos pruebas</button>
             <div class="row">
                 <div class="Carousel">
                     <div style="height: 305px; width: 70%; margin-left: 11%;">
