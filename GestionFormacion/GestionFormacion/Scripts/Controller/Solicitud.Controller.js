@@ -1,7 +1,7 @@
 
 AppSolicitud.controller('SolicitudController', SolicitudController);
 
-function SolicitudController() {
+function SolicitudController($scope) {
     var vm = this;
     vm.disableGP = true;
     vm.disableGF = true;
@@ -358,7 +358,6 @@ function SolicitudController() {
                 var url = "../_api/lists/getbytitle('Observaciones')/items"
                 var ContextoSolicitud = getContext("../lists/Observaciones");
                 var result = createItem(url, ContextoSolicitud, data);
-                console.log(value);
             }
         });
     }
@@ -367,9 +366,15 @@ function SolicitudController() {
         angular.forEach(vm.ListAnexos, function (value, key) {
             if (value.Author == undefined) {
                 function callback(quepaso) {
-                    console.log(quepaso);
+                    vm.mesaje = "";
+                    vm.mensajeAlert = false;
+                    vm.alertExito = true;
+                    vm.mesaje = "Gracias por su espera, el archivo se guardo con exito";
+                    $scope.$apply();
                 }
                 var archivo = uploadFile(vm, value, callback);
+                vm.mensajeAlert = true;
+                vm.mesajeAlerts = "Tu solicitud ha sido guardada, pero necesitamos un poco más de tiempo para guardar el Anexo... Gracias"
             }
         });
     }
@@ -454,9 +459,11 @@ function SolicitudController() {
                 vm.alertPeligro = false;
                 vm.alertExito = true;
                 vm.mesaje = "Felicidades su registro se guard\u00F3 con \u00e9xito ";
+                registroLog("Se creo la solicitud con id" + vm.id);
             } else {
                 vm.mensajeError = true;
                 vm.mesaje = "Su registro no se guard\u00F3, intentelo nuevamente";
+                registroLog("Error en la creación de la solicitud");
             }
 
         }
@@ -487,8 +494,28 @@ function SolicitudController() {
                 if (vm.solicitudEnLista) {
                     if (vm.RolUserCurrent.results.length > 0) {
                         if (vm.SolicitudFormacion.SolicitanteId == vm.UsuarioActual.Id) {
-                            ObtenerResponsable("Gestion Humana");
-                            data = getDataSolicitud("En presupuesto GH");
+                            if (vm.SolicitudFormacion.estado == "Borrador") {
+                                ObtenerResponsable("Gestion Humana");
+                                data = getDataSolicitud("En presupuesto GH");
+                            } else if (vm.RolUserCurrent.results[0].Rol == "Gestion Humana") {
+                                data = dataActualizacionGH();
+
+                            } else if (vm.RolUserCurrent.results[0].Rol == "Gestor de presupuesto") {
+                                if (vm.SolicitudFormacion.SolicitudAprobada) {
+                                    data = dataActualizacionGP();
+                                } else {
+                                    alert("Debe aprobar o cancelar la solicitud")
+                                }
+
+                            } else if (vm.RolUserCurrent.results[0].Rol == "Gestor financiero") {
+                                data = dataActualizacionGF();
+                            }
+                            else if (vm.RolUserCurrent.results[0].Rol == "Administrador") {
+
+                            } else {
+                                ObtenerResponsable("Gestion Humana");
+                                data = getDataSolicitud("En presupuesto GH");
+                            }
                         } else {
 
                             if (vm.RolUserCurrent.results[0].Rol == "Gestion Humana") {
@@ -531,9 +558,11 @@ function SolicitudController() {
                 vm.alertPeligro = false;
                 vm.alertExito = true;
                 vm.mesaje = "Felicidades su registro se actualiz\u00F3 con \u00e9xito ";
+                registroLog("Se actualizo Solicitud con id" + vm.id)
             } else {
                 vm.mensajeError = true;
                 vm.mesaje = "Su registro no se guard\u00F3, intentelo nuevamente";
+                registroLog("Error en la actualización de la solicitud" + vm.id)
             }
         }
     }
@@ -663,7 +692,14 @@ function SolicitudController() {
         var ContextoSolicitud = getContext("../lists/SolicitudesFormacion");
         var result = updateItem(url, ContextoSolicitud, data);
         if (result) {
-            alert("Actualizado")
+            vm.alertPeligro = false;
+            vm.alertExito = true;
+            vm.mesaje = "La solicitud esta cancelada";
+            registroLog("Se cancelo la solicitud con id" + vm.id)
+        } else {
+            vm.mensajeError = true;
+            vm.mesaje = "Su cancelación no fue exitosa, intentelo nuevamente";
+            registroLog("Error en la cancelación de la solicitud" + vm.id)
         }
     }
 
@@ -714,6 +750,12 @@ function SolicitudController() {
 
             }
         } else if (vm.Rol == 1) {
+            if (vm.listAsitentes.length == 0) {
+                vm.mensajePeligro.push("Debes agregar los asistentes ");
+            }
+            if (vm.ListAreas.length == 0) {
+                vm.mensajePeligro.push("Debes agregar las areas ");
+            }
             if (vm.SolicitudFormacion.RequiereViaje) {
                 if (vm.InformacionViaje == undefined) {
                     vm.mensajePeligro.push("Debes agregar los valores de viaje");
@@ -731,19 +773,13 @@ function SolicitudController() {
                         vm.mensajePeligro.push("Debes agregar el valor del hotel ");
                     }
                 }
-                if (vm.listAsitentes.length == 0) {
-                    vm.mensajePeligro.push("Debes agregar los asistentes ");
-                }
-                if (vm.ListAreas.length == 0) {
-                    vm.mensajePeligro.push("Debes agregar las areas ");
-                }
             }
         } else if (vm.Rol == 2) {
-            if(vm.SolicitudFormacion.SolicitudAprobada == false)
+            if (vm.SolicitudFormacion.SolicitudAprobada == false)
                 vm.mensajePeligro.push("Recuerda checkear el campo aprobación");
         } else if (vm.Rol == 3) {
             if (vm.SolicitudFormacion.FechaPago == undefined)
-                vm.mensajePeligro.push("Se debe selecionar fecha de pago"); 
+                vm.mensajePeligro.push("Se debe selecionar fecha de pago");
         }
         if (vm.mensajePeligro.length > 0) {
             vm.alertPeligro = true;
@@ -751,5 +787,18 @@ function SolicitudController() {
         } else {
             return true;
         }
+    }
+    function registroLog(accion) {
+        var data = {
+            __metadata: { 'type': 'SP.Data.LogListItem' },
+            Title: '',
+            autorId: vm.UsuarioActual.Id,
+            accion: accion,
+            fechaCreacion: new Date()
+
+        }
+        var url = "../_api/lists/getbytitle('Log')/items"
+        var ContextoSolicitud = getContext("../lists/Log");
+        var result = createItem(url, ContextoSolicitud, data);
     }
 }

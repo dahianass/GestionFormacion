@@ -9,7 +9,7 @@ function MisSolicitudesController($scope, $http) {
 
         var url = "../_api/web/lists/getbytitle('SolicitudesFormacion')/items?$Select=Id,ResponsableActualId,ResponsableActualStringId,EstadoSolicitud,Formacion,FechaPago,TipoFormacionId,SolicitanteId,SolicitanteStringId" +
                                         ",Fechasolicitud,FechaInicio,ClasifiacionId,Duracion,Evaluaci_x00f3_nId" +
-                                        ",Cupos,Entidad,Valorindividual,TotalCurso,RangoId,RequiereViaje" +
+                                        ",Cupos,Entidad,Valorindividual,TotalCurso,RangoId,RequiereViaje,Total" +
                                         ",Temario,SolicitudAprobada,AreasId,AsistentesId,ID,Solicitante/Title,TipoFormacion/Title&$Expand=TipoFormacion&$Expand=Solicitante&$filter=SolicitanteId eq " + vm.UsuarioActual.Id;
 
         $scope.reporteTodasOptions = {

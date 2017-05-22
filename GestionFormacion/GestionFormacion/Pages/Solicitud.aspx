@@ -35,6 +35,9 @@
         <div class="alert alert-danger" role="alert" ng-show="vm.mensajeError">
             {{vm.mesaje}}
         </div>
+        <div class="alert alert-warning" role="alert"  ng-show="vm.mensajeAlert">
+            {{vm.mesajeAlerts}}
+        </div>
         <div class="alert alert-danger" role="alert" ng-show="vm.alertPeligro">
             <table>
                 <tr ng-repeat="mensaje in vm.mensajePeligro">
@@ -48,7 +51,7 @@
                 <button class="btn btn-primary pull-right mr-2" type="button" ng-show="!vm.disableS" ng-click="vm.Enviar()">Enviar</button>
                 <button class="btn btn-primary pull-right mr-2" type="button" ng-click="vm.GuardarFormacion()" ng-show="!vm.disableS">Guardar</button>
                 <button class="btn btn-primary pull-right mr-2" type="button" ng-click="vm.ActualizarInforacion()" ng-show="vm.ShowActualizar">{{vm.mensajeActualizar}}</button>
-                <button class="btn btn-primary pull-right mr-2" type="button">Cerrar</button>
+                <button class="btn btn-primary pull-right mr-2" type="button" onclick="window.location='../';">Cerrar</button>
             </div>
         </div>
         <div class="panel panel-primary">

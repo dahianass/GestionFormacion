@@ -44,6 +44,15 @@
             </div>
         </div>
         <div class="Contenedor">
+            <div class="alert alert-success" role="alert" ng-show="vm.alertExito">
+                {{vm.mesaje}}
+            </div>
+            <div class="alert alert-danger" role="alert" ng-show="vm.mensajeError">
+                {{vm.mesaje}}
+            </div>
+            <div class="alert alert-warning" role="alert" ng-show="vm.mensajeAlert">
+                {{vm.mesajeAlerts}}
+            </div>
             <div class="TablaFormaciones panel panel-primary">
                 <div class="panel-heading">MIS FORMACIONES</div>
                 <div id="kg-Todas" kendo-grid="kgTodas" k-options="reporteTodasOptions"></div>

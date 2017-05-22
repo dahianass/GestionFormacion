@@ -4,11 +4,13 @@ function MisFormacionesController($scope, $http) {
     var vm = this;
     vm.Formaciones = [];
     //
-    vm.UsuarioActual = queryList('../_api/web/currentUser/');
-    var asistente = queryList("../_api/lists/getbytitle('Asistentes')/items?$filter=NombreId eq " + vm.UsuarioActual.Id);
-    vm.asistente = asistente.results[0]
+
 
     function CargarFormaciones() {
+        vm.UsuarioActual = queryList('../_api/web/currentUser/');
+        var asistente = queryList("../_api/lists/getbytitle('Asistentes')/items?$filter=NombreId eq " + vm.UsuarioActual.Id);
+        vm.asistente = asistente.results[0]
+
         vm.Formaciones = [];
         var Formaciones = queryList("../_api/web/lists/getbytitle('SolicitudesFormacion')/items?$Select=Id,ResponsableActualId,ResponsableActualStringId,EstadoSolicitud,Formacion,FechaPago,TipoFormacionId,SolicitanteId,SolicitanteStringId%20,Fechasolicitud,FechaInicio,ClasifiacionId,Duracion,Evaluaci_x00f3_nId%20,Cupos,Entidad,Valorindividual,TotalCurso,RangoId,RequiereViaje,Temario,SolicitudAprobada,AreasId,ID,Solicitante/Title,TipoFormacion/Title,TipoFormacion/ID,AsistentesId/Id&$Expand=TipoFormacion&$Expand=Solicitante&$filter=AsistentesId eq " + vm.asistente.ID);
         var Certificados = queryList("../../_api/web/lists/getbytitle('Certificados')/items?$filter=AsistenteId eq " + vm.UsuarioActual.Id);
@@ -144,9 +146,27 @@ function MisFormacionesController($scope, $http) {
 
     vm.GuardarCertificado = function () {
         function callback(quepaso) {
-            alert(quepaso);
+            vm.mesaje = "";
+            vm.mensajeAlert = false;
+            vm.alertExito = true;
+            vm.mesaje = "Gracias por su espera, el archivo se guardo con exito";
+            $scope.$apply();
+
+            CargarFormaciones();
         }
         var archivo = uploadFile2(vm, vm.Certificado, callback);
+        vm.mensajeAlert = true;
+        vm.mesajeAlerts = "Su cerificado se está guardando"
+        var repeticion = window.setInterval("vm.detener()", 50000);
+    }
+    vm.detener = function () {
+        window.clearInterval(repeticion);
+        vm.mesaje = "";
+        vm.mensajeAlert = false;
+        vm.alertExito = true;
+        vm.mesaje = "Error en cargar la infomacion";
+        $scope.$apply();
+        CargarFormaciones();
     }
 
 }
