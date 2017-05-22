@@ -44,6 +44,12 @@
             </div>
         </div>
         <div class="Contenedor ContenedorL">
+            <div class="alert alert-success" role="alert" ng-show="vm.alertExito">
+                {{vm.mesaje}}
+            </div>
+            <div class="alert alert-danger" role="alert" ng-show="vm.mensajeError">
+                {{vm.mesaje}}
+            </div>
             <div class="TablaPlanEstrategico panel panel-primary">
                 <div class="panel-heading">PLAN ESTRATÉGICO</div>
                 <div id="kg-Todas" kendo-grid="kgTodas" k-options="reporteTodasOptions"></div>

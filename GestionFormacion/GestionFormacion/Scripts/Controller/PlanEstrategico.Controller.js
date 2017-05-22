@@ -78,11 +78,42 @@ function PlanEstrategicoController($scope, $http) {
 
 
     vm.aprobarDesaprobar = function (id) {
-        debugger;
+        var data = {
+            __metadata: { 'type': 'SP.Data.SolicitudesFormacionListItem' },
+            ResponsableActualId: vm.UsuarioActual.ID,
+            EstadoSolicitud: "Aprobada",
+            SolicitudAprobada: True,
+        }
+        var url = "../_api/lists/getbytitle('SolicitudesFormacion')/Items(" + id + ")"
+        var ContextoSolicitud = getContext("../lists/SolicitudesFormacion");
+        var result = updateItem(url, ContextoSolicitud, data);
+        if (result) {
+            vm.alertPeligro = false;
+            vm.alertExito = true;
+            vm.mesaje = "la solicitud a sido aprobada";
+        } else {
+            vm.mensajeError = true;
+            vm.mesaje = "Intentelo nuevamente";
+        }
     }
 
     vm.cancelarFormacion = function (id) {
-        debugger;
+        var data = {
+            __metadata: { 'type': 'SP.Data.SolicitudesFormacionListItem' },
+            ResponsableActualId: vm.UsuarioActual.ID,
+            EstadoSolicitud: "Cancelada",
+        }
+        var url = "../_api/lists/getbytitle('SolicitudesFormacion')/Items(" + id + ")"
+        var ContextoSolicitud = getContext("../lists/SolicitudesFormacion");
+        var result = updateItem(url, ContextoSolicitud, data);
+        if (result) {
+            vm.alertPeligro = false;
+            vm.alertExito = true;
+            vm.mesaje = "Felicidades su registro se guard\u00F3 con \u00e9xito ";
+        } else {
+            vm.mensajeError = true;
+            vm.mesaje = "Su registro no se guard\u00F3, intentelo nuevamente";
+        }
     }
     ObtenerListaFormaciones();
 }

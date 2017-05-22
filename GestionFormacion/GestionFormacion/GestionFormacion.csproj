@@ -118,6 +118,9 @@
     <Content Include="Features\Feature24\Feature24.Template.xml">
       <DependentUpon>Feature24.feature</DependentUpon>
     </Content>
+    <Content Include="Features\Feature25\Feature25.Template.xml">
+      <DependentUpon>Feature25.feature</DependentUpon>
+    </Content>
     <Content Include="Features\Feature2\Feature2.Template.xml">
       <DependentUpon>Feature2.feature</DependentUpon>
     </Content>
@@ -155,6 +158,9 @@
     <Content Include="Images\Repair.aspx" />
     <Content Include="Images\Schema.xml" />
     <Content Include="Images\Upload.aspx" />
+    <Content Include="Log\Elements.xml" />
+    <Content Include="Log\LogInstance\Elements.xml" />
+    <Content Include="Log\Schema.xml" />
     <Content Include="Pages\Inicio.aspx" />
     <Content Include="Scripts\App\App.Inicio.js" />
     <Content Include="Scripts\App\App.MisFormaciones.js" />
@@ -275,6 +281,9 @@
     <None Include="Features\Feature24\Feature24.feature">
       <FeatureId>{b3508c59-6131-455f-ab13-8769dff442b2}</FeatureId>
     </None>
+    <None Include="Features\Feature25\Feature25.feature">
+      <FeatureId>{eae91b9a-2e3c-4acc-883d-a2ebfd083c6b}</FeatureId>
+    </None>
     <None Include="Features\Feature2\Feature2.feature">
       <FeatureId>{39eaa548-ac24-437e-a59a-a0586a903bac}</FeatureId>
     </None>
@@ -310,6 +319,12 @@
     </None>
     <None Include="Images\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{c3faa64f-fe38-404e-a13d-78d1b0773231}</SharePointProjectItemId>
+    </None>
+    <None Include="Log\LogInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{51f9fec4-9833-4cf7-b2a9-bcc456110a25}</SharePointProjectItemId>
+    </None>
+    <None Include="Log\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{cc3e22a4-2470-4f20-9c1e-306d829a666e}</SharePointProjectItemId>
     </None>
     <None Include="SolicitudesFormacion\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{5491ad24-6ac1-47d1-8e9b-57451e94e81e}</SharePointProjectItemId>
