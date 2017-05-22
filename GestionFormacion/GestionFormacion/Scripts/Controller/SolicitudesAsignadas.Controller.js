@@ -2,10 +2,20 @@
 
 function SolicitudesAsignadasController($scope, $http) {
     var vm = this;
+    vm.UsuarioActual = queryList('../_api/web/currentUser/');
+    vm.GestorPresupuesto = queryList("../_api/web/lists/getbytitle('Gestores')/items?$select=Id,Rol,UsuarioId&$filter=Rol eq 'Gestor de presupuesto' ");
+
+    $scope.mostrarPlan = true;
+
+    if (vm.GestorPresupuesto.UsuarioId == vm.UsuarioActual.Id) {
+        $scope.mostrarPlan = true;
+    } else {
+        $scope.mostrarPlan = false;
+    }
     function ObtenerListaFormaciones() {
 
 
-        vm.UsuarioActual = queryList('../_api/web/currentUser/');
+        
 
         var url = "../_api/web/lists/getbytitle('SolicitudesFormacion')/items?$Select=Id,ResponsableActualId,ResponsableActualStringId,EstadoSolicitud,Formacion,FechaPago,TipoFormacionId,SolicitanteId,SolicitanteStringId" +
                                         ",Fechasolicitud,FechaInicio,ClasifiacionId,Duracion,Evaluaci_x00f3_nId" +

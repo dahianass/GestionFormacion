@@ -366,7 +366,7 @@ function updateListItem2(itemMetadata, controlador, listitem, fileInput, serverR
     // For simplicity, also use the name as the title. 
     // The example gets the list item type from the item's metadata, but you can also get it from the
     // ListItemEntityTypeFullName property of the list.
-    var body = { __metadata: { type: itemMetadata.type }, TipoFormacionId: controlador.Certificado.FormacionId, AsistenteId: controlador.Certificado.AsistenteId, FormacionId: controlador.Certificado.TipoFormacionId, Cargo: controlador.Certificado.Cargo, FileLeafRef: "" + listitem.d.Id + "-" + fileName, Title: "" + listitem.d.Id + "-" + fileName };
+    var body = { __metadata: { type: itemMetadata.type }, TipoFormacionId: controlador.Certificado.TipoFormacionId, AsistenteId: controlador.Certificado.AsistenteId, FormacionId: controlador.Certificado.FormacionId, Cargo: controlador.Certificado.Cargo, FileLeafRef: "" + listitem.d.Id + "-" + fileName, Title: "" + listitem.d.Id + "-" + fileName };
     body = JSON.stringify(body);
 
 

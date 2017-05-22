@@ -171,6 +171,7 @@
     <Content Include="Scripts\Controller\apiRest.js" />
     <Content Include="Scripts\Controller\PlanEstrategico.Controller.js" />
     <Content Include="Scripts\Controller\SolicitudesAsignadas.Controller.js" />
+    <Content Include="Scripts\Controller\TodasSolicitudes.Controller.js" />
     <Content Include="Scripts\DatosDefault.js" />
     <Content Include="Scripts\Controller\Inicio.Controller.js" />
     <Content Include="Scripts\Controller\MisFormaciones.Controller.js" />

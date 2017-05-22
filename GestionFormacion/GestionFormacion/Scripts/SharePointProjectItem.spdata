@@ -23,5 +23,6 @@
     <ProjectItemFile Source="App\App.PlanEstrategico.js" Target="Scripts\App\" Type="ElementFile" />
     <ProjectItemFile Source="App\App.SolicitudesAsignadas.js" Target="Scripts\App\" Type="ElementFile" />
     <ProjectItemFile Source="Controller\SolicitudesAsignadas.Controller.js" Target="Scripts\Controller\" Type="ElementFile" />
+    <ProjectItemFile Source="Controller\TodasSolicitudes.Controller.js" Target="Scripts\Controller\" Type="ElementFile" />
   </Files>
 </ProjectItem>

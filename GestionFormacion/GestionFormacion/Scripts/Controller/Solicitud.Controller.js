@@ -363,21 +363,41 @@ function SolicitudController($scope) {
     }
 
     function GuardarAnexos() {
+        vm.contador = 0;
         angular.forEach(vm.ListAnexos, function (value, key) {
             if (value.Author == undefined) {
                 function callback(quepaso) {
                     vm.mesaje = "";
                     vm.mensajeAlert = false;
                     vm.alertExito = true;
+                    vm.mensajeError = false;
                     vm.mesaje = "Gracias por su espera, el archivo se guardo con exito";
+                    window.clearInterval(vm.repeticion);
                     $scope.$apply();
                 }
                 var archivo = uploadFile(vm, value, callback);
                 vm.mensajeAlert = true;
                 vm.mesajeAlerts = "Tu solicitud ha sido guardada, pero necesitamos un poco más de tiempo para guardar el Anexo... Gracias"
+                vm.repeticion = window.setInterval(vm.detener(), 30000);
             }
         });
     }
+    vm.detener = function () {
+        if (vm.contador > 0) {
+            debugger;
+            window.clearInterval(vm.repeticion);
+            vm.mesaje = "";
+            vm.mensajeAlert = false;
+            vm.alertExito = false;
+            vm.mensajeError = true;
+            vm.mesaje = "Error en cargar del archivo, intentalo nuevamente por favor.";
+            $scope.$apply();
+            CargarFormaciones();
+            vm.contador = +1;
+        }
+    }
+
+
 
     function GuardarInfoViaje(IdSolicitud) {
         var data = {

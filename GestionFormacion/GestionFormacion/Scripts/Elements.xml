@@ -22,5 +22,6 @@
     <File Path="Scripts\App\App.PlanEstrategico.js" Url="Scripts/App/App.PlanEstrategico.js" ReplaceContent="TRUE" />
     <File Path="Scripts\App\App.SolicitudesAsignadas.js" Url="Scripts/App/App.SolicitudesAsignadas.js" ReplaceContent="TRUE" />
     <File Path="Scripts\Controller\SolicitudesAsignadas.Controller.js" Url="Scripts/Controller/SolicitudesAsignadas.Controller.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Controller\TodasSolicitudes.Controller.js" Url="Scripts/Controller/TodasSolicitudes.Controller.js" ReplaceContent="TRUE" />
   </Module>
 </Elements>
