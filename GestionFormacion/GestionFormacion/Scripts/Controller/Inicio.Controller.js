@@ -6,6 +6,18 @@ function InicioController($scope) {
     vm.noWrapSlides = false;
     vm.active = 0;
     vm.UsuarioActual = queryList('../_api/web/currentUser/');
+    vm.mostrarTodos = false;
+    var TodosGestores = queryList("../_api/web/lists/getbytitle('Gestores')/items?$select=Id,Rol,UsuarioId");
+    vm.TodosGestores = TodosGestores.results;
+
+    function permisosMenu() {
+        var Ad = _.filter(vm.TodosGestores, function (G) { return G.Rol == 'Administrador' });
+        var IDGh = _.filter(vm.TodosGestores, function (G) { return G.Rol == 'Gestion Humana' });
+        if ((vm.UsuarioActual.Id == Ad[0].UsuarioId) || (vm.UsuarioActual.Id == IDGh[0].UsuarioId)) {
+            vm.mostrarTodos = true;
+        }
+    }
+    permisosMenu();
     var gestor = queryList("../_api/web/lists/getbytitle('Gestores')/items?$select=Id,Rol,UsuarioId&$filter=Rol eq 'Gestor de presupuesto' ");
     vm.GestorPresupuesto = gestor.results[0];
     $scope.mostrarPlan = true;

@@ -39,7 +39,7 @@
                     <button type="button" class="btn btn-default left" onclick="window.location='Solicitud.aspx';">Crear solicitudes de formación</button>
                     <button  ng-show="mostrarPlan" type="button" class="btn btn-default left" onclick="window.location='PlanEstrategico.aspx';">Plan estratégico</button>
                     <button type="button" class="btn btn-default left" onclick="window.location='SolicitudesAsignadas.aspx';">Solicitudes asignadas a mí</button>
-                    <button type="button" class="btn btn-default left" onclick="window.location='TodasSolicitudes.aspx';">Todas las solicitudes</button>
+                    <button ng-show="vm.mostrarTodos"  type="button" class="btn btn-default left" onclick="window.location='TodasSolicitudes.aspx';">Todas las solicitudes</button>
                 </div>
             </div>
         </div>
@@ -55,7 +55,7 @@
             </div>
             <div class="TablaFormaciones panel panel-primary">
                 <div class="panel-heading">MIS FORMACIONES</div>
-                <div id="kg-Todas" kendo-grid="kgTodas" k-options="reporteTodasOptions"></div>
+                <div id="kg-Todas" kendo-grid="kgTodas" k-options="reporteTodasOptions" k-rebind="reporteTodasOptions"></div>
                 <span ng-show="vm.Nodatos">No se encontraron registros</span>
             </div>
         </div>

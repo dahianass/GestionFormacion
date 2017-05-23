@@ -3,7 +3,20 @@ app.controller('getVistasConsulta', ['$scope', '$http', function ($scope, $http)
     //carga de elementos a grilla para realizar consulta dependiendo de la funcion se realizara filtrado
     var vm = this;
     vm.UsuarioActual = queryList('../_api/web/currentUser/');
-    vm.GestorPresupuesto = queryList("../_api/web/lists/getbytitle('Gestores')/items?$select=Id,Rol,UsuarioId&$filter=Rol eq 'Gestor de presupuesto' ");
+    var gestores = queryList("../_api/web/lists/getbytitle('Gestores')/items?$select=Id,Rol,UsuarioId&$filter=Rol eq 'Gestor de presupuesto' ");
+    vm.GestorPresupuesto = gestores.results[0];
+    vm.mostrarTodos = false;
+    var TodosGestores = queryList("../_api/web/lists/getbytitle('Gestores')/items?$select=Id,Rol,UsuarioId");
+    vm.TodosGestores = TodosGestores.results;
+
+    function permisosMenu() {
+        var Ad = _.filter(vm.TodosGestores, function (G) { return G.Rol == 'Administrador' });
+        var IDGh = _.filter(vm.TodosGestores, function (G) { return G.Rol == 'Gestion Humana' });
+        if ((vm.UsuarioActual.Id == Ad[0].UsuarioId) || (vm.UsuarioActual.Id == IDGh[0].UsuarioId)) {
+            vm.mostrarTodos = true;
+        }
+    }
+    permisosMenu();
 
     $scope.mostrarPlan = true;
 

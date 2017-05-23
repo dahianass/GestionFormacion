@@ -3,8 +3,8 @@
 function SolicitudesAsignadasController($scope, $http) {
     var vm = this;
     vm.UsuarioActual = queryList('../_api/web/currentUser/');
-    vm.GestorPresupuesto = queryList("../_api/web/lists/getbytitle('Gestores')/items?$select=Id,Rol,UsuarioId&$filter=Rol eq 'Gestor de presupuesto' ");
-
+    var gestores = queryList("../_api/web/lists/getbytitle('Gestores')/items?$select=Id,Rol,UsuarioId&$filter=Rol eq 'Gestor de presupuesto' ");
+    vm.GestorPresupuesto = gestores.results[0];
     $scope.mostrarPlan = true;
 
     if (vm.GestorPresupuesto.UsuarioId == vm.UsuarioActual.Id) {
@@ -12,25 +12,28 @@ function SolicitudesAsignadasController($scope, $http) {
     } else {
         $scope.mostrarPlan = false;
     }
+    vm.mostrarTodos = false;
+    var TodosGestores = queryList("../_api/web/lists/getbytitle('Gestores')/items?$select=Id,Rol,UsuarioId");
+    vm.TodosGestores = TodosGestores.results;
+
+    function permisosMenu() {
+        var Ad = _.filter(vm.TodosGestores, function (G) { return G.Rol == 'Administrador' });
+        var IDGh = _.filter(vm.TodosGestores, function (G) { return G.Rol == 'Gestion Humana' });
+        if ((vm.UsuarioActual.Id == Ad[0].UsuarioId) || (vm.UsuarioActual.Id == IDGh[0].UsuarioId)) {
+            vm.mostrarTodos = true;
+        }
+    }
+    permisosMenu();
     function ObtenerListaFormaciones() {
-
-
-        
-
         var url = "../_api/web/lists/getbytitle('SolicitudesFormacion')/items?$Select=Id,ResponsableActualId,ResponsableActualStringId,EstadoSolicitud,Formacion,FechaPago,TipoFormacionId,SolicitanteId,SolicitanteStringId" +
                                         ",Fechasolicitud,FechaInicio,ClasifiacionId,Duracion,Evaluaci_x00f3_nId" +
                                         ",Cupos,Entidad,Valorindividual,TotalCurso,RangoId,RequiereViaje,Total" +
                                         ",Temario,SolicitudAprobada,AreasId,AsistentesId,ID,Solicitante/Title,TipoFormacion/Title&$Expand=TipoFormacion&$Expand=Solicitante&$filter=ResponsableActualId eq " + vm.UsuarioActual.Id;
 
         $scope.reporteTodasOptions = {
-            //autoBind: false,
-
             dataSource: new kendo.data.DataSource(
-
               {
                   pageSize: 10,
-
-                  // type: "odata",
                   transport: {
                       read: function (e) {
                           $http({
@@ -100,7 +103,6 @@ function SolicitudesAsignadasController($scope, $http) {
         }
     };
     ObtenerListaFormaciones();
-
     vm.Redirecionar = function (id) {
         window.location.href = "Solicitud.aspx?ID=" + id;
     }

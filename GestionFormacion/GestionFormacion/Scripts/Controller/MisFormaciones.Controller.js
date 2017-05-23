@@ -4,8 +4,21 @@ function MisFormacionesController($scope, $http) {
     var vm = this;
     vm.Formaciones = [];
     vm.UsuarioActual = queryList('../_api/web/currentUser/');
-    vm.GestorPresupuesto = queryList("../_api/web/lists/getbytitle('Gestores')/items?$select=Id,Rol,UsuarioId&$filter=Rol eq 'Gestor de presupuesto' ");
+    var gestores = queryList("../_api/web/lists/getbytitle('Gestores')/items?$select=Id,Rol,UsuarioId&$filter=Rol eq 'Gestor de presupuesto' ");
+    vm.GestorPresupuesto = gestores.results[0];
     vm.Nodatos = false;
+    vm.mostrarTodos = false;
+    var TodosGestores = queryList("../_api/web/lists/getbytitle('Gestores')/items?$select=Id,Rol,UsuarioId");
+    vm.TodosGestores = TodosGestores.results;
+
+    function permisosMenu() {
+        var Ad = _.filter(vm.TodosGestores, function (G) { return G.Rol == 'Administrador' });
+        var IDGh = _.filter(vm.TodosGestores, function (G) { return G.Rol == 'Gestion Humana' });
+        if ((vm.UsuarioActual.Id == Ad[0].UsuarioId) || (vm.UsuarioActual.Id == IDGh[0].UsuarioId)) {
+            vm.mostrarTodos = true;
+        }
+    }
+    permisosMenu();
     $scope.mostrarPlan = true;
 
     if (vm.GestorPresupuesto.UsuarioId == vm.UsuarioActual.Id) {
@@ -16,7 +29,6 @@ function MisFormacionesController($scope, $http) {
 
 
     function CargarFormaciones() {
-        
         var asistente = queryList("../_api/lists/getbytitle('Asistentes')/items?$filter=NombreId eq " + vm.UsuarioActual.Id);
         vm.asistente = asistente.results[0]
         if (vm.asistente != undefined) {
@@ -61,7 +73,6 @@ function MisFormacionesController($scope, $http) {
     function CargarListaFormaciones() {
         $scope.reporteTodasOptions = {
             dataSource: new kendo.data.DataSource(
-
               {
                   pageSize: 10,
                   data: vm.Formaciones,
@@ -114,6 +125,7 @@ function MisFormacionesController($scope, $http) {
             ],
             groupable: false
         }
+        $scope.reporteTodasOptions.dataSource.read();
     }
     CargarFormaciones()
     vm.ModalCertificado = function (idFormu) {
@@ -139,9 +151,15 @@ function MisFormacionesController($scope, $http) {
         var url = "../_api/lists/getbytitle('Encuestas')/items"
         var ContextoSolicitud = getContext("../lists/Encuestas");
         var result = createItem(url, ContextoSolicitud, data);
-        $('#ModalEncuesta').modal('hide');
+        if (result) {
+            vm.mesaje = "";
+            vm.mensajeAlert = false;
+            vm.alertExito = true;
+            vm.mesaje = "Su encuesta se guardo con \u00e9xito";
+            $('#ModalEncuesta').modal('hide');
+        }
         CargarFormaciones();
-        $scope.$apply();
+        
     }
 
     vm.anexarCertificado = function(){
@@ -164,6 +182,7 @@ function MisFormacionesController($scope, $http) {
             vm.alertExito = true;
             vm.mesaje = "Gracias por su espera, el archivo se guardo con exito";
             CargarFormaciones();
+            vm.Certificado.Title = "";
             $scope.$apply();
         }
         var archivo = uploadFile2(vm, vm.Certificado, callback);
@@ -176,12 +195,14 @@ function MisFormacionesController($scope, $http) {
     vm.detener = function () {
         if (vm.repeticion != undefined)
         {
-            window.clearInterval(repeticion);
+            window.clearInterval(vm.repeticion);
             vm.mesaje = "";
+            vm.mensajeError = true;
             vm.mensajeAlert = false;
-            vm.alertExito = true;
+            vm.alertExito = false;
             vm.mesaje = "Error en cargar el archivo, intentalo nuevamente por favor";
             CargarFormaciones();
+            vm.Certificado.Title = "";
         }
     }
 

@@ -26,6 +26,7 @@ function SolicitudController($scope) {
     vm.Rol = 0;
     vm.ShowActualizar = false;
     vm.solicitudEnLista = false;
+    vm.DataEnvioCorreo = [];
     function selectPerfil() {
         var id = getQueryStringParams("ID");
         if (id != undefined) {
@@ -154,9 +155,8 @@ function SolicitudController($scope) {
             TipoAnexo: vm.TipoAnexoSelected,
             autor: vm.UsuarioActual.Title
         };
-
-
         vm.ListAnexos.push(vm.notas);
+        $("#ModalTIpoAnexos").modal();
     }
 
     function PermisosRol() {
@@ -330,6 +330,7 @@ function SolicitudController($scope) {
             };
             vm.ListObservaciones.push(vm.notas);
             vm.Observacion = "";
+            $("#ModalEncuesta").modal();
         }
 
     }
@@ -422,8 +423,8 @@ function SolicitudController($scope) {
     }
 
     function ObtenerResponsable(rol) {
-        var responsableProxi = queryList("../_api/lists/getbytitle('Gestores')/items?$filter=Rol eq '" + rol + "'");
-        vm.ResponsableActualId = responsableProxi.results[0].UsuarioId;
+        vm.responsableProxi = queryList("../_api/lists/getbytitle('Gestores')/items?$Select=UsuarioId,Usuario/Title,Usuario/EMail&$Expand=Usuario&$filter=Rol eq'" + rol + "'");
+        vm.ResponsableActualId = vm.responsableProxi.results[0].UsuarioId;
     }
 
     function getDataSolicitud(estado) {
@@ -480,6 +481,7 @@ function SolicitudController($scope) {
                 vm.alertExito = true;
                 vm.mesaje = "Felicidades su registro se guard\u00F3 con \u00e9xito ";
                 registroLog("Se creo la solicitud con id" + vm.id);
+                envioCorreo(result.d);
             } else {
                 vm.mensajeError = true;
                 vm.mesaje = "Su registro no se guard\u00F3, intentelo nuevamente";
@@ -509,12 +511,13 @@ function SolicitudController($scope) {
 
     vm.ActualizarInforacion = function () {
         var data
+        var envio = true;
         if (validacionCampoRol()) {
             if (vm.id != 0) {
                 if (vm.solicitudEnLista) {
                     if (vm.RolUserCurrent.results.length > 0) {
                         if (vm.SolicitudFormacion.SolicitanteId == vm.UsuarioActual.Id) {
-                            if (vm.SolicitudFormacion.estado == "Borrador") {
+                            if (vm.SolicitudFormacion.EstadoSolicitud == "Borrador") {
                                 ObtenerResponsable("Gestion Humana");
                                 data = getDataSolicitud("En presupuesto GH");
                             } else if (vm.RolUserCurrent.results[0].Rol == "Gestion Humana") {
@@ -531,7 +534,8 @@ function SolicitudController($scope) {
                                 data = dataActualizacionGF();
                             }
                             else if (vm.RolUserCurrent.results[0].Rol == "Administrador") {
-
+                                data = dataActualizaAdmin()
+                                envio = false;
                             } else {
                                 ObtenerResponsable("Gestion Humana");
                                 data = getDataSolicitud("En presupuesto GH");
@@ -552,7 +556,8 @@ function SolicitudController($scope) {
                                 data = dataActualizacionGF();
                             }
                             else if (vm.RolUserCurrent.results[0].Rol == "Administrador") {
-
+                                data = dataActualizaAdmin()
+                                envio = false;
                             } else {
                                 ObtenerResponsable("Gestion Humana");
                                 data = getDataSolicitud("En presupuesto GH");
@@ -579,6 +584,11 @@ function SolicitudController($scope) {
                 vm.alertExito = true;
                 vm.mesaje = "Felicidades su registro se actualiz\u00F3 con \u00e9xito ";
                 registroLog("Se actualizo Solicitud con id" + vm.id)
+                if (envio) {
+                    envioCorreo(data);
+                } else {
+                    registroLog("Administrador actualizó solicitud con el" + vm.id);
+                }
             } else {
                 vm.mensajeError = true;
                 vm.mesaje = "Su registro no se guard\u00F3, intentelo nuevamente";
@@ -633,6 +643,26 @@ function SolicitudController($scope) {
             AreasId: Area,
             AsistentesId: Asistentes,
             Total: vm.sumaTotal(),
+        }
+        return data;
+    }
+    function dataActualizaAdmin() {
+        var objAsistentes = _.pluck(vm.listAsitentes, 'ID')
+        var Asistentes = {
+            __metadata: { 'type': "Collection(Edm.Int32)" },
+            results: objAsistentes
+        }
+        var objAreas = _.pluck(vm.ListAreas, 'ID');
+        var Area = {
+            __metadata: { 'type': "Collection(Edm.Int32)" },
+            results: objAreas
+        }
+
+        var data = {
+            __metadata: { 'type': 'SP.Data.SolicitudesFormacionListItem' },
+            ResponsableActualId: vm.ResponsableActualId,
+            AreasId: Area,
+            AsistentesId: Asistentes,
         }
         return data;
     }
@@ -808,6 +838,7 @@ function SolicitudController($scope) {
             return true;
         }
     }
+
     function registroLog(accion) {
         var data = {
             __metadata: { 'type': 'SP.Data.LogListItem' },
@@ -815,10 +846,20 @@ function SolicitudController($scope) {
             autorId: vm.UsuarioActual.Id,
             accion: accion,
             fechaCreacion: new Date()
-
         }
         var url = "../_api/lists/getbytitle('Log')/items"
         var ContextoSolicitud = getContext("../lists/Log");
         var result = createItem(url, ContextoSolicitud, data);
+    }
+
+    function envioCorreo(data) {
+        if (data.EstadoSolicitud != "Borrador") {
+            if (data.ID == undefined)
+            {
+                data.ID = vm.SolicitudFormacion.ID;
+            }
+            var url = "https://flujovacaciones.azurewebsites.net/api/SolicitudGestionFormacion?NumeroSolicitud=" + data.ID + "&Estado=" + data.EstadoSolicitud + " &Solicitante=" + vm.responsableProxi.results[0].Usuario.Title + "&CorreoReceptor=" + vm.responsableProxi.results[0].Usuario.EMail + "&url=conocimiento.sharepoint.com/teams/dev/gestionformacion";
+            var result = queryList(url);
+        }
     }
 }

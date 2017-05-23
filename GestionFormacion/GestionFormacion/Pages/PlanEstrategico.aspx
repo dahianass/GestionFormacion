@@ -20,7 +20,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="https://kendo.cdn.telerik.com/2017.1.118/js/kendo.all.min.js"></script>
-
+    <script src="../Scripts/Underscore.js"></script>
     <script src="../Scripts/App/App.PlanEstrategico.js"></script>
     <script src="../Scripts/Controller/PlanEstrategico.Controller.js"></script>
     <script src="../Scripts/Controller/apiRest.js"></script>
@@ -39,7 +39,7 @@
                     <button type="button" class="btn btn-default left" onclick="window.location='Solicitud.aspx';">Crear solicitudes de formación</button>
                     <button  ng-show="mostrarPlan" type="button" class="btn btn-default left" onclick="window.location='PlanEstrategico.aspx';">Plan estratégico</button>
                     <button type="button" class="btn btn-default left" onclick="window.location='SolicitudesAsignadas.aspx';">Solicitudes asignadas a mí</button>
-                    <button type="button" class="btn btn-default left" onclick="window.location='TodasSolicitudes.aspx';">Todas las solicitudes</button>
+                    <button ng-show="vm.mostrarTodos"  type="button" class="btn btn-default left" onclick="window.location='TodasSolicitudes.aspx';">Todas las solicitudes</button>
                 </div>
             </div>
         </div>
@@ -52,7 +52,7 @@
             </div>
             <div class="TablaPlanEstrategico panel panel-primary">
                 <div class="panel-heading">PLAN ESTRATÉGICO</div>
-                <div id="kg-Todas" kendo-grid="kgTodas" k-options="reporteTodasOptions"></div>
+                <div id="kg-Todas" kendo-grid="kgTodas" k-options="reporteTodasOptions" k-rebind="reporteTodasOptions"></div>
             </div>
         </div>
     </div>
