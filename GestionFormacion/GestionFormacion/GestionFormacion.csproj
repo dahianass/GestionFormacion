@@ -388,7 +388,7 @@
       <SharePointProjectItemId>{8cc0c0b2-db39-4c01-ba47-4aef8a3ffd0a}</SharePointProjectItemId>
     </None>
     <None Include="WF_NotificacionFormacion\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{07b4127b-a401-41b6-8b18-cfd43e2ff8d8}</SharePointProjectItemId>
+      <SharePointProjectItemId>{445b320d-b553-4431-b4df-44cd65717342}</SharePointProjectItemId>
     </None>
     <None Include="WorkflowHistoryList\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{64f299e3-e32b-44d8-9a3a-dcc63b0e3d74}</SharePointProjectItemId>
@@ -446,12 +446,6 @@
     </AppManifestFile>
   </ItemGroup>
   <ItemGroup>
-    <XamlAppDef Include="WF_NotificacionFormacion\Workflow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </XamlAppDef>
-  </ItemGroup>
-  <ItemGroup>
     <Reference Include="Microsoft.Activities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.SharePoint.DesignTime.Activities.16.0, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="PresentationFramework" />
@@ -463,6 +457,12 @@
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <XamlAppDef Include="WF_NotificacionFormacion\Workflow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </XamlAppDef>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

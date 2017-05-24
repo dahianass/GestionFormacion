@@ -15,11 +15,11 @@
     <ExtensionDataItem Key="WorkflowAssociationManualStart.EventSourceGUID" Value="Lists/SolicitudesFormacion" />
     <ExtensionDataItem Key="WorkflowAssociationManualStart.EventType" Value="WorkflowStart" />
     <ExtensionDataItem Key="WorkflowAssociationManualStart.HistoryListId" Value="Lists/WorkflowHistoryList" />
-    <ExtensionDataItem Key="WorkflowAssociationManualStart.Id" Value="0a213554-c3f0-4fa2-9a1e-ad0a34e5f535" />
+    <ExtensionDataItem Key="WorkflowAssociationManualStart.Id" Value="ce740b31-8e1d-4511-a930-0b26dbe73834" />
     <ExtensionDataItem Key="WorkflowAssociationManualStart.TaskListId" Value="Lists/WorkflowTaskList" />
     <ExtensionDataItem Key="WorkflowDefinition.Description" Value="Mi flujo de trabajo 'WF_NotificacionFormacion'" />
     <ExtensionDataItem Key="WorkflowDefinition.DisplayName" Value="WF_NotificacionFormacion" />
-    <ExtensionDataItem Key="WorkflowDefinition.Id" Value="4b9c999f-883f-4d64-b27b-bf4ae8b8d2c8" />
+    <ExtensionDataItem Key="WorkflowDefinition.Id" Value="830d0aab-e042-4b55-968e-e16af23ab788" />
     <ExtensionDataItem Key="WorkflowDefinition.RestrictAssociationToId" Value="Lists/SolicitudesFormacion" />
     <ExtensionDataItem Key="WorkflowDefinition.RestrictAssociationToType" Value="List" />
   </ExtensionData>
