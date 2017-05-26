@@ -8,6 +8,7 @@ function SolicitudController($scope) {
     vm.disableGH = true;
     vm.disableGHV = true;
     vm.disableS = false;
+    vm.disableSF = false;
     vm.disableCancelar = true;
     vm.disableGF = true;
     vm.TiposFormaciones = {};
@@ -27,6 +28,7 @@ function SolicitudController($scope) {
     vm.ShowActualizar = false;
     vm.solicitudEnLista = false;
     vm.DataEnvioCorreo = [];
+    vm.botones = false;
     function selectPerfil() {
         var id = getQueryStringParams("ID");
         if (id != undefined) {
@@ -169,6 +171,7 @@ function SolicitudController($scope) {
                         vm.disableGH = true;
                         vm.disableGHV = true;
                         vm.disableS = false;
+                        vm.disableSF = false;
                         vm.disableCancelar = true;
                         vm.ShowActualizar = false;
                     } else {
@@ -185,6 +188,7 @@ function SolicitudController($scope) {
                         vm.disableGF = true;
                         vm.disableGH = true;
                         vm.disableS = false;
+                        vm.disableSF = false;
                         vm.disableGHV = true;
                         vm.EstadoSolicitudChange = 5;
                         vm.disableCancelar = true;
@@ -193,6 +197,7 @@ function SolicitudController($scope) {
                         vm.disableGF = true;
                         vm.disableGH = true;
                         vm.disableS = true;
+                        vm.disableSF = true;
                         vm.disableGHV = true;
                         vm.disableCancelar = false;
                     }
@@ -206,6 +211,7 @@ function SolicitudController($scope) {
                             vm.disableGH = false;
                             vm.disableGHV = false;
                             vm.disableS = true;
+                            vm.disableSF = false;
                             vm.disableCancelar = false;
                             vm.ShowActualizar = true;
                             vm.SolicitudFormacion.ResponsableActual = vm.UsuarioActual.Title;
@@ -217,6 +223,7 @@ function SolicitudController($scope) {
                             vm.disableGH = false;
                             vm.disableGHV = true;
                             vm.disableS = true;
+                            vm.disableSF = false;
                             vm.disableCancelar = false;
                             vm.ShowActualizar = true;
                             vm.SolicitudFormacion.ResponsableActual = vm.UsuarioActual.Title;
@@ -234,6 +241,7 @@ function SolicitudController($scope) {
                             vm.disableGH = true;
                             vm.disableGHV = true;
                             vm.disableS = true;
+                            vm.disableSF = true;
                             vm.disableCancelar = true;
                             vm.ShowActualizar = true;
                             vm.SolicitudFormacion.ResponsableActual = vm.UsuarioActual.Title;
@@ -252,6 +260,7 @@ function SolicitudController($scope) {
                             vm.disableGH = true;
                             vm.disableGHV = true;
                             vm.disableS = true;
+                            vm.disableSF = true;
                             vm.disableCancelar = false;
                             vm.ShowActualizar = true;
                             vm.SolicitudFormacion.ResponsableActual = vm.UsuarioActual.Title;
@@ -269,6 +278,7 @@ function SolicitudController($scope) {
                             vm.disableGH = false;
                             vm.disableGHV = true;
                             vm.disableS = true;
+                            vm.disableSF = false;
                             vm.ShowActualizar = true;
                             vm.SolicitudFormacion.ResponsableActual = vm.UsuarioActual.Title;
                             vm.EstadoSolicitudChange = 4;
@@ -289,6 +299,7 @@ function SolicitudController($scope) {
         vm.disableGH = true;
         vm.disableGHV = true;
         vm.disableS = true;
+        vm.disableSF = true;
         vm.disableCancelar = false;
         vm.ShowActualizar = false;
     }
@@ -306,20 +317,24 @@ function SolicitudController($scope) {
 
     vm.AgregarArea = function () {
         var opcion = vm.AreaSelect;
-        vm.areaSelecionada = _.filter(vm.ListaAreas, function (area) { return area.Title == opcion });
-        vm.ListAreas.push(vm.areaSelecionada[0]);
+        if (opcion != "") {
+            vm.areaSelecionada = _.filter(vm.ListaAreas, function (area) { return area.Title == opcion });
+            vm.ListAreas.push(vm.areaSelecionada[0]);
+        }
     }
 
     vm.AgregarAsistentes = function () {
         var opcion = vm.AsistentesSelect;
-        vm.AsistentesSelecionada = _.filter(vm.listaAsitentes, function (a) { return a.Nombre.Title == opcion });
-        vm.listAsitentes.push(vm.AsistentesSelecionada[0])
+        if (opcion != undefined) {
+            vm.AsistentesSelecionada = _.filter(vm.listaAsitentes, function (a) { return a.Nombre.Title == opcion });
+            vm.listAsitentes.push(vm.AsistentesSelecionada[0])
+        }
     }
 
     vm.addOservacion = function () {
         var observacionUsuario = vm.Observacion;
         if (observacionUsuario.trim() == "") {
-            alert("No hay observación para agregar");
+            alert("No hay observaci\u00F3n para agregar");
         } else {
             var autor = vm.UsuarioActual.Title;
             vm.notas = {
@@ -372,20 +387,19 @@ function SolicitudController($scope) {
                     vm.mensajeAlert = false;
                     vm.alertExito = true;
                     vm.mensajeError = false;
-                    vm.mesaje = "Gracias por su espera, el archivo se guardo con exito";
+                    vm.mesaje = "Gracias por su espera, el archivo se guardo con \u00e9xito";
                     window.clearInterval(vm.repeticion);
                     $scope.$apply();
                 }
                 var archivo = uploadFile(vm, value, callback);
                 vm.mensajeAlert = true;
-                vm.mesajeAlerts = "Tu solicitud ha sido guardada, pero necesitamos un poco más de tiempo para guardar el Anexo... Gracias"
+                vm.mesajeAlerts = "Tu solicitud ha sido guardada, pero necesitamos un poco m\u00e1s de tiempo para guardar el Anexo... Gracias"
                 vm.repeticion = window.setInterval(vm.detener(), 30000);
             }
         });
     }
     vm.detener = function () {
         if (vm.contador > 0) {
-            debugger;
             window.clearInterval(vm.repeticion);
             vm.mesaje = "";
             vm.mensajeAlert = false;
@@ -416,6 +430,7 @@ function SolicitudController($scope) {
 
     vm.GuardarFormacion = function () {
         if (validacionCampoRol()) {
+            vm.botones = true;
             vm.ResponsableActualId = vm.UsuarioActual.Id;
             var data = getDataSolicitud("Borrador");
             GuardarSolicitudFormacion(data);
@@ -478,14 +493,18 @@ function SolicitudController($scope) {
             }
             if (result) {
                 vm.alertPeligro = false;
+                vm.mensajeError = false;
                 vm.alertExito = true;
                 vm.mesaje = "Felicidades su registro se guard\u00F3 con \u00e9xito ";
                 registroLog("Se creo la solicitud con id" + vm.id);
                 envioCorreo(result.d);
+
             } else {
+                vm.alertPeligro = false;
                 vm.mensajeError = true;
+                vm.alertExito = false;
                 vm.mesaje = "Su registro no se guard\u00F3, intentelo nuevamente";
-                registroLog("Error en la creación de la solicitud");
+                registroLog("Error en la creaci\u00F3n de la solicitud");
             }
 
         }
@@ -514,6 +533,7 @@ function SolicitudController($scope) {
         var envio = true;
         if (validacionCampoRol()) {
             if (vm.id != 0) {
+                vm.botones = true;
                 if (vm.solicitudEnLista) {
                     if (vm.RolUserCurrent.results.length > 0) {
                         if (vm.SolicitudFormacion.SolicitanteId == vm.UsuarioActual.Id) {
@@ -580,19 +600,23 @@ function SolicitudController($scope) {
             var ContextoSolicitud = getContext("../lists/SolicitudesFormacion");
             var result = updateItem(url, ContextoSolicitud, data);
             if (result) {
+
                 vm.alertPeligro = false;
                 vm.alertExito = true;
+                vm.mensajeError = false;
                 vm.mesaje = "Felicidades su registro se actualiz\u00F3 con \u00e9xito ";
                 registroLog("Se actualizo Solicitud con id" + vm.id)
                 if (envio) {
                     envioCorreo(data);
                 } else {
-                    registroLog("Administrador actualizó solicitud con el" + vm.id);
+                    registroLog("Administrador actualiz\u00F3 solicitud con el" + vm.id);
                 }
             } else {
                 vm.mensajeError = true;
+                vm.alertExito = false;
+                vm.alertPeligro = false;
                 vm.mesaje = "Su registro no se guard\u00F3, intentelo nuevamente";
-                registroLog("Error en la actualización de la solicitud" + vm.id)
+                registroLog("Error en la actualizaci\u00F3n de la solicitud" + vm.id)
             }
         }
     }
@@ -642,6 +666,7 @@ function SolicitudController($scope) {
             EstadoSolicitud: estado,
             AreasId: Area,
             AsistentesId: Asistentes,
+            FechaInicio: vm.SolicitudFormacion.FechaInicio,
             Total: vm.sumaTotal(),
         }
         return data;
@@ -661,6 +686,7 @@ function SolicitudController($scope) {
         var data = {
             __metadata: { 'type': 'SP.Data.SolicitudesFormacionListItem' },
             ResponsableActualId: vm.ResponsableActualId,
+            FechaInicio: vm.SolicitudFormacion.FechaInicio,
             AreasId: Area,
             AsistentesId: Asistentes,
         }
@@ -709,13 +735,13 @@ function SolicitudController($scope) {
 
     vm.Enviar = function () {
         if (validacionCampoRol()) {
+            vm.botones = true;
             if (vm.id > 0) {
                 vm.ActualizarInforacion();
             } else {
                 ObtenerResponsable("Gestion Humana");
                 var data = getDataSolicitud("En presupuesto GH");
                 GuardarSolicitudFormacion(data);
-
             }
         }
     }
@@ -730,6 +756,7 @@ function SolicitudController($scope) {
     }
 
     vm.cancelarSolicitud = function () {
+        vm.botones = true;
         var data = {
             __metadata: { 'type': 'SP.Data.SolicitudesFormacionListItem' },
             EstadoSolicitud: "Cancelada",
@@ -748,8 +775,9 @@ function SolicitudController($scope) {
             registroLog("Se cancelo la solicitud con id" + vm.id)
         } else {
             vm.mensajeError = true;
-            vm.mesaje = "Su cancelación no fue exitosa, intentelo nuevamente";
-            registroLog("Error en la cancelación de la solicitud" + vm.id)
+            vm.alertExito = false;
+            vm.mesaje = "Su cancelaci\u00F3n no fue exitosa, intentelo nuevamente";
+            registroLog("Error en la cancelaci\u00F3n de la solicitud" + vm.id)
         }
     }
 
@@ -757,7 +785,7 @@ function SolicitudController($scope) {
         vm.mensajePeligro = [];
         if (vm.Rol == 0) {
             if (vm.SolicitudFormacion.TipoFormacion == undefined) {
-                vm.mensajePeligro.push("Debe selecionar un Tipo Formaci\u00F3n");
+                vm.mensajePeligro.push("Debe selecionar un tipo formaci\u00F3n");
             }
             if (vm.SolicitudFormacion.FechaInicio == undefined) {
                 vm.mensajePeligro.push("Debe selecionar una fecha de inicio ");
@@ -769,13 +797,13 @@ function SolicitudController($scope) {
                 vm.mensajePeligro.push("Debes selecionar una clasificaci\u00F3n");
             }
             if (vm.SolicitudFormacion.Evaluaci_x00f3_nId == undefined) {
-                vm.mensajePeligro.push("Debes selecionar una Evaluaci\u00F3n");
+                vm.mensajePeligro.push("Debes selecionar una evaluaci\u00F3n");
             }
             if (vm.SolicitudFormacion.Cupos == undefined) {
                 vm.mensajePeligro.push("Debes agregar n\u00FAmero de cupos");
             }
             if (vm.SolicitudFormacion.Entidad == "") {
-                vm.mensajePeligro.push("Debes agregar Entidad de formac\u00F3n");
+                vm.mensajePeligro.push("Debes agregar entidad de formac\u00F3n");
             }
             if (vm.SolicitudFormacion.Valorindividual == undefined) {
                 vm.mensajePeligro.push("Debes agregar Valor individual ");
@@ -804,7 +832,7 @@ function SolicitudController($scope) {
                 vm.mensajePeligro.push("Debes agregar los asistentes ");
             }
             if (vm.ListAreas.length == 0) {
-                vm.mensajePeligro.push("Debes agregar las areas ");
+                vm.mensajePeligro.push("Debes agregar las áreas ");
             }
             if (vm.SolicitudFormacion.RequiereViaje) {
                 if (vm.InformacionViaje == undefined) {
@@ -826,7 +854,7 @@ function SolicitudController($scope) {
             }
         } else if (vm.Rol == 2) {
             if (vm.SolicitudFormacion.SolicitudAprobada == false)
-                vm.mensajePeligro.push("Recuerda checkear el campo aprobación");
+                vm.mensajePeligro.push("Recuerda checkear el campo aprobaci\u00F3n");
         } else if (vm.Rol == 3) {
             if (vm.SolicitudFormacion.FechaPago == undefined)
                 vm.mensajePeligro.push("Se debe selecionar fecha de pago");
@@ -854,11 +882,10 @@ function SolicitudController($scope) {
 
     function envioCorreo(data) {
         if (data.EstadoSolicitud != "Borrador") {
-            if (data.ID == undefined)
-            {
+            if (data.ID == undefined) {
                 data.ID = vm.SolicitudFormacion.ID;
             }
-            var url = "https://flujovacaciones.azurewebsites.net/api/SolicitudGestionFormacion?NumeroSolicitud=" + data.ID + "&Estado=" + data.EstadoSolicitud + " &Solicitante=" + vm.responsableProxi.results[0].Usuario.Title + "&CorreoReceptor=" + vm.responsableProxi.results[0].Usuario.EMail + "&url=conocimiento.sharepoint.com/teams/dev/gestionformacion";
+            var url = "https://flujovacaciones.azurewebsites.net/api/SolicitudGestionFormacion?NumeroSolicitud=" + data.ID + "&Estado=" + data.EstadoSolicitud + " &Solicitante=" + vm.UsuarioActual.Title + "&CorreoReceptor=" + vm.responsableProxi.results[0].Usuario.EMail + "&url=conocimiento.sharepoint.com/teams/dev/gestionformacion";
             var result = queryList(url);
         }
     }

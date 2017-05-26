@@ -29,8 +29,8 @@
                 <div class="panel panel-primary">
                     <div class="panel-heading center">MENÚ</div>
                     <div class="btn-group-vertical" role="group" aria-label="">
-                        <button type="button" class="btn btn-default left" onclick="window.location='MisFormaciones.aspx';">Mis Formaciónes</button>
-                        <button type="button" class="btn btn-default left" onclick="window.location='MisSolicitudes.aspx';">Mis Solicitudes</button>
+                        <button type="button" class="btn btn-default left" onclick="window.location='MisFormaciones.aspx';">Mis formaciónes</button>
+                        <button type="button" class="btn btn-default left" onclick="window.location='MisSolicitudes.aspx';">Mis solicitudes</button>
                         <button type="button" class="btn btn-default left" onclick="window.location='Solicitud.aspx';">Crear solicitudes de formación</button>
                         <button ng-show="mostrarPlan" type="button" class="btn btn-default left" onclick="window.location='PlanEstrategico.aspx';">Plan estratégico</button>
                         <button type="button" class="btn btn-default left" onclick="window.location='SolicitudesAsignadas.aspx';">Solicitudes asignadas a mí</button>
@@ -41,7 +41,7 @@
             <div class="Contenedor">
                 <div class="row">
                     <div class="Carousel">
-                        <div style="height: 305px; width: 70%; margin-left: 11%;">
+                        <div style="height: 305px; width: 70%; margin-left: 11%;margin-top: 2%;">
                             <uib-carousel interval="vm.myInterval">
                     <uib-slide ng-repeat="slide in vm.slides" active="vm.active" index="$index">
                       <img ng-src="{{slide.Imagen}}" style="margin:auto;" />
@@ -78,7 +78,7 @@
                     </div>
                 </div>
             </div>
-            <%--<button  ng-click="vm.functionGuardarDatos()">Datos pruebas</button>--%>
+            <button  ng-click="vm.functionGuardarDatos()">Datos pruebas</button>
         </div>
     </div>
     

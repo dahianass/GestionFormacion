@@ -110,16 +110,14 @@ function MisFormacionesController($scope, $http) {
             },
             //select=,EstadoSolicitud,TipoFormacion/TipoFormacion&$orderby=Id%20desc&$top=3000&$expand=TipoFormacion";
             columns: [
-              { field: "Formacion", title: "Título de formactió" },
-              { field: "FechaInicio", title: "Fecha de Inicio", format: "{0:dd/MM/yyyy}" },
+              { field: "Formacion", title: "Título de formactión" },
+              { field: "FechaInicio", title: "Fecha de inicio", format: "{0:dd/MM/yyyy}" },
                             { field: "Encuesta", title: "Encuesta" },
             {
-                field: "", title: "",
                 template: "<div class='btn-group' ng-show='#=BEncuesta#'><button type='button' class='btn btn-default btn-xs noStyle' ng-click='vm.ModalEncuesta( #=ID #)'><span class='glyphicon glyphicon-th-list' aria-hidden='true'></span></button></div>"
             },
               { field: "Certificado", title: "Certificados" },
             {
-                field: "", title: "",
                 template: "<div class='btn-group' ng-show='#=BCertificado#'><button type='button' class='btn btn-default btn-xs noStyle' ng-click='vm.ModalCertificado( #=ID #)'><span class='glyphicon glyphicon-upload' aria-hidden='true'></span></button></div>"
             }
             ],
@@ -131,7 +129,7 @@ function MisFormacionesController($scope, $http) {
     vm.ModalCertificado = function (idFormu) {
         $("#ModalArchivo").modal();
         var formacionSelected = _.filter(vm.Formaciones, function (formacion) { return formacion.ID == idFormu })
-        vm.formacionSelected =formacionSelected[0];
+        vm.formacionSelected = formacionSelected[0];
     };
     vm.ModalEncuesta = function (id) {
         $("#ModalEncuesta").modal();
@@ -143,9 +141,9 @@ function MisFormacionesController($scope, $http) {
         var data = {
             __metadata: { 'type': 'SP.Data.EncuestasListItem' },
             AsistenteId: vm.UsuarioActual.Id,
-            Cargo:vm.asistente.Cargo,
-            FormacionId:vm.formacionSelected.ID,
-            TipoFormacionId:vm.formacionSelected.TipoFormacion.ID,
+            Cargo: vm.asistente.Cargo,
+            FormacionId: vm.formacionSelected.ID,
+            TipoFormacionId: vm.formacionSelected.TipoFormacion.ID,
             RespuestaEncuesta: vm.RespuestaEncuesta
         }
         var url = "../_api/lists/getbytitle('Encuestas')/items"
@@ -159,10 +157,10 @@ function MisFormacionesController($scope, $http) {
             $('#ModalEncuesta').modal('hide');
         }
         CargarFormaciones();
-        
+
     }
 
-    vm.anexarCertificado = function(){
+    vm.anexarCertificado = function () {
         vm.Certificado = {
             fileInput: jQuery('#fileInput'),
             nombreBiblioteca: "Certificados",
@@ -187,14 +185,13 @@ function MisFormacionesController($scope, $http) {
         }
         var archivo = uploadFile2(vm, vm.Certificado, callback);
         vm.mensajeAlert = true;
-        vm.mesajeAlerts = "Su cerificado se está guardando"
+        vm.mesajeAlerts = "Su cerificado se est\u00e1 guardando"
         vm.repeticion = window.setInterval(vm.detener(), 10000);
         $('#ModalArchivo').modal('hide');
         CargarFormaciones();
     }
     vm.detener = function () {
-        if (vm.repeticion != undefined)
-        {
+        if (vm.repeticion != undefined) {
             window.clearInterval(vm.repeticion);
             vm.mesaje = "";
             vm.mensajeError = true;

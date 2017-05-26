@@ -19,7 +19,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="https://kendo.cdn.telerik.com/2017.1.118/js/kendo.all.min.js"></script>
-
+    <script src="../Scripts/Underscore.js"></script>
     <script src="../Scripts/App/App.MisSolicitudes.js"></script>
     <script src="../Scripts/Controller/MisSolicitudes.Controller.js"></script>
     <script src="../Scripts/Controller/apiRest.js"></script>
@@ -30,10 +30,10 @@
     <div class="ContenedorPrincipal"  ng-app="MisSolicitudesApp"  ng-controller="MisSolicitudesController as vm">
         <div class="MenuLateral">
             <div class="panel panel-primary">
-                <div class="panel-heading center">MENú</div>
+                <div class="panel-heading center">MENÚ</div>
                 <div class="btn-group-vertical" role="group" aria-label="">
-                    <button type="button" class="btn btn-default left" onclick="window.location='MisFormaciones.aspx';">Mis Formaciónes</button>
-                    <button type="button" class="btn btn-default left" onclick="window.location='MisSolicitudes.aspx';">Mis Solicitudes</button>
+                    <button type="button" class="btn btn-default left" onclick="window.location='MisFormaciones.aspx';">Mis formaciónes</button>
+                    <button type="button" class="btn btn-default left" onclick="window.location='MisSolicitudes.aspx';">Mis solicitudes</button>
                     <button type="button" class="btn btn-default left" onclick="window.location='Solicitud.aspx';">Crear solicitudes de formación</button>
                     <button  ng-show="mostrarPlan" type="button" class="btn btn-default left" onclick="window.location='PlanEstrategico.aspx';">Plan estratégico</button>
                     <button type="button" class="btn btn-default left" onclick="window.location='SolicitudesAsignadas.aspx';">Solicitudes asignadas a mí</button>

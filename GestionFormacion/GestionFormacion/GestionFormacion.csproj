@@ -68,6 +68,9 @@
     <Content Include="Clasificaciones\ClasificacionesInstance\Elements.xml" />
     <Content Include="Clasificaciones\Elements.xml" />
     <Content Include="Clasificaciones\Schema.xml" />
+    <Content Include="Configuraciones\ConfiguracionesInstance\Elements.xml" />
+    <Content Include="Configuraciones\Elements.xml" />
+    <Content Include="Configuraciones\Schema.xml" />
     <Content Include="Content\Inicio.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="Encuestas\Elements.xml" />
@@ -120,6 +123,12 @@
     </Content>
     <Content Include="Features\Feature25\Feature25.Template.xml">
       <DependentUpon>Feature25.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\Feature26\Feature26.Template.xml">
+      <DependentUpon>Feature26.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\Feature27\Feature27.Template.xml">
+      <DependentUpon>Feature27.feature</DependentUpon>
     </Content>
     <Content Include="Features\Feature2\Feature2.Template.xml">
       <DependentUpon>Feature2.feature</DependentUpon>
@@ -207,10 +216,10 @@
       <SharePointProjectItemId>{a255bf52-6a19-4ca9-b5b3-ec6dbc6e4c8d}</SharePointProjectItemId>
     </None>
     <None Include="Asistentes\AsistentesInstance\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{a6c42c76-b526-43b0-841f-8a84d2dd146b}</SharePointProjectItemId>
+      <SharePointProjectItemId>{65d103ef-510b-49bf-a32c-09347c7614a8}</SharePointProjectItemId>
     </None>
     <None Include="Asistentes\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{be9d89f2-28b0-4fb5-a02b-2ca23e33758c}</SharePointProjectItemId>
+      <SharePointProjectItemId>{12f94f13-04e7-47f1-b3bb-2384b97d441a}</SharePointProjectItemId>
     </None>
     <None Include="Carousel\CarouselInstance\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{02da1679-b807-49fa-a9c6-cc4dd2afa7cd}</SharePointProjectItemId>
@@ -229,6 +238,12 @@
     </None>
     <None Include="Clasificaciones\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{5544052c-38d0-425e-a9dc-487ec40f1eec}</SharePointProjectItemId>
+    </None>
+    <None Include="Configuraciones\ConfiguracionesInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{ecc9fbfa-c1c3-4982-a9f6-4613ba7fa8d9}</SharePointProjectItemId>
+    </None>
+    <None Include="Configuraciones\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{de55a2b8-ff25-4802-97e7-94a79fde6c3f}</SharePointProjectItemId>
     </None>
     <None Include="Encuestas\EncuestasInstance\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{ebf3b8fb-cef5-42ca-9fb0-ad2fff5a543e}</SharePointProjectItemId>
@@ -286,6 +301,12 @@
     </None>
     <None Include="Features\Feature25\Feature25.feature">
       <FeatureId>{eae91b9a-2e3c-4acc-883d-a2ebfd083c6b}</FeatureId>
+    </None>
+    <None Include="Features\Feature26\Feature26.feature">
+      <FeatureId>{58b1f6d5-7b71-4422-a35b-87a6a8b94cf4}</FeatureId>
+    </None>
+    <None Include="Features\Feature27\Feature27.feature">
+      <FeatureId>{50e29acf-4de5-4158-a5c9-ac0799c1421f}</FeatureId>
     </None>
     <None Include="Features\Feature2\Feature2.feature">
       <FeatureId>{39eaa548-ac24-437e-a59a-a0586a903bac}</FeatureId>

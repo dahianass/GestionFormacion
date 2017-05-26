@@ -95,15 +95,14 @@ app.controller('getVistasConsulta', ['$scope', '$http', function ($scope, $http)
             },
             //select=,EstadoSolicitud,TipoFormacion/TipoFormacion&$orderby=Id%20desc&$top=3000&$expand=TipoFormacion";
             columns: [
-              { field: "Id", title: "Id" },
-              { field: "Duracion", title: "Duracion" },
-              { field: "Cupos", title: "Cupos" },
+              { field: "Id", title: "Id", width: 50,},
+              { field: "Duracion", title: "Duración", width: 100, },
+              { field: "Cupos", title: "Cupos" ,width: 100,},
               { field: "TotalCurso", title: "Valor total" },
               { field: "EstadoSolicitud", title: "Estado" },
-              { field: "TipoFormacion.Title", title: "Tipo formacion" },
+              { field: "TipoFormacion.Title", title: "Tipo formación" },
               { field: "Fechasolicitud", title: "Fecha solicitud", format: "{0:dd/MM/yyyy}" },
               {
-                  field: "Acciones", title: "Acciones",
                   template: '<div class="btn-group"><button type="button" class="btn btn-primary btn-xs" ng-click="abrirSolicitudKendo({Id:this.dataItem.Id})"><span class="glyphicon glyphicon-eye-open"></span></button></div>'
                   //template: '<div class="k-button" ng-click="abrirSolicitudKendo({Id:this.dataItem.Id})"><i class="fa fa-file-text-o"></i></div>'
               }
@@ -192,7 +191,7 @@ app.controller('getVistasConsulta', ['$scope', '$http', function ($scope, $http)
             },
 
             columns: [
-              { field: "ID", title: "Consecutivo" },
+              { field: "ID", title: "Consecutivo", width: 50, },
               { field: "Estado", title: "Estado" },
               { field: "Categoria.Categoria", title: "Categoria" },
               { field: "Fuente.Fuente", title: "Fuente" },
@@ -288,7 +287,7 @@ app.controller('getVistasConsulta', ['$scope', '$http', function ($scope, $http)
             },
 
             columns: [
-              { field: "ID", title: "Consecutivo" },
+              { field: "ID", title: "Consecutivo", width: 50, },
               { field: "Estado", title: "Estado" },
               { field: "Categoria.Categoria", title: "Categoria" },
               { field: "Fuente.Fuente", title: "Fuente" },

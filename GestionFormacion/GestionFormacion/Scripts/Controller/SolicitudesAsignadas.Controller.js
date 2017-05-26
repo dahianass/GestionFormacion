@@ -54,7 +54,8 @@ function SolicitudesAsignadasController($scope, $http) {
                             {
                                 model: {
                                     fields: {
-                                        Fechasolicitud: { type: "date" }
+                                        Fechasolicitud: { type: "date" },
+                                        FechaInicio: { type: "date" }
                                     }
                                 },
                                 data: function (data) {
@@ -86,18 +87,14 @@ function SolicitudesAsignadasController($scope, $http) {
             columns: [
               { field: "Formacion", title: "Título" },
               { field: "Fechasolicitud", title: "Fecha solicitud", format: "{0:dd/MM/yyyy}" },
-               { field: "Solicitante.Title", title: "Solicitante" },
+               { field: "Solicitante.Title", title: "Solicitante", width: 150, },
               { field: "TipoFormacion.Title", title: "Tipo de formación" },
-              { field: "Duracion", title: "Duración en horas" },
-              { field: "Cupos", title: "Numero de persona" },
+              { field: "Duracion", title: "Duración en horas",width: 50, },
+              { field: "Cupos", title: "Número de persona", width: 50, },
                { field: "FechaInicio", title: "Fecha de propuesta", format: "{0:dd/MM/yyyy}" },
               { field: "Total", title: "Valor" },
               { field: "EstadoSolicitud", title: "Estado" },
-              {
-              field: "", title: "",
-              template: "<button type='button' class='btn btn-default btn-xs noStyle' ng-click='vm.Redirecionar(#=ID#)'><span class='glyphicon glyphicon-list-alt' aria-hidden='true'></span></button>"
-              }
-
+              {template: "<button type='button' class='btn btn-default btn-xs noStyle' ng-click='vm.Redirecionar(#=ID#)'><span class='glyphicon glyphicon-list-alt' aria-hidden='true'></span></button>"}
             ],
             groupable: false
         }

@@ -27,7 +27,7 @@
 
 <asp:Content ContentPlaceHolderID="PlaceHolderMain" runat="server">
     <WebPartPages:WebPartZone runat="server" FrameType="TitleBarOnly" ID="full" Title="loc:full" />
-    <div class="container" ng-app="SolicitudApp" ng-controller="SolicitudController as vm">
+    <div class="container mainPrincipal" ng-app="SolicitudApp" ng-controller="SolicitudController as vm">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
         <div class="alert alert-success" role="alert" ng-show="vm.alertExito">
             {{vm.mesaje}}
@@ -47,10 +47,10 @@
         </div>
         <div class="row">
             <div class="col-md-12 form-group">
-                <button class="btn btn-primary pull-right mr-2" type="button" ng-click="vm.cancelarSolicitud()" ng-show="vm.disableCancelar">Cancelar</button>
-                <button class="btn btn-primary pull-right mr-2" type="button" ng-show="!vm.disableS" ng-click="vm.Enviar()">Enviar</button>
-                <button class="btn btn-primary pull-right mr-2" type="button" ng-click="vm.GuardarFormacion()" ng-show="!vm.disableS">Guardar</button>
-                <button class="btn btn-primary pull-right mr-2" type="button" ng-click="vm.ActualizarInforacion()" ng-show="vm.ShowActualizar">{{vm.mensajeActualizar}}</button>
+                <button class="btn btn-primary pull-right mr-2" type="button" ng-click="vm.cancelarSolicitud()" ng-show="vm.disableCancelar" ng-disabled="vm.botones">Cancelar</button>
+                <button class="btn btn-primary pull-right mr-2" type="button" ng-show="!vm.disableS" ng-click="vm.Enviar()" ng-disabled="vm.botones">Enviar</button>
+                <button class="btn btn-primary pull-right mr-2" type="button" ng-click="vm.GuardarFormacion()" ng-show="!vm.disableS" ng-disabled="vm.botones">Guardar</button>
+                <button class="btn btn-primary pull-right mr-2" type="button" ng-click="vm.ActualizarInforacion()" ng-show="vm.ShowActualizar" ng-disabled="vm.botones">{{vm.mensajeActualizar}}</button>
                 <button class="btn btn-primary pull-right mr-2" type="button" onclick="window.location='../';">Cerrar</button>
             </div>
         </div>
@@ -109,7 +109,7 @@
                     </div>
                     <div class="col-md-3">
                         <label>Fecha inicio</label>
-                        <input kendo-date-picker ng-model="vm.SolicitudFormacion.FechaInicio" class="form-control fecha" ng-disabled="vm.disableS" />
+                        <input kendo-date-picker ng-model="vm.SolicitudFormacion.FechaInicio" class="form-control fecha" ng-disabled="vm.disableSF" />
                     </div>
                     <div class="col-md-3">
                         <label>Clasificación</label>
@@ -186,7 +186,7 @@
                 <div class="row MT2">
                     <fieldset ng-disabled="{{vm.disableGH}}">
                         <div class="col-md-6">
-                            <label>Area</label>
+                            <label>Área</label>
                             <div class="input-group">
                                 <input kendo-auto-complete ng-model="vm.AreaSelect" k-data-source="vm.ListaAreasAutocomplet" class="form-control">
                                 <span class="input-group-addon" style="cursor: pointer" ng-click="vm.AgregarArea()"><span class="glyphicon glyphicon-plus-sign SpanL"></span></span>
@@ -205,7 +205,7 @@
                     <fieldset ng-disabled="{{vm.disableGH}}">
                         <div class="col-md-6">
                             <div class="contenedorSombra">
-                                <span>Area</span>
+                                <span>Área</span>
                                 <div class="checkbox form-group" ng-repeat="areas in vm.ListAreas">
                                     <div>
                                         <input type="checkbox" checklist-model="vm.SolicitudFormacion.AreasId" checklist-value="areas.ID" ng-disabled="vm.disableGH">{{areas.Title}}</input>
@@ -271,13 +271,13 @@
                             <input type="number" ng-model="vm.InformacionViaje.ValorTiquete" class="form-control"></input>
                         </div>
                         <div class="col-md-4">
-                            <label>Valor Transporte</label>
+                            <label>Valor transporte</label>
                             <input type="number" ng-model="vm.InformacionViaje.ValorTramsporte" class="form-control"></input>
                         </div>
                     </div>
                     <div class="row MT2">
                         <div class="col-md-4">
-                            <label>Valor Hotel</label>
+                            <label>Valor hotel</label>
                             <input type="number" ng-model="vm.InformacionViaje.ValorHotel" class="form-control"></input>
                         </div>
                     </div>
@@ -297,7 +297,7 @@
                     <table class="table table-striped">
                         <thead>
                             <th>#</th>
-                            <th>Nombre del Archivo</th>
+                            <th>Nombre del archivo</th>
                             <th>Fecha</th>
                             <th>Autor</th>
                         </thead>
@@ -320,7 +320,7 @@
             <div class="modal-dialog escuestaModal" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Agregar Observación</h5>
+                        <h5 class="modal-title" id="exampleModalLongTitle">Agregar observación</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -341,7 +341,7 @@
             <div class="modal-dialog escuestaModal" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Selecione el tipo de Anexo</h5>
+                        <h5 class="modal-title" id="exampleModalLongTitle">Selecione el tipo de anexo</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>

@@ -4,12 +4,12 @@
     <ContentTypes>
       
       
-    <ContentType ID="0x0100ce1e9a701ee4422ab00d3cbddcf20f30" Name="ListFieldsContentType"><FieldRefs><FieldRef ID="{3ad90418-c5b5-4c56-8348-6a847e4b92c4}" Name="Cargo" /><FieldRef ID="{a88289c6-5234-48ab-82a5-ea1067a9253d}" Name="Area" /><FieldRef ID="{27ca55be-440f-4aee-b932-54f5f720d2dd}" Name="Nombre" /></FieldRefs></ContentType><ContentTypeRef ID="0x01">
+    <ContentType ID="0x01004e4ae01f69e644fbace00a230e217936" Name="ListFieldsContentType"><FieldRefs><FieldRef ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Name="Title" /><FieldRef ID="{9adb0aa5-6383-4bd7-92e2-2a7c3be6b1af}" Name="Nombre" /><FieldRef ID="{83091f4d-9cb8-4c25-8e56-12e26b611929}" Name="Area" /><FieldRef ID="{cd20c8fa-d694-4c6b-949e-51b68e61dc6d}" Name="Cargo" /></FieldRefs></ContentType><ContentTypeRef ID="0x01">
         <Folder TargetName="Item" />
       </ContentTypeRef><ContentTypeRef ID="0x0120" /></ContentTypes>
     <Fields>
       
-    <Field Name="Cargo" ID="{3ad90418-c5b5-4c56-8348-6a847e4b92c4}" DisplayName="Cargo" Type="Text" Required="FALSE" /><Field Name="Area" ID="{a88289c6-5234-48ab-82a5-ea1067a9253d}" DisplayName="Area" Type="Lookup" Required="FALSE" List="Lists/Areas" ShowField="Title" /><Field Name="Nombre" ID="{27ca55be-440f-4aee-b932-54f5f720d2dd}" DisplayName="Nombre" Type="User" List="UserInfo" /></Fields>
+    <Field ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Type="Text" Name="Title" DisplayName="Title" Required="FALSE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="Title" MaxLength="255" /><Field Name="Nombre" ID="{9adb0aa5-6383-4bd7-92e2-2a7c3be6b1af}" DisplayName="Nombre" Type="User" List="UserInfo" /><Field Name="Area" ID="{83091f4d-9cb8-4c25-8e56-12e26b611929}" DisplayName="Área" Type="Lookup" /><Field Name="Cargo" ID="{cd20c8fa-d694-4c6b-949e-51b68e61dc6d}" DisplayName="Cargo" Type="Text" /></Fields>
     <Views>
       
       
@@ -37,7 +37,7 @@
         <RowLimit Paged="TRUE">30</RowLimit>
         <ViewFields>
           
-        <FieldRef Name="LinkTitle"></FieldRef><FieldRef Name="Cargo" /><FieldRef Name="Area" /><FieldRef Name="Nombre" /></ViewFields>
+        <FieldRef Name="Nombre" /><FieldRef Name="Area" /><FieldRef Name="Cargo" /></ViewFields>
         <Query>
           <OrderBy>
             

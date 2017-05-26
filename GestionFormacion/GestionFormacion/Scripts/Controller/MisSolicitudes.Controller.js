@@ -62,7 +62,8 @@ function MisSolicitudesController($scope, $http) {
                             {
                                 model: {
                                     fields: {
-                                        Fechasolicitud: { type: "date" }
+                                        Fechasolicitud: { type: "date" },
+                                        FechaInicio: { type: "date" }
                                     }
                                 },
                                 data: function (data) {
@@ -92,12 +93,12 @@ function MisSolicitudesController($scope, $http) {
             },
             //select=,EstadoSolicitud,TipoFormacion/TipoFormacion&$orderby=Id%20desc&$top=3000&$expand=TipoFormacion";
             columns: [
-              { field: "Id", title: "Id" },
+              //{ field: "Id", title: "Id",width:50, attributes: { "class": "porcentual10" } },
               { field: "Formacion", title: "Título" },
               { field: "Fechasolicitud", title: "Fecha solicitud", format: "{0:dd/MM/yyyy}" },
               { field: "TipoFormacion.Title", title: "Tipo de formación" },
-              { field: "Duracion", title: "Duración en horas" },
-              { field: "Cupos", title: "Numero de persona" },
+              { field: "Duracion", title: "Duración en horas", width: 50, },
+              { field: "Cupos", title: "Número de persona", width: 50,},
                { field: "FechaInicio", title: "Fecha de propuesta", format: "{0:dd/MM/yyyy}" },
               { field: "Total", title: "Valor" },
               { field: "EstadoSolicitud", title: "Estado" }

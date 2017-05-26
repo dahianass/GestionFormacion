@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<List xmlns:ows="Microsoft SharePoint" Title="TiposFormaciones" FolderCreation="FALSE" Direction="$Resources:Direction;" Url="Lists/TiposFormaciones" BaseType="0" xmlns="http://schemas.microsoft.com/sharepoint/">
+<List xmlns:ows="Microsoft SharePoint" Title="Configuraciones" FolderCreation="FALSE" Direction="$Resources:Direction;" Url="Lists/Configuraciones" BaseType="0" xmlns="http://schemas.microsoft.com/sharepoint/">
   <MetaData>
     <ContentTypes>
       
       
-    <ContentType ID="0x0100ffa95b22f3f34b50a283d11de7ad896c" Name="ListFieldsContentType"><FieldRefs><FieldRef ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Name="Title" /></FieldRefs></ContentType><ContentTypeRef ID="0x01">
+    <ContentType ID="0x0100a3949394014848a38b8af7b299f1ddbe" Name="ListFieldsContentType"><FieldRefs><FieldRef ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Name="Title" /><FieldRef ID="{c190becb-03e2-4ce3-8b59-8b0c62d0ee21}" Name="DiasNotificacion" /></FieldRefs></ContentType><ContentTypeRef ID="0x01">
         <Folder TargetName="Item" />
       </ContentTypeRef><ContentTypeRef ID="0x0120" /></ContentTypes>
     <Fields>
       
-    <Field ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Type="Text" Name="Title" DisplayName="Tipo de formacion" Required="TRUE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="Title" MaxLength="255" /></Fields>
+    <Field ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Type="Text" Name="Title" DisplayName="$Resources:core,Title;" Required="FALSE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="Title" MaxLength="255" /><Field Name="DiasNotificacion" ID="{c190becb-03e2-4ce3-8b59-8b0c62d0ee21}" DisplayName="DiasNotificacion" Type="Number" Decimals="0" /></Fields>
     <Views>
       
       
@@ -37,7 +37,7 @@
         <RowLimit Paged="TRUE">30</RowLimit>
         <ViewFields>
           
-        <FieldRef Name="LinkTitle"></FieldRef></ViewFields>
+        <FieldRef Name="LinkTitle"></FieldRef><FieldRef Name="DiasNotificacion" /></ViewFields>
         <Query>
           <OrderBy>
             

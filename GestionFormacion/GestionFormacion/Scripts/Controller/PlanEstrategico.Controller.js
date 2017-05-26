@@ -51,7 +51,8 @@ function PlanEstrategicoController($scope, $http) {
                             {
                                 model: {
                                     fields: {
-                                        FechaInicio: { type: "date" }
+                                        FechaInicio: { type: "date" },
+                                        Fechasolicitud: { type: "date" },
                                     }
                                 },
                                 data: function (data) {
@@ -81,24 +82,21 @@ function PlanEstrategicoController($scope, $http) {
             },
             //select=,EstadoSolicitud,TipoFormacion/TipoFormacion&$orderby=Id%20desc&$top=3000&$expand=TipoFormacion";
             columns: [
-          { field: "Solicitante.Title", title: "Autor" },
-          { field: "Formacion", title: "Título" },
+          { field: "Solicitante.Title", title: "Autor", width: 150 },
+          { field: "Formacion", title: "Título", width: 100 },
           { field: "Fechasolicitud", title: "Fecha solicitud", format: "{0:dd/MM/yyyy}" },
           { field: "TipoFormacion.Title", title: "Tipo de formación" },
-          { field: "Duracion", title: "Duración en horas" },
-          { field: "Cupos", title: "Numero de persona" },
+          { field: "Duracion", title: "Duración en horas" , width:50},
+          { field: "Cupos", title: "Numero de persona", width: 50 },
            { field: "FechaInicio", title: "Fecha de propuesta", format: "{0:dd/MM/yyyy}" },
           { field: "Total", title: "Valor" },
           { field: "EstadoSolicitud", title: "Estado" },
-            {
-                field: "Aprobar", title: "",
+            { title: "",
                 template: "<td><input type='checkbox' ng-disabled='#=SolicitudAprobada#' ng-checked='#=SolicitudAprobada#' ng-model='check#=ID#' ng-click='vm.aprobarDesaprobar(#=ID #)'></td>"
             },
-            {
-                field: "Deshaprobar", title: "",
+            { title: "",
                 template: "<div ng-click='vm.cancelarFormacion(#=ID #)' style='cursor:pointer'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></div>"
-            }
-            ],
+            } ],
             groupable: false
         }
         $scope.reporteTodasOptions.dataSource.read();
@@ -122,7 +120,7 @@ function PlanEstrategicoController($scope, $http) {
         if (result) {
             vm.alertPeligro = false;
             vm.alertExito = true;
-            vm.mesaje = "la solicitud a sido aprobada";
+            vm.mesaje = "la solicitud fue aprobada";
             registroLog("Se aprobo la solicitud con el id " + id);
             envioCorreo(data, id)
             ObtenerListaFormaciones();
@@ -134,7 +132,7 @@ function PlanEstrategicoController($scope, $http) {
 
     vm.cancelarFormacion = function (id) {
         vm.mensajeAlert = true;
-        vm.mesajeAlerts = "La solicitud se está cancelando";
+        vm.mesajeAlerts = "La solicitud se est\u00e1 cancelando";
         var data = {
             __metadata: { 'type': 'SP.Data.SolicitudesFormacionListItem' },
             ResponsableActualId: vm.UsuarioActual.ID,

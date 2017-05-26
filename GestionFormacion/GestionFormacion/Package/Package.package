@@ -25,5 +25,7 @@
     <featureReference itemId="5fffa97b-08bc-45f2-8756-ec969f800c69" />
     <featureReference itemId="b3508c59-6131-455f-ab13-8769dff442b2" />
     <featureReference itemId="eae91b9a-2e3c-4acc-883d-a2ebfd083c6b" />
+    <featureReference itemId="58b1f6d5-7b71-4422-a35b-87a6a8b94cf4" />
+    <featureReference itemId="50e29acf-4de5-4158-a5c9-ac0799c1421f" />
   </features>
 </package>
